@@ -33,7 +33,7 @@ class _NilaiBudayaState extends State<NilaiBudaya> {
               children: [
                 SizedBox(width: 20),
                 Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 55, 0),
+                  margin: EdgeInsets.fromLTRB(0, 0, 35, 0),
                   child: TextButton(
                     onPressed: () {
                       Navigator.pop(context);
@@ -78,13 +78,13 @@ class _NilaiBudayaState extends State<NilaiBudaya> {
                     ),
                   ),
                 ),
-                SizedBox(width: 115),
+                SizedBox(width: 100),
               ],
             ),
           ),
           Container(
             width: double.infinity,
-            height: 844,
+            height: 1650,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
@@ -114,8 +114,8 @@ class _NilaiBudayaState extends State<NilaiBudaya> {
                                     'html': Style(
                                       fontFamily: 'Gotham',
                                       textAlign: TextAlign.justify,
-                                      fontSize: FontSize(9),
-                                      fontWeight: FontWeight.w400,
+                                      fontSize: FontSize(16),
+                                      fontWeight: FontWeight.w100,
                                       lineHeight: LineHeight(1.1111111111),
                                       color: Color(0xff000000),
                                     ),

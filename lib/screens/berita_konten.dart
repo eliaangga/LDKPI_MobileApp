@@ -77,11 +77,11 @@ class BeritaKonten extends StatelessWidget {
               children: [
                 Container(
                   margin: const EdgeInsets.only(
-                      top: 10, left: 25, bottom: 10, right: 25),
+                      top: 1, left: 25, bottom: 10, right: 25),
                   child: Text(
                     kontenBerita.title,
                     style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.bold),
+                        fontSize: 23, fontWeight: FontWeight.w900),
                   ),
                 ),
                 Row(
@@ -99,9 +99,9 @@ class BeritaKonten extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(
                     top: 20,
-                    left: 25,
+                    left: 20,
                     bottom: 10,
-                    right: 25,
+                    right: 20,
                   ),
                   child: Html(
                     data: kontenBerita.isi,
@@ -109,8 +109,8 @@ class BeritaKonten extends StatelessWidget {
                       'html': Style(
                         fontFamily: 'Gotham',
                         textAlign: TextAlign.justify,
-                        fontSize: FontSize(9),
-                        fontWeight: FontWeight.w400,
+                        fontSize: FontSize(16),
+                        fontWeight: FontWeight.w100,
                         lineHeight: LineHeight(1.1111111111),
                         color: Color(0xff000000),
                       ),

@@ -85,7 +85,7 @@ class _InvestasiState extends State<Investasi> {
           ),
           Container(
             width: double.infinity,
-            height: 844,
+            height: 950,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
@@ -114,74 +114,16 @@ class _InvestasiState extends State<Investasi> {
                         ),
                         Container(
                           margin: EdgeInsets.only(
-                            top: 0,
-                            left: 25,
-                            bottom: 0,
-                            right: 25,
+                            top: 20,
+                            left: 20,
+                            bottom: 10,
+                            right: 20,
                           ),
                           child: widget.invest.konten == ''
                               ? Center(
                                   child: Text('Data Not Found'),
                                 )
-                              :
-//                               Html(
-//                                   onLinkTap:
-//                                       (url, context, attributes, element) {
-//                                     launchUrlString(url!);
-//                                   },
-//                                   data: '''
-//       <p>
-//     asdasdasdasdasd
-// </p>
-// <p>
-//     <mark class="marker-yellow">asdasdas</mark>
-// </p>
-// <p>
-//     <strong>asdasdasd</strong>
-// </p>
-// <p>
-//     <i><strong>asdasdasdasd</strong></i>
-// </p>
-// <ul>
-//     <li>
-//         <i><strong>asdasd</strong></i>
-//     </li>
-//     <li>
-//         <i><strong>asdasd</strong></i>
-//     </li>
-//     <li>
-//         <i><strong>asdas</strong></i>
-//     </li>
-// </ul>
-// <p>
-//     asdadadadadad
-// </p>
-// <p>
-//     &nbsp;
-// </p>
-// <p style="text-align:center;">
-//     asdasdasdasdasd <a href="https://www.youtube.com/watch?v=JfhgKn1hnnk">LINK</a>
-// </p>
-// <p style="text-align:center;">
-//     &nbsp;
-// </p>
-// <figure class="image">
-//     <img src="/uploads/image_2023_06_27_151021646_1e365e7964.png">
-// </figure>
-//     ''',
-                              //   style: {
-                              //     'html': Style(
-                              //       fontFamily: 'Gotham',
-                              //       textAlign: TextAlign.justify,
-                              //       fontSize: FontSize(9),
-                              //       fontWeight: FontWeight.w400,
-                              //       lineHeight: LineHeight(1.1111111111),
-                              //       color: Color(0xff000000),
-                              //     ),
-                              //   },
-                              // )
-                              // :
-                              Html(
+                              : Html(
                                   onLinkTap:
                                       (url, context, attributes, element) {
                                     launchUrlString(url!);
@@ -191,8 +133,8 @@ class _InvestasiState extends State<Investasi> {
                                     'html': Style(
                                       fontFamily: 'Gotham',
                                       textAlign: TextAlign.justify,
-                                      fontSize: FontSize(9),
-                                      fontWeight: FontWeight.w400,
+                                      fontSize: FontSize(16),
+                                      fontWeight: FontWeight.w100,
                                       lineHeight: LineHeight(1.1111111111),
                                       color: Color(0xff000000),
                                     ),
