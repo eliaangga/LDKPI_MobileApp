@@ -80,7 +80,7 @@ class _SejarahState extends State<Sejarah> {
           ),
           Container(
             width: double.infinity,
-            height: 844,
+            height: 2300,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
@@ -89,13 +89,13 @@ class _SejarahState extends State<Sejarah> {
               children: [
                 Expanded(
                     child: Container(
-                  padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                  padding: EdgeInsets.fromLTRB(20, 15, 20, 9.5),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         if (widget.konten.img != '')
                           Container(
-                            margin: EdgeInsets.only(bottom: 60.5),
+                            margin: EdgeInsets.only(bottom: 11.5),
                             width: 328,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
@@ -103,7 +103,7 @@ class _SejarahState extends State<Sejarah> {
                             child: Align(
                               alignment: Alignment.center,
                               child: SizedBox(
-                                width: 329,
+                                width: 300,
                                 height: 154,
                                 child: Image(
                                     image: NetworkImage(widget.konten.img)),
@@ -111,11 +111,11 @@ class _SejarahState extends State<Sejarah> {
                             ),
                           ),
                         Container(
-                          margin: const EdgeInsets.only(
-                            top: 0,
-                            left: 25,
-                            bottom: 0,
-                            right: 25,
+                          margin: EdgeInsets.only(
+                            top: 1,
+                            left: 20,
+                            bottom: 10,
+                            right: 20,
                           ),
                           child: widget.konten.konten == ''
                               ? const Center(
@@ -127,9 +127,9 @@ class _SejarahState extends State<Sejarah> {
                                     'html': Style(
                                       fontFamily: 'Gotham',
                                       textAlign: TextAlign.justify,
-                                      fontSize: FontSize(9),
-                                      fontWeight: FontWeight.w400,
-                                      lineHeight: LineHeight(1.1111111111),
+                                      fontSize: FontSize(15),
+                                      fontWeight: FontWeight.w100,
+                                      lineHeight: LineHeight(1),
                                       color: Color(0xff000000),
                                     ),
                                   },

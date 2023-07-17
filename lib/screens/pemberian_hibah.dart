@@ -84,7 +84,7 @@ class _PHState extends State<PH> {
           ),
           Container(
             width: double.infinity,
-            height: 1000,
+            height: 2400,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
@@ -99,10 +99,10 @@ class _PHState extends State<PH> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                            top: 0,
-                            left: 25,
-                            bottom: 0,
-                            right: 25,
+                            top: 20,
+                            left: 20,
+                            bottom: 10,
+                            right: 20,
                           ),
                           child: widget.konten.konten == ''
                               ? const Center(
@@ -114,8 +114,8 @@ class _PHState extends State<PH> {
                                     'html': Style(
                                       fontFamily: 'Gotham',
                                       textAlign: TextAlign.justify,
-                                      fontSize: FontSize(9),
-                                      fontWeight: FontWeight.w400,
+                                      fontSize: FontSize(15),
+                                      fontWeight: FontWeight.w100,
                                       lineHeight: LineHeight(1.1111111111),
                                       color: Color(0xff000000),
                                     ),
