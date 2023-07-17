@@ -1,0 +1,16 @@
+{
+  "en": {
+    "home": "Home",
+    "news": "News",
+    "profile": "Profile",
+    "category": "Category",
+    "lang": "ID"
+  },
+  "id": {
+    "home": "Beranda",
+    "news": "Berita",
+    "profile": "Profil",
+    "category": "Kategori",
+    "lang": "EN"
+  }
+}
