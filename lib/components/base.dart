@@ -1,17 +1,11 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/components/appbar.dart';
 import 'package:ldkpi_news_app/components/navbar.dart';
 import 'package:ldkpi_news_app/components/openapp_page.dart';
 import 'package:ldkpi_news_app/screens/berita_page.dart';
 import 'package:ldkpi_news_app/screens/home.dart';
 import 'package:ldkpi_news_app/screens/kategori.dart';
-import 'package:ldkpi_news_app/main.dart';
-import 'dart:async';
-import 'package:shared_preferences/shared_preferences.dart';
 
-// ignore: must_be_immutable
 class Base extends StatefulWidget {
   final Function(String) ubahBahasa;
   String startLanguage;
