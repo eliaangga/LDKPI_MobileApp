@@ -38,6 +38,8 @@ class _Navbar extends State<Navbar> {
     });
     widget.ubahBahasa(currentLanguage);
     konfig.setBahasaPref(currentLanguage);
+    koneksi.useLanguage = currentLanguage;
+    koneksi.fetchNews();
   }
 
   @override

@@ -4,23 +4,41 @@ import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
 
 class SliderScreen extends StatefulWidget {
-  const SliderScreen({Key? key}) : super(key: key);
+  // List<String> carousel = [];
+  SliderScreen({Key? key}) : super(key: key);
 
   @override
   State<SliderScreen> createState() => _SliderScreenState();
 }
 
 class _SliderScreenState extends State<SliderScreen> {
-  List<Map<String, dynamic>> imageList = [
-    {"id": 1, "image_path": 'assets/assets/images/ldkpi.png'},
-    {"id": 2, "image_path": 'assets/assets/images/kemenkeu.png'},
-    {"id": 3, "image_path": 'assets/assets/images/ldkpi.png'}
-  ];
+  List<String> carousel = [];
+  List<Map<String, dynamic>> imageList = [];
   final CarouselController carouselController = CarouselController();
   int currentIndex = 0;
 
   @override
+  void initState() {
+    super.initState();
+    koneksi.fetchCarousel().then((response) {
+      Future.delayed(Duration(milliseconds: 1000));
+      setState(() {
+        carousel = response;
+        print(response);
+      });
+    });
+    // setState(() {
+    //   carousel = listCarousel;
+    // });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    imageList = [
+      {"id": 1, "image_path": carousel[0]},
+      {"id": 2, "image_path": carousel[1]},
+      {"id": 3, "image_path": carousel[2]}
+    ];
     List<Widget> carouselItems = imageList.map((item) {
       return GestureDetector(
         onTap: () {
@@ -62,8 +80,8 @@ class _SliderScreenState extends State<SliderScreen> {
               break;
           }
         },
-        child: Image.asset(
-          item['image_path'],
+        child: Image(
+          image: NetworkImage(item['image_path']),
           fit: BoxFit.cover,
           width: double.infinity,
         ),

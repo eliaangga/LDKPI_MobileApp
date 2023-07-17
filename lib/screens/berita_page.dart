@@ -48,9 +48,7 @@ class _BeritaPageState extends State<BeritaPage> {
 
   ScrollController _controller = ScrollController();
 
-  @override
-  void initState() {
-    super.initState();
+  void ambilBerita() {
     koneksi.fetchNews().then(
       (response) {
         if (koneksi.listBerita != []) {
@@ -62,12 +60,24 @@ class _BeritaPageState extends State<BeritaPage> {
         }
       },
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ambilBerita();
 
     _controller.addListener(() {
       if (_controller.position.pixels == _controller.position.maxScrollExtent) {
         loadMore();
       }
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    ambilBerita();
+    super.didChangeDependencies();
   }
 
   void searchNews() {
@@ -88,17 +98,7 @@ class _BeritaPageState extends State<BeritaPage> {
         }
       });
     } else {
-      koneksi.fetchNews().then(
-        (response) {
-          if (koneksi.listBerita != []) {
-            setState(() {
-              listAllBerita = koneksi.listBerita;
-              firstTime = false;
-            });
-            loadMore();
-          }
-        },
-      );
+      ambilBerita();
     }
   }
 
@@ -194,17 +194,7 @@ class _BeritaPageState extends State<BeritaPage> {
                         jumlahTampil = 0;
                         controllerSearch.text = '';
                       });
-                      koneksi.fetchNews().then(
-                        (response) {
-                          if (koneksi.listBerita != []) {
-                            setState(() {
-                              listAllBerita = koneksi.listBerita;
-                              firstTime = false;
-                            });
-                            loadMore();
-                          }
-                        },
-                      );
+                      ambilBerita();
                     },
                     child: ListView.builder(
                       physics: const AlwaysScrollableScrollPhysics(),
