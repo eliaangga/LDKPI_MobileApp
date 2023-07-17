@@ -24,7 +24,8 @@ class LoadingPage extends StatelessWidget {
               child: Text('Error: ${snapshot.error}'),
             );
           } else {
-            return Home();
+            // return Home();
+            return Container();
           }
         },
       ),

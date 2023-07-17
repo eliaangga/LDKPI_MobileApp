@@ -1,11 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:http/http.dart';
 import 'package:ldkpi_news_app/language/config.dart';
 import 'package:ldkpi_news_app/language/l10n.dart';
 import 'package:ldkpi_news_app/services/koneksi.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'components/base.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -16,6 +12,7 @@ void main() {
 
 Koneksi koneksi = Koneksi();
 ConfigLanguage konfig = ConfigLanguage();
+List<String> listCarousel = [];
 
 class App extends StatefulWidget {
   App({Key? key}) : super(key: key);
@@ -36,11 +33,18 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
+    koneksi.fetchCarousel().then((response) {
+      setState(() {
+        listCarousel = response;
+        print(response);
+      });
+    });
     konfig.getBahasaPref().then((response) {
       if (response != '') {
         setState(() {
           bahasa = response;
         });
+        koneksi.useLanguage = response;
       }
     });
   }
@@ -77,6 +81,7 @@ class _AppState extends State<App> {
       home: Base(
         ubahBahasa: ubahBahasa,
         startLanguage: bahasa,
+        carousel: listCarousel,
       ),
     );
   }

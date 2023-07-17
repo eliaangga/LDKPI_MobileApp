@@ -9,7 +9,12 @@ import 'package:ldkpi_news_app/screens/kategori.dart';
 class Base extends StatefulWidget {
   final Function(String) ubahBahasa;
   String startLanguage;
-  Base({Key? key, required this.ubahBahasa, required this.startLanguage})
+  List<String> carousel;
+  Base(
+      {Key? key,
+      required this.ubahBahasa,
+      required this.startLanguage,
+      required this.carousel})
       : super(key: key);
 
   @override
@@ -18,7 +23,7 @@ class Base extends StatefulWidget {
 
 class _BaseScreenState extends State<Base> {
   int _selectedIndex = 0;
-  static const List<Widget> _pilihanMenu = [
+  static List<Widget> _pilihanMenu = [
     Home(),
     BeritaPage(),
     Kategori(),

@@ -19,19 +19,17 @@ import 'package:ldkpi_news_app/models/visimisi_model.dart';
 class Koneksi {
   String apiUrl = "http://10.201.18.243:1337";
   List<BeritaModel> listBerita = [];
+  String useLanguage = '';
 
   Future<InvestasiModel> fetchInvest() async {
     InvestasiModel investasi = InvestasiModel();
     try {
-      final response = await http
-          .get(Uri.parse('$apiUrl/api/investment?populate=*&locale=id'));
-      // final response = await http.get(Uri.parse(
-      //     'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=2'));
+      final response = await http.get(
+          Uri.parse('$apiUrl/api/investment?populate=*&locale=$useLanguage,'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         investasi = InvestasiModel(
           konten: jsonData['data']['attributes']['konten'],
-          // konten: jsonData['features'][0]['properties']['type'],
         );
       } else {
         print('Request failed with status: ${response.statusCode}');
@@ -47,14 +45,39 @@ class Koneksi {
     try {
       final response = await http
           .get(Uri.parse('$apiUrl/api/nilai-budaya?populate=*&locale=id'));
-      // final response = await http.get(Uri.parse(
-      //     'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=2'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = NilaiBudayaModel(
           konten: jsonData['data']['attributes']['konten'],
-          // konten: jsonData['features'][0]['properties']['type'],
         );
+      } else {
+        print('Request failed with status: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+    return hasil;
+  }
+
+  Future<List<String>> fetchCarousel() async {
+    List<String> hasil = [];
+    try {
+      // print('test 1');
+      final response = await http
+          .get(Uri.parse('$apiUrl/api/foto-carousel-home?populate=*'));
+      // print('test 2');
+      if (response.statusCode == 200) {
+        // print('test 3');
+        dynamic jsonData = json.decode(response.body);
+        for (var article in jsonData['data']['attributes']['foto']['data']) {
+          // print('test 4');
+          String gambar = '';
+          if (article['attributes']['url'] != null) {
+            gambar = apiUrl + article['attributes']['url'];
+          }
+          // print('gambar $gambar');
+          hasil.add(gambar);
+        }
       } else {
         print('Request failed with status: ${response.statusCode}');
       }
@@ -95,13 +118,10 @@ class Koneksi {
     try {
       final response = await http
           .get(Uri.parse('$apiUrl/api/pemberian-hibah?populate=*&locale=id'));
-      // final response = await http.get(Uri.parse(
-      //     'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=2'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = PemberianHibahModel(
           konten: jsonData['data']['attributes']['konten'],
-          // konten: jsonData['features'][0]['properties']['type'],
         );
       } else {
         print('Request failed with status: ${response.statusCode}');
@@ -117,13 +137,10 @@ class Koneksi {
     try {
       final response = await http
           .get(Uri.parse('$apiUrl/api/peraturan?populate=*&locale=id'));
-      // final response = await http.get(Uri.parse(
-      //     'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=2'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = PeraturanModel(
           konten: jsonData['data']['attributes']['konten'],
-          // konten: jsonData['features'][0]['properties']['type'],
         );
       } else {
         print('Request failed with status: ${response.statusCode}');
@@ -139,8 +156,6 @@ class Koneksi {
     try {
       final response =
           await http.get(Uri.parse('$apiUrl/api/sejarah?populate=*&locale=id'));
-      // final response = await http.get(Uri.parse(
-      //     'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=2'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         String gambar = '';
@@ -167,13 +182,10 @@ class Koneksi {
     try {
       final response = await http
           .get(Uri.parse('$apiUrl/api/survey-layanan?populate=*&locale=id'));
-      // final response = await http.get(Uri.parse(
-      //     'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=2'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = SurveiLayananModel(
           konten: jsonData['data']['attributes']['konten'],
-          // konten: jsonData['features'][0]['properties']['type'],
         );
       } else {
         print('Request failed with status: ${response.statusCode}');
@@ -277,7 +289,7 @@ class Koneksi {
     List<BeritaModel> getList = [];
     try {
       final response = await http.get(Uri.parse(
-          '$apiUrl/api/beritas?populate=*&locale=en&sort[0]=createdAt%3Adesc'));
+          '$apiUrl/api/beritas?populate=*&locale=$useLanguage&sort[0]=createdAt%3Adesc'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         for (var article in jsonData['data']) {
@@ -341,7 +353,7 @@ class Koneksi {
     List<BeritaModel> getList = [];
     try {
       final response = await http.get(Uri.parse(
-          '$apiUrl/api/beritas?populate=*&locale=en&sort[0]=createdAt%3Adesc&filters[judul][\$containsi]=$keyword'));
+          '$apiUrl/api/beritas?populate=*&locale=$useLanguage&sort[0]=createdAt%3Adesc&filters[judul][\$containsi]=$keyword'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         for (var article in jsonData['data']) {

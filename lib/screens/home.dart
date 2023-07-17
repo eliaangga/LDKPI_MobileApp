@@ -9,7 +9,7 @@ import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -49,7 +49,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       body: ListView(
         children: [
           const SizedBox(height: 10),
-          const SliderScreen(),
+          SliderScreen(),
           const SizedBox(height: 10),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 10),
