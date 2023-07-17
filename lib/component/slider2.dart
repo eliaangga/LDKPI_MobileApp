@@ -29,6 +29,9 @@ class _SliderScreenState2 extends State<SliderScreen2> {
 
   @override
   Widget build(BuildContext context) {
+    final carouselWidth = MediaQuery.of(context).size.width;
+    final carouselHeight = carouselWidth / 2;
+
     return Column(
       children: [
         Container(
@@ -37,116 +40,106 @@ class _SliderScreenState2 extends State<SliderScreen2> {
             children: [
               const SizedBox(width: 35),
               Flexible(
-                child: LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                    final carouselWidth = constraints.maxWidth;
-                    final carouselHeight = carouselWidth / 2;
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xffffffff),
-                        borderRadius: BorderRadius.circular(5),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x26000000),
-                            offset: Offset(0, 4),
-                            blurRadius: 2,
-                          ),
-                        ],
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xffffffff),
+                    borderRadius: BorderRadius.circular(5),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x26000000),
+                        offset: Offset(0, 4),
+                        blurRadius: 2,
                       ),
-                      child: Stack(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              print(currentIndex1);
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          print(currentIndex1);
+                        },
+                        child: CarouselSlider(
+                          items: imageList1
+                              .map(
+                                (item) => SizedBox(
+                                  width: carouselWidth,
+                                  height: carouselHeight,
+                                  child: Image.asset(
+                                    item['image_path'],
+                                    fit: BoxFit.fitHeight,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          carouselController: carouselController1,
+                          options: CarouselOptions(
+                            scrollPhysics: const BouncingScrollPhysics(),
+                            autoPlay: true,
+                            aspectRatio: 2.0,
+                            viewportFraction: 2,
+                            onPageChanged: (index, reason) {
+                              setState(() {
+                                currentIndex1 = index;
+                                carouselController2.animateToPage(index);
+                              });
                             },
-                            child: CarouselSlider(
-                              items: imageList1
-                                  .map(
-                                    (item) => SizedBox(
-                                      width: carouselWidth,
-                                      height: carouselHeight,
-                                      child: Image.asset(
-                                        item['image_path'],
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  )
-                                  .toList(),
-                              carouselController: carouselController1,
-                              options: CarouselOptions(
-                                scrollPhysics: const BouncingScrollPhysics(),
-                                autoPlay: true,
-                                aspectRatio: 2.0,
-                                viewportFraction: 2,
-                                onPageChanged: (index, reason) {
-                                  setState(() {
-                                    currentIndex1 = index;
-                                  });
-                                },
-                              ),
-                            ),
                           ),
-                        ],
+                        ),
                       ),
-                    );
-                  },
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(width: 20),
               Flexible(
-                child: LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                    final carouselWidth = constraints.maxWidth;
-                    final carouselHeight = carouselWidth / 2;
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xffffffff),
-                        borderRadius: BorderRadius.circular(5),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x26000000),
-                            offset: Offset(0, 4),
-                            blurRadius: 2,
-                          ),
-                        ],
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xffffffff),
+                    borderRadius: BorderRadius.circular(5),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x26000000),
+                        offset: Offset(0, 4),
+                        blurRadius: 2,
                       ),
-                      child: Stack(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              print(currentIndex2);
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          print(currentIndex2);
+                        },
+                        child: CarouselSlider(
+                          items: imageList2
+                              .map(
+                                (item) => SizedBox(
+                                  width: carouselWidth,
+                                  height: carouselHeight,
+                                  child: Image.asset(
+                                    item['image_path'],
+                                    fit: BoxFit.fitHeight,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          carouselController: carouselController2,
+                          options: CarouselOptions(
+                            scrollPhysics: const BouncingScrollPhysics(),
+                            autoPlay: true,
+                            aspectRatio: 2,
+                            viewportFraction: 2,
+                            onPageChanged: (index, reason) {
+                              setState(() {
+                                currentIndex2 = index;
+                                carouselController1.animateToPage(index);
+                              });
                             },
-                            child: CarouselSlider(
-                              items: imageList2
-                                  .map(
-                                    (item) => SizedBox(
-                                      width: carouselWidth,
-                                      height: carouselHeight,
-                                      child: Image.asset(
-                                        item['image_path'],
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  )
-                                  .toList(),
-                              carouselController: carouselController2,
-                              options: CarouselOptions(
-                                scrollPhysics: const BouncingScrollPhysics(),
-                                autoPlay: true,
-                                aspectRatio: 2,
-                                viewportFraction: 2,
-                                onPageChanged: (index, reason) {
-                                  setState(() {
-                                    currentIndex2 = index;
-                                  });
-                                },
-                              ),
-                            ),
                           ),
-                        ],
+                        ),
                       ),
-                    );
-                  },
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(width: 35)
@@ -157,7 +150,10 @@ class _SliderScreenState2 extends State<SliderScreen2> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: imageList1.asMap().entries.map((entry) {
             return GestureDetector(
-              onTap: () => carouselController1.animateToPage(entry.key),
+              onTap: () {
+                carouselController1.animateToPage(entry.key);
+                carouselController2.animateToPage(entry.key);
+              },
               child: Container(
                 width: currentIndex1 == entry.key ? 17 : 7,
                 height: 7.0,
