@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:ldkpi_news_app/model/nilai_budaya_model.dart';
+import 'package:ldkpi_news_app/models/struktur_organisasi_model.dart';
 
-class NilaiBudaya extends StatefulWidget {
-  NilaiBudayaModel konten;
-  NilaiBudaya({Key? key, required this.konten}) : super(key: key);
+class StrukturOrg extends StatefulWidget {
+  StrukturOrganisasiModel konten;
+  StrukturOrg({Key? key, required this.konten}) : super(key: key);
 
   @override
-  _NilaiBudayaState createState() => _NilaiBudayaState();
+  State<StrukturOrg> createState() => _StrukturOrgState();
 }
 
-class _NilaiBudayaState extends State<NilaiBudaya> {
-  final TextEditingController _controllerSearch = TextEditingController();
-  late List<String> _listNilaiBudaya;
-
+class _StrukturOrgState extends State<StrukturOrg> {
   @override
   void initState() {
     super.initState();
-    _listNilaiBudaya = [];
   }
 
   @override
@@ -66,15 +61,17 @@ class _NilaiBudayaState extends State<NilaiBudaya> {
                 ),
                 Expanded(
                   child: Container(
-                    width: 150,
+                    width: double.infinity,
                     alignment: Alignment.center,
                     child: Text(
-                      'Nilai & Budaya',
+                      'Organisasi',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 22,
+                        fontSize: 24,
                       ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
                   ),
                 ),
@@ -97,31 +94,37 @@ class _NilaiBudayaState extends State<NilaiBudaya> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                            top: 0,
-                            left: 25,
-                            bottom: 0,
-                            right: 25,
+                        SizedBox(
+                          width: 192,
+                          height: 20,
+                          child: Text(
+                            'Struktur Organisasi',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              height: 0.5,
+                              color: Color(0xff000000),
+                            ),
                           ),
-                          child: widget.konten.konten == ''
-                              ? const Center(
-                                  child: Text('Data Not Found'),
-                                )
-                              : Html(
-                                  data: widget.konten.konten,
-                                  style: {
-                                    'html': Style(
-                                      fontFamily: 'Gotham',
-                                      textAlign: TextAlign.justify,
-                                      fontSize: FontSize(9),
-                                      fontWeight: FontWeight.w400,
-                                      lineHeight: LineHeight(1.1111111111),
-                                      color: Color(0xff000000),
-                                    ),
-                                  },
-                                ),
                         ),
+                        if (widget.konten.konten != '')
+                          Container(
+                            margin: EdgeInsets.only(bottom: 5),
+                            width: 328,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width - 50,
+                                child: Image(
+                                    image: NetworkImage(widget.konten.konten)),
+                              ),
+                            ),
+                          ),
                       ],
                     ),
                   ),

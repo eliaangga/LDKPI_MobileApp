@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/model/berita.dart';
+import 'package:ldkpi_news_app/models/berita_model.dart';
 
 class StrukturManajemen extends StatefulWidget {
   StrukturManajemen({super.key, required this.listManajemen});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/component/kontainer_negara.dart';
-import 'package:ldkpi_news_app/model/penerima_hibah_model.dart';
-import 'package:ldkpi_news_app/model/tahun_model.dart';
+import 'package:ldkpi_news_app/components/kontainer_negara.dart';
+import 'package:ldkpi_news_app/models/penerima_hibah_model.dart';
+import 'package:ldkpi_news_app/models/tahun_model.dart';
 
 class PenerimaH extends StatefulWidget {
   PenerimaHibahModel konten;

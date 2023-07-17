@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/home.dart';
+import 'package:ldkpi_news_app/screens/home.dart';
 
 class LoadingPage extends StatelessWidget {
   final Future<void> loadingFuture;

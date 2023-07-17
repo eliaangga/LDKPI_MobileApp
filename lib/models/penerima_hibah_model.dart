@@ -1,4 +1,4 @@
-import 'package:ldkpi_news_app/model/tahun_model.dart';
+import 'package:ldkpi_news_app/models/tahun_model.dart';
 
 class PenerimaHibahModel {
   String gambarPenerima;

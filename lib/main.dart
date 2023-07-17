@@ -6,7 +6,7 @@ import 'package:ldkpi_news_app/language/config.dart';
 import 'package:ldkpi_news_app/language/l10n.dart';
 import 'package:ldkpi_news_app/services/koneksi.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'component/base.dart';
+import 'components/base.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

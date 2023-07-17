@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ldkpi_news_app/model/sejarah_model.dart';
+import 'package:ldkpi_news_app/models/survei_layanan_model.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
-class Sejarah extends StatefulWidget {
-  SejarahModel konten;
-  Sejarah({Key? key, required this.konten}) : super(key: key);
+class SurveiLayanan extends StatefulWidget {
+  SurveiLayananModel konten;
+  SurveiLayanan({Key? key, required this.konten}) : super(key: key);
 
   @override
-  State<Sejarah> createState() => _SejarahState();
+  State<SurveiLayanan> createState() => _SurveiLayananState();
 }
 
-class _SejarahState extends State<Sejarah> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class _SurveiLayananState extends State<SurveiLayanan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +23,7 @@ class _SejarahState extends State<Sejarah> {
             color: const Color(0xFF02347C),
             child: Row(
               children: [
-                SizedBox(
-                  width: 20,
-                ),
+                SizedBox(width: 20),
                 Container(
                   margin: EdgeInsets.fromLTRB(0, 0, 55, 0),
                   child: TextButton(
@@ -62,19 +56,21 @@ class _SejarahState extends State<Sejarah> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 32.5,
-                ),
                 Expanded(
-                  child: Text(
-                    'Sejarah',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Survei Kepuasaan Penggunan Layanan LDKPI',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
                     ),
                   ),
                 ),
+                SizedBox(width: 115),
               ],
             ),
           ),
@@ -88,30 +84,13 @@ class _SejarahState extends State<Sejarah> {
             child: Column(
               children: [
                 Expanded(
-                    child: Container(
-                  padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
-                  child: Column(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        if (widget.konten.img != '')
-                          Container(
-                            margin: EdgeInsets.only(bottom: 60.5),
-                            width: 328,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: SizedBox(
-                                width: 329,
-                                height: 154,
-                                child: Image(
-                                    image: NetworkImage(widget.konten.img)),
-                              ),
-                            ),
-                          ),
                         Container(
-                          margin: const EdgeInsets.only(
+                          margin: EdgeInsets.only(
                             top: 0,
                             left: 25,
                             bottom: 0,
@@ -123,10 +102,13 @@ class _SejarahState extends State<Sejarah> {
                                 )
                               : Html(
                                   data: widget.konten.konten,
+                                  onLinkTap:
+                                      (url, context, attributes, element) {
+                                    launchUrlString(url!);
+                                  },
                                   style: {
                                     'html': Style(
                                       fontFamily: 'Gotham',
-                                      textAlign: TextAlign.justify,
                                       fontSize: FontSize(9),
                                       fontWeight: FontWeight.w400,
                                       lineHeight: LineHeight(1.1111111111),
@@ -135,8 +117,10 @@ class _SejarahState extends State<Sejarah> {
                                   },
                                 ),
                         ),
-                      ]),
-                ))
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

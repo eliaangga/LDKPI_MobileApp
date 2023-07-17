@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/investasi.dart';
 import 'package:ldkpi_news_app/main.dart';
+import 'package:ldkpi_news_app/screens/investasi.dart';
 
 class SliderScreen extends StatefulWidget {
   const SliderScreen({Key? key}) : super(key: key);

@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ldkpi_news_app/berita_konten.dart';
-import 'package:ldkpi_news_app/component/kontainer_berita.dart';
+import 'package:ldkpi_news_app/screens/berita_konten.dart';
+import 'package:ldkpi_news_app/components/kontainer_berita.dart';
 import 'package:ldkpi_news_app/main.dart';
-
-import 'model/berita.dart';
+import 'package:ldkpi_news_app/models/berita_model.dart';
 
 class BeritaPage extends StatefulWidget {
   const BeritaPage({super.key});
@@ -33,10 +32,8 @@ class _BeritaPageState extends State<BeritaPage> {
             ? i < jumlahTampil + penambahan
             : i < listAllBerita.length;
         i++) {
-      debugPrint(i.toString());
       listBeritaTampil.add(listAllBerita[i]);
     }
-    debugPrint("listBeritaTampil '${listBeritaTampil.length}'");
 
     setState(() {
       _isLoading = false;

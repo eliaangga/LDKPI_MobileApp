@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/model/visimisi_model.dart';
+import 'package:ldkpi_news_app/models/visimisi_model.dart';
 
 class VisiMisi extends StatefulWidget {
   VisiMisiModel konten;
