@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ldkpi_news_app/model/survei_layanan_model.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:ldkpi_news_app/models/nilai_budaya_model.dart';
 
-class SurveiLayanan extends StatefulWidget {
-  SurveiLayananModel konten;
-  SurveiLayanan({Key? key, required this.konten}) : super(key: key);
+class NilaiBudaya extends StatefulWidget {
+  NilaiBudayaModel konten;
+  NilaiBudaya({Key? key, required this.konten}) : super(key: key);
 
   @override
-  State<SurveiLayanan> createState() => _SurveiLayananState();
+  _NilaiBudayaState createState() => _NilaiBudayaState();
 }
 
-class _SurveiLayananState extends State<SurveiLayanan> {
+class _NilaiBudayaState extends State<NilaiBudaya> {
+  final TextEditingController _controllerSearch = TextEditingController();
+  late List<String> _listNilaiBudaya;
+
+  @override
+  void initState() {
+    super.initState();
+    _listNilaiBudaya = [];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,14 +66,14 @@ class _SurveiLayananState extends State<SurveiLayanan> {
                 ),
                 Expanded(
                   child: Container(
-                    width: double.infinity,
+                    width: 150,
                     alignment: Alignment.center,
                     child: Text(
-                      'Survei Kepuasaan Penggunan Layanan LDKPI',
+                      'Nilai & Budaya',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 24,
+                        fontSize: 22,
                       ),
                     ),
                   ),
@@ -102,13 +110,10 @@ class _SurveiLayananState extends State<SurveiLayanan> {
                                 )
                               : Html(
                                   data: widget.konten.konten,
-                                  onLinkTap:
-                                      (url, context, attributes, element) {
-                                    launchUrlString(url!);
-                                  },
                                   style: {
                                     'html': Style(
                                       fontFamily: 'Gotham',
+                                      textAlign: TextAlign.justify,
                                       fontSize: FontSize(9),
                                       fontWeight: FontWeight.w400,
                                       lineHeight: LineHeight(1.1111111111),

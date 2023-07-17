@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ldkpi_news_app/model/peraturan_model.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:ldkpi_news_app/main.dart';
+import 'package:ldkpi_news_app/models/informasi_pengadaan_model.dart';
 
-class Peraturan extends StatefulWidget {
-  PeraturanModel konten;
-  Peraturan({Key? key, required this.konten}) : super(key: key);
+class InformasiP extends StatefulWidget {
+  const InformasiP({Key? key}) : super(key: key);
 
   @override
-  State<Peraturan> createState() => _PeraturanState();
+  _InformasiPState createState() => _InformasiPState();
 }
 
-class _PeraturanState extends State<Peraturan> {
+class _InformasiPState extends State<InformasiP> {
+  final TextEditingController _controllerSearch = TextEditingController();
+  var pengadaan = InformasiPengadaanModel();
+
+  @override
+  void initState() {
+    super.initState();
+    koneksi.fetchPengadaan().then((response) {
+      setState(() {
+        pengadaan = response;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +73,7 @@ class _PeraturanState extends State<Peraturan> {
                     width: double.infinity,
                     alignment: Alignment.center,
                     child: Text(
-                      'Peraturan',
+                      'Informasi Pengadaan',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -89,26 +101,31 @@ class _PeraturanState extends State<Peraturan> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        widget.konten.konten == ''
-                            ? const Center(
-                                child: Text('Data Not Found'),
-                              )
-                            : Html(
-                                data: widget.konten.konten,
-                                style: {
-                                  'html': Style(
-                                    fontFamily: 'Gotham',
-                                    textAlign: TextAlign.justify,
-                                    fontSize: FontSize(9),
-                                    fontWeight: FontWeight.w400,
-                                    lineHeight: LineHeight(1.1111111111),
-                                    color: Color(0xff000000),
-                                  ),
-                                },
-                                onLinkTap: (url, context, attributes, element) {
-                                  launchUrlString(url!);
-                                },
-                              ),
+                        Container(
+                          margin: EdgeInsets.only(
+                            top: 0,
+                            left: 25,
+                            bottom: 0,
+                            right: 25,
+                          ),
+                          child: pengadaan.konten == ''
+                              ? const Center(
+                                  child: Text('Data Not Found'),
+                                )
+                              : Html(
+                                  data: pengadaan.konten,
+                                  style: {
+                                    'html': Style(
+                                      fontFamily: 'Gotham',
+                                      textAlign: TextAlign.justify,
+                                      fontSize: FontSize(9),
+                                      fontWeight: FontWeight.w400,
+                                      lineHeight: LineHeight(1.1111111111),
+                                      color: Color(0xff000000),
+                                    ),
+                                  },
+                                ),
+                        ),
                       ],
                     ),
                   ),

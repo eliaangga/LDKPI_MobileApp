@@ -1,27 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ldkpi_news_app/main.dart';
-import 'package:ldkpi_news_app/model/informasi_pengadaan_model.dart';
+import 'package:ldkpi_news_app/models/sejarah_model.dart';
 
-class InformasiP extends StatefulWidget {
-  const InformasiP({Key? key}) : super(key: key);
+class Sejarah extends StatefulWidget {
+  SejarahModel konten;
+  Sejarah({Key? key, required this.konten}) : super(key: key);
 
   @override
-  _InformasiPState createState() => _InformasiPState();
+  State<Sejarah> createState() => _SejarahState();
 }
 
-class _InformasiPState extends State<InformasiP> {
-  final TextEditingController _controllerSearch = TextEditingController();
-  var pengadaan = InformasiPengadaanModel();
-
+class _SejarahState extends State<Sejarah> {
   @override
   void initState() {
     super.initState();
-    koneksi.fetchPengadaan().then((response) {
-      setState(() {
-        pengadaan = response;
-      });
-    });
   }
 
   @override
@@ -35,7 +27,9 @@ class _InformasiPState extends State<InformasiP> {
             color: const Color(0xFF02347C),
             child: Row(
               children: [
-                SizedBox(width: 20),
+                SizedBox(
+                  width: 20,
+                ),
                 Container(
                   margin: EdgeInsets.fromLTRB(0, 0, 55, 0),
                   child: TextButton(
@@ -68,21 +62,19 @@ class _InformasiPState extends State<InformasiP> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  width: 32.5,
+                ),
                 Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Informasi Pengadaan',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
+                  child: Text(
+                    'Sejarah',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
                     ),
                   ),
                 ),
-                SizedBox(width: 115),
               ],
             ),
           ),
@@ -96,24 +88,41 @@ class _InformasiPState extends State<InformasiP> {
             child: Column(
               children: [
                 Expanded(
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
-                    child: Column(
+                    child: Container(
+                  padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                  child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        if (widget.konten.img != '')
+                          Container(
+                            margin: EdgeInsets.only(bottom: 60.5),
+                            width: 328,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: SizedBox(
+                                width: 329,
+                                height: 154,
+                                child: Image(
+                                    image: NetworkImage(widget.konten.img)),
+                              ),
+                            ),
+                          ),
                         Container(
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             top: 0,
                             left: 25,
                             bottom: 0,
                             right: 25,
                           ),
-                          child: pengadaan.konten == ''
+                          child: widget.konten.konten == ''
                               ? const Center(
                                   child: Text('Data Not Found'),
                                 )
                               : Html(
-                                  data: pengadaan.konten,
+                                  data: widget.konten.konten,
                                   style: {
                                     'html': Style(
                                       fontFamily: 'Gotham',
@@ -126,10 +135,8 @@ class _InformasiPState extends State<InformasiP> {
                                   },
                                 ),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
+                      ]),
+                ))
               ],
             ),
           ),

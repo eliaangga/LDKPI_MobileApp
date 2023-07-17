@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/investasi.dart';
+import 'package:ldkpi_news_app/components/slider.dart';
+import 'package:ldkpi_news_app/components/slider2.dart';
+import 'package:ldkpi_news_app/components/yotube_player_widget_dart.dart';
 import 'package:ldkpi_news_app/main.dart';
-import 'package:ldkpi_news_app/pemberian_hibah.dart';
+import 'package:ldkpi_news_app/screens/investasi.dart';
+import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'component/slider.dart';
-import 'component/slider2.dart';
-import 'component/yotube_player_widget_dart.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);

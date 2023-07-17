@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ldkpi_news_app/model/berita.dart';
+import 'package:ldkpi_news_app/models/berita_model.dart';
 
 class BeritaKonten extends StatelessWidget {
   final BeritaModel kontenBerita;

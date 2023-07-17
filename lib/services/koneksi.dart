@@ -1,20 +1,20 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:ldkpi_news_app/model/berita.dart';
-import 'package:ldkpi_news_app/model/informasi_pengadaan_model.dart';
-import 'package:ldkpi_news_app/model/investasi_model.dart';
-import 'package:ldkpi_news_app/model/negara_model.dart';
-import 'package:ldkpi_news_app/model/nilai_budaya_model.dart';
-import 'package:ldkpi_news_app/model/pemberian_hibah_model.dart';
-import 'package:ldkpi_news_app/model/penerima_hibah_model.dart';
-import 'package:ldkpi_news_app/model/peraturan_model.dart';
-import 'package:ldkpi_news_app/model/sebaranhibah_model.dart';
-import 'package:ldkpi_news_app/model/sejarah_model.dart';
-import 'package:ldkpi_news_app/model/struktur_organisasi_model.dart';
-import 'package:ldkpi_news_app/model/survei_layanan_model.dart';
-import 'package:ldkpi_news_app/model/tahun_model.dart';
-import 'package:ldkpi_news_app/model/visimisi_model.dart';
+import 'package:ldkpi_news_app/models/berita_model.dart';
+import 'package:ldkpi_news_app/models/informasi_pengadaan_model.dart';
+import 'package:ldkpi_news_app/models/investasi_model.dart';
+import 'package:ldkpi_news_app/models/negara_model.dart';
+import 'package:ldkpi_news_app/models/nilai_budaya_model.dart';
+import 'package:ldkpi_news_app/models/pemberian_hibah_model.dart';
+import 'package:ldkpi_news_app/models/penerima_hibah_model.dart';
+import 'package:ldkpi_news_app/models/peraturan_model.dart';
+import 'package:ldkpi_news_app/models/sebaranhibah_model.dart';
+import 'package:ldkpi_news_app/models/sejarah_model.dart';
+import 'package:ldkpi_news_app/models/struktur_organisasi_model.dart';
+import 'package:ldkpi_news_app/models/survei_layanan_model.dart';
+import 'package:ldkpi_news_app/models/tahun_model.dart';
+import 'package:ldkpi_news_app/models/visimisi_model.dart';
 
 class Koneksi {
   String apiUrl = "http://10.201.18.243:1337";

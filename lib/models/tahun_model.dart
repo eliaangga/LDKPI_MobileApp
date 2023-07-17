@@ -1,4 +1,4 @@
-import 'package:ldkpi_news_app/model/negara_model.dart';
+import 'package:ldkpi_news_app/models/negara_model.dart';
 
 class TahunModel {
   String tahun;

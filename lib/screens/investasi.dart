@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ldkpi_news_app/model/investasi_model.dart';
+import 'package:ldkpi_news_app/models/investasi_model.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Investasi extends StatefulWidget {

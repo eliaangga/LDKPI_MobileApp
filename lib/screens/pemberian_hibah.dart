@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/model/struktur_organisasi_model.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:ldkpi_news_app/models/pemberian_hibah_model.dart';
 
-class StrukturOrg extends StatefulWidget {
-  StrukturOrganisasiModel konten;
-  StrukturOrg({Key? key, required this.konten}) : super(key: key);
+class PH extends StatefulWidget {
+  PemberianHibahModel konten;
+  PH({Key? key, required this.konten}) : super(key: key);
 
   @override
-  State<StrukturOrg> createState() => _StrukturOrgState();
+  State<PH> createState() => _PHState();
 }
 
-class _StrukturOrgState extends State<StrukturOrg> {
+class _PHState extends State<PH> {
+  final TextEditingController _controllerSearch = TextEditingController();
+  late List<String> _listPH;
+
   @override
   void initState() {
     super.initState();
+    _listPH = [];
   }
 
   @override
@@ -28,7 +33,7 @@ class _StrukturOrgState extends State<StrukturOrg> {
               children: [
                 SizedBox(width: 20),
                 Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 55, 0),
+                  margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
                   child: TextButton(
                     onPressed: () {
                       Navigator.pop(context);
@@ -64,24 +69,22 @@ class _StrukturOrgState extends State<StrukturOrg> {
                     width: double.infinity,
                     alignment: Alignment.center,
                     child: Text(
-                      'Organisasi',
+                      'Pemberian Hibah',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
                       ),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
                     ),
                   ),
                 ),
-                SizedBox(width: 115),
+                SizedBox(width: 70),
               ],
             ),
           ),
           Container(
             width: double.infinity,
-            height: 844,
+            height: 1000,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
@@ -90,41 +93,35 @@ class _StrukturOrgState extends State<StrukturOrg> {
               children: [
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                    padding: EdgeInsets.fromLTRB(31, 10, 30, 9.5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          width: 192,
-                          height: 20,
-                          child: Text(
-                            'Struktur Organisasi',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              height: 0.5,
-                              color: Color(0xff000000),
-                            ),
+                        Container(
+                          margin: EdgeInsets.only(
+                            top: 0,
+                            left: 25,
+                            bottom: 0,
+                            right: 25,
                           ),
+                          child: widget.konten.konten == ''
+                              ? const Center(
+                                  child: Text('Data Not Found'),
+                                )
+                              : Html(
+                                  data: widget.konten.konten,
+                                  style: {
+                                    'html': Style(
+                                      fontFamily: 'Gotham',
+                                      textAlign: TextAlign.justify,
+                                      fontSize: FontSize(9),
+                                      fontWeight: FontWeight.w400,
+                                      lineHeight: LineHeight(1.1111111111),
+                                      color: Color(0xff000000),
+                                    ),
+                                  },
+                                ),
                         ),
-                        if (widget.konten.konten != '')
-                          Container(
-                            margin: EdgeInsets.only(bottom: 5),
-                            width: 328,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: SizedBox(
-                                width: MediaQuery.of(context).size.width - 50,
-                                child: Image(
-                                    image: NetworkImage(widget.konten.konten)),
-                              ),
-                            ),
-                          ),
                       ],
                     ),
                   ),

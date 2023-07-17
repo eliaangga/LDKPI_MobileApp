@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/Informasi_pengadaan.dart';
+import 'package:ldkpi_news_app/screens/Informasi_pengadaan.dart';
 import 'package:ldkpi_news_app/main.dart';
-import 'package:ldkpi_news_app/nilai_&_budaya.dart';
-import 'package:ldkpi_news_app/penerima_hibah.dart';
-import 'package:ldkpi_news_app/peraturan.dart';
-import 'package:ldkpi_news_app/proses_bisnis_page.dart';
-import 'package:ldkpi_news_app/struktur_manajemen_page.dart';
-import 'package:ldkpi_news_app/struktur_organisasi.dart';
-import 'package:ldkpi_news_app/survei_layanan.dart';
-import 'package:ldkpi_news_app/visi_&_misi.dart';
+import 'package:ldkpi_news_app/screens/nilai_&_budaya.dart';
+import 'package:ldkpi_news_app/screens/penerima_hibah.dart';
+import 'package:ldkpi_news_app/screens/peraturan.dart';
+import 'package:ldkpi_news_app/screens/proses_bisnis_page.dart';
+import 'package:ldkpi_news_app/screens/struktur_manajemen_page.dart';
+import 'package:ldkpi_news_app/screens/struktur_organisasi.dart';
+import 'package:ldkpi_news_app/screens/survei_layanan.dart';
+import 'package:ldkpi_news_app/screens/visi_&_misi.dart';
 
 import 'investasi.dart';
 import 'pemberian_hibah.dart';
