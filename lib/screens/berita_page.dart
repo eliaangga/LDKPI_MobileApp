@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/screens/berita_konten.dart';
 import 'package:ldkpi_news_app/components/kontainer_berita.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/berita_model.dart';
+import 'package:provider/provider.dart';
 
 class BeritaPage extends StatefulWidget {
   const BeritaPage({super.key});
@@ -14,90 +16,27 @@ class BeritaPage extends StatefulWidget {
 }
 
 class _BeritaPageState extends State<BeritaPage> {
-  TextEditingController controllerSearch = TextEditingController();
-  bool firstTime = true;
-  List<BeritaModel> listAllBerita = [];
-  List<BeritaModel> listBeritaTampil = [];
-  bool _isLoading = false;
-  int jumlahTampil = 0;
-  int penambahan = 10;
-
-  Future loadMore() async {
-    setState(() {
-      _isLoading = true;
-    });
-    await Future.delayed(const Duration(milliseconds: 1000));
-    for (var i = jumlahTampil;
-        jumlahTampil + penambahan < listAllBerita.length
-            ? i < jumlahTampil + penambahan
-            : i < listAllBerita.length;
-        i++) {
-      listBeritaTampil.add(listAllBerita[i]);
-    }
-
-    setState(() {
-      _isLoading = false;
-      jumlahTampil = listBeritaTampil.length;
-    });
-  }
-
-  late Future<List<BeritaModel>> _listGetBerita = Future.delayed(
-    const Duration(milliseconds: 1000),
-    () => koneksi.listBerita,
-  );
-
   ScrollController _controller = ScrollController();
-
-  void ambilBerita() {
-    koneksi.fetchNews().then(
-      (response) {
-        if (koneksi.listBerita != []) {
-          setState(() {
-            listAllBerita = koneksi.listBerita;
-            firstTime = false;
-          });
-          loadMore();
-        }
-      },
-    );
-  }
 
   @override
   void initState() {
     super.initState();
-    ambilBerita();
+    final beritaProvider =
+        Provider.of<BeritaPageProvider>(context, listen: false);
+
+    beritaProvider.ambilBerita();
 
     _controller.addListener(() {
       if (_controller.position.pixels == _controller.position.maxScrollExtent) {
-        loadMore();
+        beritaProvider.loadMore();
       }
     });
   }
 
-  void searchNews() {
-    setState(() {
-      firstTime = true;
-      listAllBerita = [];
-      listBeritaTampil = [];
-      jumlahTampil = 0;
-    });
-    if (controllerSearch.text != '') {
-      koneksi.fetchNewsByKeyword(controllerSearch.text).then((response) {
-        if (koneksi.listBerita != []) {
-          setState(() {
-            listAllBerita = koneksi.listBerita;
-            firstTime = false;
-          });
-          loadMore();
-        }
-      });
-    } else {
-      ambilBerita();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final beritaProvider =
+        Provider.of<BeritaPageProvider>(context, listen: false);
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -124,13 +63,13 @@ class _BeritaPageState extends State<BeritaPage> {
                     SizedBox(
                       width: 250,
                       child: TextField(
-                        controller: controllerSearch,
+                        controller: beritaProvider.controllerSearch,
                         decoration: InputDecoration(
                           prefixIcon: IconButton(
                             icon: const Icon(
                               Icons.search,
                             ),
-                            onPressed: () => searchNews(),
+                            onPressed: () => beritaProvider.searchNews(),
                           ),
                           hintText: AppLocalizations.of(context)!.keyword,
                         ),
@@ -140,7 +79,7 @@ class _BeritaPageState extends State<BeritaPage> {
                       width: 10,
                     ),
                     ElevatedButton(
-                      onPressed: () => searchNews(),
+                      onPressed: () => beritaProvider.searchNews(),
                       style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF02275C),
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)),
@@ -156,104 +95,221 @@ class _BeritaPageState extends State<BeritaPage> {
           ),
           Container(
             margin: const EdgeInsets.only(top: 120),
-            child: FutureBuilder(
-              future: _listGetBerita,
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<BeritaModel>> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    child: const CupertinoActivityIndicator(),
-                  );
-                } else if (snapshot.data!.isEmpty) {
-                  return SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    child: const Center(child: Text('Data not found')),
-                  );
-                } else if (snapshot.hasError) {
-                  return SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    child: const Center(child: Text('Error')),
-                  );
-                } else {
-                  return RefreshIndicator(
-                    onRefresh: () async {
-                      setState(() {
-                        firstTime = true;
-                        listAllBerita = [];
-                        listBeritaTampil = [];
-                        jumlahTampil = 0;
-                        controllerSearch.text = '';
-                      });
-                      ambilBerita();
-                    },
-                    child: ListView.builder(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      controller: _controller,
-                      shrinkWrap: true,
-                      itemCount: _isLoading
-                          ? (listBeritaTampil.length / 2).ceil() + 1
-                          : (listBeritaTampil.length / 2).ceil(),
-                      itemBuilder: (context, index) {
-                        if (index * 2 >= listBeritaTampil.length &&
-                            _isLoading) {
-                          return const Center(
-                            child: CupertinoActivityIndicator(),
-                          );
-                        } else {
-                          return Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => BeritaKonten(
-                                        kontenBerita:
-                                            listBeritaTampil[index * 2],
+            child: Consumer<BeritaPageProvider>(
+              builder: (context, beritaConsume, child) {
+                return FutureBuilder(
+                  future: beritaConsume.listFutureBerita,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<BeritaModel>> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: const CupertinoActivityIndicator(),
+                      );
+                    } else if (snapshot.data!.isEmpty) {
+                      return SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: const Center(child: Text('Data not found')),
+                      );
+                    } else if (snapshot.hasError) {
+                      return SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: const Center(child: Text('Error')),
+                      );
+                    } else {
+                      return RefreshIndicator(
+                        onRefresh: () async {
+                          beritaProvider.reset();
+                          beritaProvider.ambilBerita();
+                        },
+                        child: ListView.builder(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          controller: _controller,
+                          shrinkWrap: true,
+                          itemCount: beritaProvider.isLoading
+                              ? (beritaProvider.listBeritaTampil.length / 2)
+                                      .ceil() +
+                                  1
+                              : (beritaProvider.listBeritaTampil.length / 2)
+                                  .ceil(),
+                          itemBuilder: (context, index) {
+                            if (index * 2 >=
+                                    beritaProvider.listBeritaTampil.length &&
+                                beritaProvider.isLoading) {
+                              return const Center(
+                                child: CupertinoActivityIndicator(),
+                              );
+                            } else {
+                              return Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => BeritaKonten(
+                                            kontenBerita: beritaProvider
+                                                .listBeritaTampil[index * 2],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: KontainerBerita(
+                                      judul: beritaProvider
+                                          .listBeritaTampil[index * 2].title,
+                                      isi: beritaProvider
+                                          .listBeritaTampil[index * 2].isi,
+                                      gambar: beritaProvider
+                                          .listBeritaTampil[index * 2].img,
+                                    ),
+                                  ),
+                                  if ((index * 2) + 1 <
+                                      beritaProvider.listBeritaTampil.length)
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => BeritaKonten(
+                                              kontenBerita: beritaProvider
+                                                      .listBeritaTampil[
+                                                  (index * 2) + 1],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: KontainerBerita(
+                                        judul: beritaProvider
+                                            .listBeritaTampil[(index * 2) + 1]
+                                            .title,
+                                        isi: beritaProvider
+                                            .listBeritaTampil[(index * 2) + 1]
+                                            .isi,
+                                        gambar: beritaProvider
+                                            .listBeritaTampil[(index * 2) + 1]
+                                            .img,
                                       ),
                                     ),
-                                  );
-                                },
-                                child: KontainerBerita(
-                                  judul: listBeritaTampil[index * 2].title,
-                                  isi: listBeritaTampil[index * 2].isi,
-                                  gambar: listBeritaTampil[index * 2].img,
-                                ),
-                              ),
-                              if ((index * 2) + 1 < listBeritaTampil.length)
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => BeritaKonten(
-                                          kontenBerita:
-                                              listBeritaTampil[(index * 2) + 1],
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  child: KontainerBerita(
-                                    judul:
-                                        listBeritaTampil[(index * 2) + 1].title,
-                                    isi: listBeritaTampil[(index * 2) + 1].isi,
-                                    gambar:
-                                        listBeritaTampil[(index * 2) + 1].img,
-                                  ),
-                                ),
-                            ],
-                          );
-                        }
-                      },
-                    ),
-                  );
-                }
+                                ],
+                              );
+                            }
+                          },
+                        ),
+                      );
+                    }
+                  },
+                );
               },
+              // child: FutureBuilder(
+              //   future: beritaProvider.listFutureBerita,
+              //   builder: (BuildContext context,
+              //       AsyncSnapshot<List<BeritaModel>> snapshot) {
+              //     if (snapshot.connectionState == ConnectionState.waiting) {
+              //       return SizedBox(
+              //         width: MediaQuery.of(context).size.width,
+              //         height: MediaQuery.of(context).size.height,
+              //         child: const CupertinoActivityIndicator(),
+              //       );
+              //     } else if (snapshot.data!.isEmpty) {
+              //       return SizedBox(
+              //         width: MediaQuery.of(context).size.width,
+              //         height: MediaQuery.of(context).size.height,
+              //         child: const Center(child: Text('Data not found')),
+              //       );
+              //     } else if (snapshot.hasError) {
+              //       return SizedBox(
+              //         width: MediaQuery.of(context).size.width,
+              //         height: MediaQuery.of(context).size.height,
+              //         child: const Center(child: Text('Error')),
+              //       );
+              //     } else {
+              //       return RefreshIndicator(
+              //         onRefresh: () async {
+              //           beritaProvider.reset();
+              //           setState(() {
+              //             controllerSearch.text = '';
+              //           });
+              //           beritaProvider.ambilBerita();
+              //         },
+              //         child: ListView.builder(
+              //           physics: const AlwaysScrollableScrollPhysics(),
+              //           controller: _controller,
+              //           shrinkWrap: true,
+              //           itemCount: beritaProvider.isLoading
+              //               ? (beritaProvider.listBeritaTampil.length / 2)
+              //                       .ceil() +
+              //                   1
+              //               : (beritaProvider.listBeritaTampil.length / 2).ceil(),
+              //           itemBuilder: (context, index) {
+              //             if (index * 2 >=
+              //                     beritaProvider.listBeritaTampil.length &&
+              //                 beritaProvider.isLoading) {
+              //               return const Center(
+              //                 child: CupertinoActivityIndicator(),
+              //               );
+              //             } else {
+              //               return Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.start,
+              //                 children: [
+              //                   GestureDetector(
+              //                     onTap: () {
+              //                       Navigator.push(
+              //                         context,
+              //                         MaterialPageRoute(
+              //                           builder: (context) => BeritaKonten(
+              //                             kontenBerita: beritaProvider
+              //                                 .listBeritaTampil[index * 2],
+              //                           ),
+              //                         ),
+              //                       );
+              //                     },
+              //                     child: KontainerBerita(
+              //                       judul: beritaProvider
+              //                           .listBeritaTampil[index * 2].title,
+              //                       isi: beritaProvider
+              //                           .listBeritaTampil[index * 2].isi,
+              //                       gambar: beritaProvider
+              //                           .listBeritaTampil[index * 2].img,
+              //                     ),
+              //                   ),
+              //                   if ((index * 2) + 1 <
+              //                       beritaProvider.listBeritaTampil.length)
+              //                     GestureDetector(
+              //                       onTap: () {
+              //                         Navigator.push(
+              //                           context,
+              //                           MaterialPageRoute(
+              //                             builder: (context) => BeritaKonten(
+              //                               kontenBerita:
+              //                                   beritaProvider.listBeritaTampil[
+              //                                       (index * 2) + 1],
+              //                             ),
+              //                           ),
+              //                         );
+              //                       },
+              //                       child: KontainerBerita(
+              //                         judul: beritaProvider
+              //                             .listBeritaTampil[(index * 2) + 1]
+              //                             .title,
+              //                         isi: beritaProvider
+              //                             .listBeritaTampil[(index * 2) + 1].isi,
+              //                         gambar: beritaProvider
+              //                             .listBeritaTampil[(index * 2) + 1].img,
+              //                       ),
+              //                     ),
+              //                 ],
+              //               );
+              //             }
+              //           },
+              //         ),
+              //       );
+              //     }
+              //   },
+              // ),
             ),
           )
         ],

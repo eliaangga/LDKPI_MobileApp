@@ -5,7 +5,7 @@ class TugasFungsi extends StatefulWidget {
   const TugasFungsi({Key? key}) : super(key: key);
 
   @override
-  _TugasFungsiState createState() => _TugasFungsiState();
+  State<TugasFungsi> createState() => _TugasFungsiState();
 }
 
 class _TugasFungsiState extends State<TugasFungsi> {

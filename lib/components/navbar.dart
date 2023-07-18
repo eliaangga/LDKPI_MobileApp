@@ -2,6 +2,8 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/main.dart';
+import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
+import 'package:provider/provider.dart';
 
 class Navbar extends StatefulWidget {
   final Function(String) ubahBahasa;
@@ -38,7 +40,11 @@ class _Navbar extends State<Navbar> {
     widget.ubahBahasa(currentLanguage);
     konfig.setBahasaPref(currentLanguage);
     koneksi.useLanguage = currentLanguage;
-    koneksi.fetchNews();
+    final beritaProvider =
+        Provider.of<BeritaPageProvider>(context, listen: false);
+    beritaProvider.reset();
+    beritaProvider.controllerSearch.text = '';
+    beritaProvider.ambilBerita();
   }
 
   @override
