@@ -9,14 +9,22 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() {
   koneksi.fetchCarousel().then((response) {
     listCarousel = response;
-    print(response);
   });
-  runApp(App());
+  koneksi.fetchMarquee().then((response) {
+    marqueeKonten = response;
+    print('marquee $marqueeKonten');
+  });
+  koneksi.fetchSebaranHibah().then((response) {
+    listSebaranHibah = response;
+    runApp(App());
+  });
 }
 
 Koneksi koneksi = Koneksi();
 ConfigLanguage konfig = ConfigLanguage();
 List<String> listCarousel = [];
+List<String> listSebaranHibah = [];
+String marqueeKonten = '';
 
 class App extends StatefulWidget {
   App({Key? key}) : super(key: key);

@@ -20,18 +20,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   var jsonData;
-  String berita =
-      '''<p><a href="https://ldkpi.kemenkeu.go.id/post/ldkpi-meraih-opini-wajar-tanpa-pengecualian" target="_blank" rel="noopener noreferrer">LDKPI Meraih Opini Wajar Tanpa Pengecualian</a>
-</p>
-<p>
-    <a href="https://ldkpi.kemenkeu.go.id/post/ldkpi-menentang-keras-segala-bentuk-pemberian-berupa-uang,-barang-dan-fasilitas-dalam-setiap-layanan-kami." target="_blank" rel="noopener noreferrer">LDKPI Menentang Keras Segala Bentuk Pemberian Berupa Uang, Barang dan Fasilitas Dalam Setiap Layanan Kami</a>
-</p>
-<p>
-    <a href="https://youtu.be/BBJa32lCaaY" target="_blank" rel="noopener noreferrer">YOUTUBE</a>
-</p>
-<h4 style="margin-left:0px;">
-    &nbsp;
-</h4>''';
+  String berita = marqueeKonten;
 
   @override
   void initState() {
@@ -848,7 +837,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               height: 176,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
-                child: Image.asset('assets/assets/images/mew.jpeg'),
+                child: Image(image: NetworkImage(listSebaranHibah[0])),
               ),
             ),
           ),
@@ -859,7 +848,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               height: 176,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
-                child: Image.asset('assets/assets/images/mew.jpeg'),
+                child: Image(image: NetworkImage(listSebaranHibah[1])),
               ),
             ),
           ),
