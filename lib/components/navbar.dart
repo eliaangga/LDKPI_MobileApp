@@ -33,7 +33,7 @@ class _Navbar extends State<Navbar> {
 
   void switchLanguage() {
     setState(() {
-      currentLanguage = currentLanguage == 'EN' ? 'ID' : 'EN';
+      currentLanguage = currentLanguage == 'en' ? 'id' : 'en';
     });
     widget.ubahBahasa(currentLanguage);
     konfig.setBahasaPref(currentLanguage);
@@ -117,7 +117,7 @@ class _Navbar extends State<Navbar> {
         BottomNavyBarItem(
           activeColor: Colors.white,
           textAlign: TextAlign.center,
-          icon: _selectedIndex != 3
+          icon: _selectedIndex != 2
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -161,7 +161,7 @@ class _Navbar extends State<Navbar> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: currentLanguage == 'ID'
+                            color: currentLanguage == 'id'
                                 ? Color(0xff02275c)
                                 : Colors.transparent,
                             borderRadius:
@@ -178,7 +178,7 @@ class _Navbar extends State<Navbar> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            color: currentLanguage == 'EN'
+                            color: currentLanguage == 'en'
                                 ? Color(0xff02275c)
                                 : Colors.transparent,
                             borderRadius:
@@ -198,7 +198,7 @@ class _Navbar extends State<Navbar> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Bahasa',
+                    AppLocalizations.of(context)!.bahasa,
                     style: TextStyle(color: Colors.white, fontSize: 7),
                   ),
                 ],

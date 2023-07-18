@@ -25,7 +25,7 @@ class Koneksi {
     InvestasiModel investasi = InvestasiModel();
     try {
       final response = await http.get(
-          Uri.parse('$apiUrl/api/investment?populate=*&locale=$useLanguage,'));
+          Uri.parse('$apiUrl/api/investment?populate=*&locale=$useLanguage'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         investasi = InvestasiModel(
@@ -71,7 +71,8 @@ class Koneksi {
         dynamic jsonData = json.decode(response.body);
         for (var article in jsonData['data']['attributes']['foto']['data']) {
           // print('test 4');
-          String gambar = '';
+          String gambar =
+              'https://www.hdwallpapers.in/download/avengers_infinity_war_4k_8k-wide.jpg';
           if (article['attributes']['url'] != null) {
             gambar = apiUrl + article['attributes']['url'];
           }
@@ -264,7 +265,7 @@ class Koneksi {
   }
 
   Future<InformasiPengadaanModel> fetchPengadaan() async {
-    InformasiPengadaanModel investasi = InformasiPengadaanModel();
+    InformasiPengadaanModel hasil = InformasiPengadaanModel();
     try {
       final response = await http.get(
           Uri.parse('$apiUrl/api/informasi-pengadaan?populate=*&locale=id'));
@@ -272,7 +273,7 @@ class Koneksi {
       //     'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=2'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
-        investasi = InformasiPengadaanModel(
+        hasil = InformasiPengadaanModel(
           konten: jsonData['data']['attributes']['konten'],
           // konten: jsonData['features'][0]['properties']['type'],
         );
@@ -282,11 +283,12 @@ class Koneksi {
     } catch (e) {
       print('Error: $e');
     }
-    return investasi;
+    return hasil;
   }
 
   Future<void> fetchNews() async {
     List<BeritaModel> getList = [];
+    // print(useLanguage);
     try {
       final response = await http.get(Uri.parse(
           '$apiUrl/api/beritas?populate=*&locale=$useLanguage&sort[0]=createdAt%3Adesc'));

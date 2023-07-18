@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/investasi_model.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -8,19 +9,10 @@ class Investasi extends StatefulWidget {
   Investasi({Key? key, required this.invest}) : super(key: key);
 
   @override
-  _InvestasiState createState() => _InvestasiState();
+  State<Investasi> createState() => _InvestasiState();
 }
 
 class _InvestasiState extends State<Investasi> {
-  final TextEditingController _controllerSearch = TextEditingController();
-  late List<String> _listInvestasi;
-
-  @override
-  void initState() {
-    super.initState();
-    _listInvestasi = [];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,38 +25,7 @@ class _InvestasiState extends State<Investasi> {
             child: Row(
               children: [
                 SizedBox(width: 20),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 55, 0),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                    ),
-                    child: Container(
-                      width: 61,
-                      height: 18,
-                      decoration: BoxDecoration(
-                        color: Color(0xff02275c),
-                        borderRadius: BorderRadius.circular(3),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '< Kembali',
-                          style: TextStyle(
-                            fontFamily: 'Gotham',
-                            fontSize: 8,
-                            fontWeight: FontWeight.w700,
-                            height: 1.25,
-                            color: Color(0xffffffff),
-                            letterSpacing: 0.5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                const TombolKembali(),
                 Expanded(
                   child: Container(
                     width: double.infinity,

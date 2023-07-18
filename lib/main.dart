@@ -7,6 +7,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
+  koneksi.fetchCarousel().then((response) {
+    listCarousel = response;
+    print(response);
+  });
   runApp(App());
 }
 
@@ -33,12 +37,6 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    koneksi.fetchCarousel().then((response) {
-      setState(() {
-        listCarousel = response;
-        print(response);
-      });
-    });
     konfig.getBahasaPref().then((response) {
       if (response != '') {
         setState(() {

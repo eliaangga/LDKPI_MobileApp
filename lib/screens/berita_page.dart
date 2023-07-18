@@ -74,12 +74,6 @@ class _BeritaPageState extends State<BeritaPage> {
     });
   }
 
-  @override
-  void didChangeDependencies() {
-    ambilBerita();
-    super.didChangeDependencies();
-  }
-
   void searchNews() {
     setState(() {
       firstTime = true;

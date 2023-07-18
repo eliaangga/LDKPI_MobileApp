@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/components/appbar.dart';
 import 'package:ldkpi_news_app/components/navbar.dart';
 import 'package:ldkpi_news_app/components/openapp_page.dart';
+import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/screens/berita_page.dart';
 import 'package:ldkpi_news_app/screens/home.dart';
 import 'package:ldkpi_news_app/screens/kategori.dart';
@@ -24,7 +25,9 @@ class Base extends StatefulWidget {
 class _BaseScreenState extends State<Base> {
   int _selectedIndex = 0;
   static List<Widget> _pilihanMenu = [
-    Home(),
+    Home(
+      carouselHome: listCarousel,
+    ),
     BeritaPage(),
     Kategori(),
     OpenApp()

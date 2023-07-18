@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/sejarah_model.dart';
 
 class Sejarah extends StatefulWidget {
@@ -11,11 +12,6 @@ class Sejarah extends StatefulWidget {
 }
 
 class _SejarahState extends State<Sejarah> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,38 +26,7 @@ class _SejarahState extends State<Sejarah> {
                 SizedBox(
                   width: 20,
                 ),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 55, 0),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                    ),
-                    child: Container(
-                      width: 61,
-                      height: 18,
-                      decoration: BoxDecoration(
-                        color: Color(0xff02275c),
-                        borderRadius: BorderRadius.circular(3),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '< Kembali',
-                          style: TextStyle(
-                            fontFamily: 'Gotham',
-                            fontSize: 8,
-                            fontWeight: FontWeight.w700,
-                            height: 1.25,
-                            color: Color(0xffffffff),
-                            letterSpacing: 0.5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                const TombolKembali(),
                 SizedBox(
                   width: 32.5,
                 ),
