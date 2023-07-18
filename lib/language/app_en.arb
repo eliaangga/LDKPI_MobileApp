@@ -4,6 +4,7 @@
     "berita": "News",
     "profil": "Profile",
     "kategori": "Category",
+    "informasi": "Information",
     "layanan": "Service",
     "menu": "Menu",
     "investasi": "Investment",
@@ -28,5 +29,7 @@
     "faq": "FAQ",
     "penulis": "Writer",
     "editor": "Editor",
-    "urlLang": "en"
+    "urlLang": "en",
+    "bahasa": "Language",
+    "kembali": "Back"
 }

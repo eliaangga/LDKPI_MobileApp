@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/screens/Informasi_pengadaan.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/screens/nilai_&_budaya.dart';
 import 'package:ldkpi_news_app/screens/penerima_hibah.dart';
@@ -9,10 +8,11 @@ import 'package:ldkpi_news_app/screens/struktur_manajemen_page.dart';
 import 'package:ldkpi_news_app/screens/struktur_organisasi.dart';
 import 'package:ldkpi_news_app/screens/survei_layanan.dart';
 import 'package:ldkpi_news_app/screens/visi_&_misi.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'investasi.dart';
 import 'pemberian_hibah.dart';
 import 'sejarah.dart';
+import 'package:ldkpi_news_app/screens/informasi_pengadaan.dart';
 
 class Kategori extends StatefulWidget {
   const Kategori({super.key});
@@ -48,9 +48,9 @@ class _KategoriState extends State<Kategori> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
-                      'Kategori',
+                      AppLocalizations.of(context)!.kategori,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -76,7 +76,7 @@ class _KategoriState extends State<Kategori> {
                       margin: EdgeInsets.fromLTRB(35, 20, 0, 19.5),
                       width: double.infinity,
                       child: Text(
-                        'Layanan',
+                        AppLocalizations.of(context)!.layanan,
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontFamily: 'Gotham',
@@ -159,7 +159,7 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 88),
                                       child: Text(
-                                        'Investasi',
+                                        AppLocalizations.of(context)!.investasi,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -241,7 +241,8 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 96),
                                       child: Text(
-                                        'Pemberian\nHibah',
+                                        AppLocalizations.of(context)!
+                                            .pemberian_hibah,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -279,7 +280,7 @@ class _KategoriState extends State<Kategori> {
                       margin: EdgeInsets.fromLTRB(35, 20, 0, 19.5),
                       width: double.infinity,
                       child: Text(
-                        'Profil',
+                        AppLocalizations.of(context)!.profil,
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontFamily: 'Gotham',
@@ -363,7 +364,7 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 88),
                                       child: Text(
-                                        'Sejarah',
+                                        AppLocalizations.of(context)!.sejarah,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -446,7 +447,8 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 96),
                                       child: Text(
-                                        'Penerima\nHibah',
+                                        AppLocalizations.of(context)!
+                                            .penerima_hibah,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -541,7 +543,8 @@ class _KategoriState extends State<Kategori> {
                                       constraints: BoxConstraints(
                                           maxWidth: 100, maxHeight: 100),
                                       child: Text(
-                                        'Nilai &\nBudaya',
+                                        AppLocalizations.of(context)!
+                                            .nilai_budaya,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -624,7 +627,8 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 96),
                                       child: Text(
-                                        'Struktur\nOrganisasi',
+                                        AppLocalizations.of(context)!
+                                            .struktur_organisasi,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -719,7 +723,8 @@ class _KategoriState extends State<Kategori> {
                                       constraints:
                                           BoxConstraints(maxWidth: 100),
                                       child: Text(
-                                        'Struktur\nManajemen',
+                                        AppLocalizations.of(context)!
+                                            .struktur_manajemen,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -802,7 +807,8 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 96),
                                       child: Text(
-                                        'Tugas &\nFungsi',
+                                        AppLocalizations.of(context)!
+                                            .tugas_fungsi,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -840,7 +846,7 @@ class _KategoriState extends State<Kategori> {
                       margin: EdgeInsets.fromLTRB(35, 10, 0, 19.5),
                       width: double.infinity,
                       child: Text(
-                        'Informasi',
+                        AppLocalizations.of(context)!.informasi,
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontFamily: 'Gotham',
@@ -925,7 +931,8 @@ class _KategoriState extends State<Kategori> {
                                       constraints: BoxConstraints(
                                           maxWidth: 88, maxHeight: 100),
                                       child: Text(
-                                        'Proses\nBisnis',
+                                        AppLocalizations.of(context)!
+                                            .proses_bisnis,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -1009,7 +1016,7 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 96),
                                       child: Text(
-                                        'Visi &\nMisi',
+                                        AppLocalizations.of(context)!.visi_misi,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -1103,7 +1110,7 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 88),
                                       child: Text(
-                                        'Peraturan',
+                                        AppLocalizations.of(context)!.peraturan,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -1185,7 +1192,8 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 96),
                                       child: Text(
-                                        'Informasi\nPengadaan',
+                                        AppLocalizations.of(context)!
+                                            .informasi_pengadaan,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -1279,7 +1287,7 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 88),
                                       child: Text(
-                                        'Survey Layanan',
+                                        AppLocalizations.of(context)!.survei,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -1363,7 +1371,7 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 96),
                                       child: Text(
-                                        'Hubungi\nKami',
+                                        AppLocalizations.of(context)!.hubungi,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',
@@ -1457,7 +1465,7 @@ class _KategoriState extends State<Kategori> {
                                     child: Container(
                                       constraints: BoxConstraints(maxWidth: 88),
                                       child: Text(
-                                        'FAQ',
+                                        AppLocalizations.of(context)!.faq,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Gotham',

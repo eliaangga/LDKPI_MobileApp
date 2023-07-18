@@ -1,18 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/language/config.dart';
 import 'package:ldkpi_news_app/language/l10n.dart';
+import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/services/koneksi.dart';
 import 'components/base.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
-  runApp(App());
+  koneksi.fetchCarousel().then((response) {
+    listCarousel = response;
+  });
+  koneksi.fetchMarquee().then((response) {
+    marqueeKonten = response;
+    print('marquee $marqueeKonten');
+  });
+  koneksi.fetchSebaranHibah().then((response) {
+    listSebaranHibah = response;
+    runApp(ChangeNotifierProvider(
+        create: (context) => BeritaPageProvider(), child: App()));
+  });
 }
 
 Koneksi koneksi = Koneksi();
 ConfigLanguage konfig = ConfigLanguage();
 List<String> listCarousel = [];
+List<String> listSebaranHibah = [];
+String marqueeKonten = '';
 
 class App extends StatefulWidget {
   App({Key? key}) : super(key: key);
@@ -33,12 +48,6 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    koneksi.fetchCarousel().then((response) {
-      setState(() {
-        listCarousel = response;
-        print(response);
-      });
-    });
     konfig.getBahasaPref().then((response) {
       if (response != '') {
         setState(() {

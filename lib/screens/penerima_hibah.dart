@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/components/kontainer_negara.dart';
+import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/penerima_hibah_model.dart';
 import 'package:ldkpi_news_app/models/tahun_model.dart';
 
@@ -26,38 +27,7 @@ class _PenerimaHState extends State<PenerimaH> {
               child: Row(
                 children: [
                   const SizedBox(width: 20),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                      ),
-                      child: Container(
-                        width: 61,
-                        height: 18,
-                        decoration: BoxDecoration(
-                          color: const Color(0xff02275c),
-                          borderRadius: BorderRadius.circular(3),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            '< Kembali',
-                            style: TextStyle(
-                              fontFamily: 'Gotham',
-                              fontSize: 8,
-                              fontWeight: FontWeight.w700,
-                              height: 1.25,
-                              color: Color(0xffffffff),
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  const TombolKembali(),
                   Expanded(
                     child: Container(
                       width: 150,

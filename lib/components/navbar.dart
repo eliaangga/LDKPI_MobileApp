@@ -2,6 +2,8 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/main.dart';
+import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
+import 'package:provider/provider.dart';
 
 class Navbar extends StatefulWidget {
   final Function(String) ubahBahasa;
@@ -33,12 +35,16 @@ class _Navbar extends State<Navbar> {
 
   void switchLanguage() {
     setState(() {
-      currentLanguage = currentLanguage == 'EN' ? 'ID' : 'EN';
+      currentLanguage = currentLanguage == 'en' ? 'id' : 'en';
     });
     widget.ubahBahasa(currentLanguage);
     konfig.setBahasaPref(currentLanguage);
     koneksi.useLanguage = currentLanguage;
-    koneksi.fetchNews();
+    final beritaProvider =
+        Provider.of<BeritaPageProvider>(context, listen: false);
+    beritaProvider.reset();
+    beritaProvider.controllerSearch.text = '';
+    beritaProvider.ambilBerita();
   }
 
   @override
@@ -117,7 +123,7 @@ class _Navbar extends State<Navbar> {
         BottomNavyBarItem(
           activeColor: Colors.white,
           textAlign: TextAlign.center,
-          icon: _selectedIndex != 3
+          icon: _selectedIndex != 2
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -161,7 +167,7 @@ class _Navbar extends State<Navbar> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: currentLanguage == 'ID'
+                            color: currentLanguage == 'id'
                                 ? Color(0xff02275c)
                                 : Colors.transparent,
                             borderRadius:
@@ -178,7 +184,7 @@ class _Navbar extends State<Navbar> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            color: currentLanguage == 'EN'
+                            color: currentLanguage == 'en'
                                 ? Color(0xff02275c)
                                 : Colors.transparent,
                             borderRadius:
@@ -198,7 +204,7 @@ class _Navbar extends State<Navbar> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Bahasa',
+                    AppLocalizations.of(context)!.bahasa,
                     style: TextStyle(color: Colors.white, fontSize: 7),
                   ),
                 ],

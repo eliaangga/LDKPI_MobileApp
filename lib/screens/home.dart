@@ -9,7 +9,8 @@ import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  List<String> carouselHome = [];
+  Home({Key? key, required this.carouselHome}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -19,7 +20,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   var jsonData;
-  String berita = 'Waw Data Center KEMENKEU Diserang Buaya Terbang';
+  String berita = marqueeKonten;
 
   @override
   void initState() {
@@ -49,7 +50,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       body: ListView(
         children: [
           const SizedBox(height: 10),
-          SliderScreen(),
+          SliderScreen(carousel: widget.carouselHome),
           const SizedBox(height: 10),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 10),
@@ -111,9 +112,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                 child: Image.asset(
                                     'assets/assets/images/Investment.jpg'),
                               ),
-                              const Center(
+                              Center(
                                 child: Text(
-                                  'Investasi',
+                                  AppLocalizations.of(context)!.investasi,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: 'Gotham',
@@ -836,7 +837,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               height: 176,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
-                child: Image.asset('assets/assets/images/mew.jpeg'),
+                child: Image(image: NetworkImage(listSebaranHibah[0])),
               ),
             ),
           ),
@@ -847,7 +848,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               height: 176,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
-                child: Image.asset('assets/assets/images/mew.jpeg'),
+                child: Image(image: NetworkImage(listSebaranHibah[1])),
               ),
             ),
           ),

@@ -4,41 +4,45 @@ import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
 
 class SliderScreen extends StatefulWidget {
-  // List<String> carousel = [];
-  SliderScreen({Key? key}) : super(key: key);
+  List<String> carousel = [];
+  SliderScreen({Key? key, required this.carousel}) : super(key: key);
 
   @override
   State<SliderScreen> createState() => _SliderScreenState();
 }
 
 class _SliderScreenState extends State<SliderScreen> {
-  List<String> carousel = [];
-  List<Map<String, dynamic>> imageList = [];
+  // List<String> carousel = [];
+  List<Map<String, dynamic>> imageList = [
+    {"id": 1, "image_path": listCarousel[0]},
+    {"id": 2, "image_path": listCarousel[1]},
+    {"id": 3, "image_path": listCarousel[2]}
+  ];
   final CarouselController carouselController = CarouselController();
   int currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    koneksi.fetchCarousel().then((response) {
-      Future.delayed(Duration(milliseconds: 1000));
-      setState(() {
-        carousel = response;
-        print(response);
-      });
-    });
     // setState(() {
-    //   carousel = listCarousel;
+    //   imageList = [
+    //     {"id": 1, "image_path": widget.carousel[0]},
+    //     {"id": 2, "image_path": widget.carousel[1]},
+    //     {"id": 3, "image_path": widget.carousel[2]}
+    //   ];
+    // });
+
+    // koneksi.fetchCarousel().then((response) {
+    //   Future.delayed(Duration(milliseconds: 1000));
+    //   setState(() {
+    //     carousel = response;
+    //     print(response);
+    //   });
     // });
   }
 
   @override
   Widget build(BuildContext context) {
-    imageList = [
-      {"id": 1, "image_path": carousel[0]},
-      {"id": 2, "image_path": carousel[1]},
-      {"id": 3, "image_path": carousel[2]}
-    ];
     List<Widget> carouselItems = imageList.map((item) {
       return GestureDetector(
         onTap: () {
