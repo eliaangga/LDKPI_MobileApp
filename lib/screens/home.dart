@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/components/slider.dart';
 import 'package:ldkpi_news_app/components/slider2.dart';
-import 'package:ldkpi_news_app/components/yotube_player_widget_dart.dart';
+import 'package:ldkpi_news_app/components/video_player.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
 import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
@@ -820,9 +820,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ),
             ),
           ),
-          YouTubePlayerWidget(
-            videoId: "6_E0YBEnAAM",
-          ),
+          VideoPlayerWidget(
+              url: 'assets/assets/images/Abby.mp4',
+              dataSourceType: DataSourceType.asset),
           const SizedBox(height: 20),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 10),
@@ -841,18 +841,18 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ),
             ),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 12),
           Center(
             child: SizedBox(
-              width: 500,
-              height: 176,
+              width: 335,
+              height: 125,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
                 child: Image(image: NetworkImage(listSebaranHibah[1])),
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 5),
           const SliderScreen2(),
           const SizedBox(height: 20),
         ],
