@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:ldkpi_news_app/models/berita_model.dart';
 import 'package:ldkpi_news_app/models/informasi_pengadaan_model.dart';
@@ -9,7 +8,6 @@ import 'package:ldkpi_news_app/models/nilai_budaya_model.dart';
 import 'package:ldkpi_news_app/models/pemberian_hibah_model.dart';
 import 'package:ldkpi_news_app/models/penerima_hibah_model.dart';
 import 'package:ldkpi_news_app/models/peraturan_model.dart';
-import 'package:ldkpi_news_app/models/sebaranhibah_model.dart';
 import 'package:ldkpi_news_app/models/sejarah_model.dart';
 import 'package:ldkpi_news_app/models/struktur_organisasi_model.dart';
 import 'package:ldkpi_news_app/models/survei_layanan_model.dart';
@@ -64,28 +62,23 @@ class Koneksi {
   Future<List<String>> fetchCarousel() async {
     List<String> hasil = [];
     try {
-      // print('test 1');
       final response = await http
           .get(Uri.parse('$apiUrl/api/foto-carousel-home?populate=*'));
-      // print('test 2');
       if (response.statusCode == 200) {
-        // print('test 3');
         dynamic jsonData = json.decode(response.body);
         for (var article in jsonData['data']['attributes']['foto']['data']) {
-          // print('test 4');
           String gambar =
               'https://www.hdwallpapers.in/download/avengers_infinity_war_4k_8k-wide.jpg';
           if (article['attributes']['url'] != null) {
             gambar = apiUrl + article['attributes']['url'];
           }
-          // print('gambar $gambar');
           hasil.add(gambar);
         }
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        hasil = ['not', 'not', 'not'];
       }
     } catch (e) {
-      print('Error: $e');
+      hasil = ['not', 'not', 'not'];
     }
     return hasil;
   }
@@ -273,38 +266,24 @@ class Koneksi {
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = jsonData['data']['attributes']['MarqueeLink'];
-        print(hasil);
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        hasil = 'Data not found';
       }
     } catch (e) {
-      print('Error: $e');
+      hasil = 'Data not found';
     }
     return hasil;
   }
 
-  // void fetchInit() async {
-  //   fetchCarousel().then((response) {
-  //     getListCarousel = response;
-  //     print('1 $response');
-  //   });
-  //   fetchMarquee().then((response) {
-  //     marqueeKonten = response;
-  //   });
-  // }
-
   Future<InformasiPengadaanModel> fetchPengadaan() async {
     InformasiPengadaanModel hasil = InformasiPengadaanModel();
     try {
-      final response = await http.get(
-          Uri.parse('$apiUrl/api/informasi-pengadaan?populate=*&locale=id'));
-      // final response = await http.get(Uri.parse(
-      //     'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=2'));
+      final response = await http.get(Uri.parse(
+          '$apiUrl/api/informasi-pengadaan?populate=*&locale=$useLanguage'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = InformasiPengadaanModel(
           konten: jsonData['data']['attributes']['konten'],
-          // konten: jsonData['features'][0]['properties']['type'],
         );
       } else {
         print('Request failed with status: ${response.statusCode}');
@@ -317,7 +296,6 @@ class Koneksi {
 
   Future<void> fetchNews() async {
     List<BeritaModel> getList = [];
-    // print(useLanguage);
     try {
       final response = await http.get(Uri.parse(
           '$apiUrl/api/beritas?populate=*&locale=$useLanguage&sort[0]=createdAt%3Adesc'));
@@ -352,7 +330,7 @@ class Koneksi {
     List<BeritaModel> getList = [];
     try {
       final response = await http.get(Uri.parse(
-          '$apiUrl/api/beritas?populate=*&locale=en&sort[0]=createdAt%3Adesc&pagination[limit]=3'));
+          '$apiUrl/api/beritas?populate=*&locale=$useLanguage&sort[0]=createdAt%3Adesc&pagination[limit]=3'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         for (var article in jsonData['data']) {
@@ -494,7 +472,7 @@ class Koneksi {
     List<String> hasil = [];
     try {
       final response = await http.get(Uri.parse(
-          '$apiUrl/api/penerima-hibah?locale=id&populate[0]=gambarPenerimaMobile'));
+          '$apiUrl/api/penerima-hibah?locale=en&populate[0]=gambarPenerimaMobile'));
 
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);

@@ -35,6 +35,7 @@ List<Item> generateItems() {
 }
 
 class _StrukturManajemen extends State<StrukturManajemen> {
+  int currentIndex = 0;
   @override
   void initState() {
     super.initState();
@@ -79,12 +80,19 @@ class _StrukturManajemen extends State<StrukturManajemen> {
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
               child: ListView.builder(
+                key: Key('builder ${currentIndex.toString()}'),
                 itemCount: listAllManajemen.length,
                 itemBuilder: (context, index) {
                   return Card(
                     color: const Color(0xFF02347C),
                     child: ExpansionTile(
-                      initiallyExpanded: index == 0 ? true : false,
+                      key: Key(index.toString()),
+                      initiallyExpanded: index == currentIndex,
+                      onExpansionChanged: (bool expanded) {
+                        setState(() {
+                          currentIndex = expanded ? index : -1;
+                        });
+                      },
                       iconColor: Colors.white,
                       collapsedIconColor: Colors.white,
                       title: Text(

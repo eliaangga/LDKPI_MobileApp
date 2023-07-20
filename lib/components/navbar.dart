@@ -45,6 +45,7 @@ class _Navbar extends State<Navbar> {
     beritaProvider.reset();
     beritaProvider.controllerSearch.text = '';
     beritaProvider.ambilBerita();
+    beritaProvider.latestNews();
   }
 
   @override

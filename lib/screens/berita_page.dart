@@ -4,7 +4,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/screens/berita_konten.dart';
 import 'package:ldkpi_news_app/components/kontainer_berita.dart';
-import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/berita_model.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +15,7 @@ class BeritaPage extends StatefulWidget {
 }
 
 class _BeritaPageState extends State<BeritaPage> {
-  ScrollController _controller = ScrollController();
+  final ScrollController _controller = ScrollController();
 
   @override
   void initState() {
@@ -51,7 +50,7 @@ class _BeritaPageState extends State<BeritaPage> {
                   child: Center(
                     child: Text(
                       AppLocalizations.of(context)!.berita,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 24),
@@ -85,7 +84,7 @@ class _BeritaPageState extends State<BeritaPage> {
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)),
                       child: Text(
                         AppLocalizations.of(context)!.cari,
-                        style: TextStyle(fontSize: 14),
+                        style: const TextStyle(fontSize: 14),
                       ),
                     )
                   ],
@@ -204,112 +203,6 @@ class _BeritaPageState extends State<BeritaPage> {
                   },
                 );
               },
-              // child: FutureBuilder(
-              //   future: beritaProvider.listFutureBerita,
-              //   builder: (BuildContext context,
-              //       AsyncSnapshot<List<BeritaModel>> snapshot) {
-              //     if (snapshot.connectionState == ConnectionState.waiting) {
-              //       return SizedBox(
-              //         width: MediaQuery.of(context).size.width,
-              //         height: MediaQuery.of(context).size.height,
-              //         child: const CupertinoActivityIndicator(),
-              //       );
-              //     } else if (snapshot.data!.isEmpty) {
-              //       return SizedBox(
-              //         width: MediaQuery.of(context).size.width,
-              //         height: MediaQuery.of(context).size.height,
-              //         child: const Center(child: Text('Data not found')),
-              //       );
-              //     } else if (snapshot.hasError) {
-              //       return SizedBox(
-              //         width: MediaQuery.of(context).size.width,
-              //         height: MediaQuery.of(context).size.height,
-              //         child: const Center(child: Text('Error')),
-              //       );
-              //     } else {
-              //       return RefreshIndicator(
-              //         onRefresh: () async {
-              //           beritaProvider.reset();
-              //           setState(() {
-              //             controllerSearch.text = '';
-              //           });
-              //           beritaProvider.ambilBerita();
-              //         },
-              //         child: ListView.builder(
-              //           physics: const AlwaysScrollableScrollPhysics(),
-              //           controller: _controller,
-              //           shrinkWrap: true,
-              //           itemCount: beritaProvider.isLoading
-              //               ? (beritaProvider.listBeritaTampil.length / 2)
-              //                       .ceil() +
-              //                   1
-              //               : (beritaProvider.listBeritaTampil.length / 2).ceil(),
-              //           itemBuilder: (context, index) {
-              //             if (index * 2 >=
-              //                     beritaProvider.listBeritaTampil.length &&
-              //                 beritaProvider.isLoading) {
-              //               return const Center(
-              //                 child: CupertinoActivityIndicator(),
-              //               );
-              //             } else {
-              //               return Row(
-              //                 crossAxisAlignment: CrossAxisAlignment.start,
-              //                 children: [
-              //                   GestureDetector(
-              //                     onTap: () {
-              //                       Navigator.push(
-              //                         context,
-              //                         MaterialPageRoute(
-              //                           builder: (context) => BeritaKonten(
-              //                             kontenBerita: beritaProvider
-              //                                 .listBeritaTampil[index * 2],
-              //                           ),
-              //                         ),
-              //                       );
-              //                     },
-              //                     child: KontainerBerita(
-              //                       judul: beritaProvider
-              //                           .listBeritaTampil[index * 2].title,
-              //                       isi: beritaProvider
-              //                           .listBeritaTampil[index * 2].isi,
-              //                       gambar: beritaProvider
-              //                           .listBeritaTampil[index * 2].img,
-              //                     ),
-              //                   ),
-              //                   if ((index * 2) + 1 <
-              //                       beritaProvider.listBeritaTampil.length)
-              //                     GestureDetector(
-              //                       onTap: () {
-              //                         Navigator.push(
-              //                           context,
-              //                           MaterialPageRoute(
-              //                             builder: (context) => BeritaKonten(
-              //                               kontenBerita:
-              //                                   beritaProvider.listBeritaTampil[
-              //                                       (index * 2) + 1],
-              //                             ),
-              //                           ),
-              //                         );
-              //                       },
-              //                       child: KontainerBerita(
-              //                         judul: beritaProvider
-              //                             .listBeritaTampil[(index * 2) + 1]
-              //                             .title,
-              //                         isi: beritaProvider
-              //                             .listBeritaTampil[(index * 2) + 1].isi,
-              //                         gambar: beritaProvider
-              //                             .listBeritaTampil[(index * 2) + 1].img,
-              //                       ),
-              //                     ),
-              //                 ],
-              //               );
-              //             }
-              //           },
-              //         ),
-              //       );
-              //     }
-              //   },
-              // ),
             ),
           )
         ],

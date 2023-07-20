@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
@@ -12,7 +13,6 @@ class SliderScreen extends StatefulWidget {
 }
 
 class _SliderScreenState extends State<SliderScreen> {
-  // List<String> carousel = [];
   List<Map<String, dynamic>> imageList = [
     {"id": 1, "image_path": listCarousel[0]},
     {"id": 2, "image_path": listCarousel[1]},
@@ -20,26 +20,6 @@ class _SliderScreenState extends State<SliderScreen> {
   ];
   final CarouselController carouselController = CarouselController();
   int currentIndex = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    // setState(() {
-    //   imageList = [
-    //     {"id": 1, "image_path": widget.carousel[0]},
-    //     {"id": 2, "image_path": widget.carousel[1]},
-    //     {"id": 3, "image_path": widget.carousel[2]}
-    //   ];
-    // });
-
-    // koneksi.fetchCarousel().then((response) {
-    //   Future.delayed(Duration(milliseconds: 1000));
-    //   setState(() {
-    //     carousel = response;
-    //     print(response);
-    //   });
-    // });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,11 +64,13 @@ class _SliderScreenState extends State<SliderScreen> {
               break;
           }
         },
-        child: Image(
-          image: NetworkImage(item['image_path']),
-          fit: BoxFit.cover,
-          width: double.infinity,
-        ),
+        child: item['image_path'] == 'not'
+            ? const CupertinoActivityIndicator()
+            : Image(
+                image: NetworkImage(item['image_path']),
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
       );
     }).toList();
 
