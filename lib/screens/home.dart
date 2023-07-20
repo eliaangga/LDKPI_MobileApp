@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/slider.dart';
 import 'package:ldkpi_news_app/components/slider2.dart';
 import 'package:ldkpi_news_app/components/video_player.dart';
@@ -107,7 +108,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                             children: [
                               Container(
                                 margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                width: 50,
+                                width: 40,
                                 height: 50,
                                 child: Image.asset(
                                     'assets/assets/images/Investment.jpg'),
@@ -403,23 +404,17 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           FutureBuilder<String>(
             future: _berita,
             builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-              Text isiBerita;
-              if (snapshot.hasData) {
-                isiBerita = Text('${snapshot.data}');
-              } else {
-                isiBerita = Text(berita);
-              }
               return Container(
                 width: double.infinity,
                 color: Colors.yellow,
-                height: 20,
+                height: 40,
                 child: AnimatedBuilder(
                   animation: _animationController,
                   builder: (context, child) {
                     return Transform.translate(
                       offset: Offset(
-                        (1 - _animationController.value) * screenWidth,
-                        2.5,
+                        (0.5 - _animationController.value) * screenWidth,
+                        1,
                       ),
                       child: child,
                     );
@@ -438,13 +433,18 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                     },
                     child: Marquee(
                       textDirection: TextDirection.ltr,
-                      child: Text(
-                        berita,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
+                      child: Html(
+                        data: berita,
+                        style: {
+                          'html': Style(
+                            fontFamily: 'Gotham',
+                            textAlign: TextAlign.justify,
+                            fontSize: FontSize(14),
+                            fontWeight: FontWeight.w100,
+                            lineHeight: LineHeight(1.1111111111),
+                            color: Color(0xff000000),
+                          ),
+                        },
                       ),
                     ),
                   ),
