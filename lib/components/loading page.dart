@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/screens/home.dart';
 
 class LoadingPage extends StatelessWidget {
   final Future<void> loadingFuture;
@@ -24,7 +23,6 @@ class LoadingPage extends StatelessWidget {
               child: Text('Error: ${snapshot.error}'),
             );
           } else {
-            // return Home();
             return Container();
           }
         },
