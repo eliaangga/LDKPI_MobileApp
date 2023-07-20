@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:ldkpi_news_app/models/anggota_manajemen.dart';
 import 'package:ldkpi_news_app/models/berita_model.dart';
 import 'package:ldkpi_news_app/models/informasi_pengadaan_model.dart';
 import 'package:ldkpi_news_app/models/investasi_model.dart';
@@ -9,10 +10,12 @@ import 'package:ldkpi_news_app/models/pemberian_hibah_model.dart';
 import 'package:ldkpi_news_app/models/penerima_hibah_model.dart';
 import 'package:ldkpi_news_app/models/peraturan_model.dart';
 import 'package:ldkpi_news_app/models/sejarah_model.dart';
+import 'package:ldkpi_news_app/models/struktur_manajemen_model.dart';
 import 'package:ldkpi_news_app/models/struktur_organisasi_model.dart';
 import 'package:ldkpi_news_app/models/survei_layanan_model.dart';
 import 'package:ldkpi_news_app/models/tahun_model.dart';
 import 'package:ldkpi_news_app/models/visimisi_model.dart';
+import 'package:ldkpi_news_app/screens/struktur_manajemen_page.dart';
 
 class Koneksi {
   String apiUrl = "http://10.201.18.243:1337";
@@ -240,10 +243,8 @@ class Koneksi {
                     negara['gambarNegara']['data']['attributes']['url']);
             listNegara.add(hasilNegara);
           }
-          print(listNegara.length);
           TahunModel hasilTahun = TahunModel(tahun: tahun['tahun']);
           hasilTahun.listNegara = listNegara;
-          print(hasilTahun.tahun);
           listTahun.add(hasilTahun);
         }
         hasil = PenerimaHibahModel(
@@ -390,43 +391,61 @@ class Koneksi {
     }
   }
 
-  Future<List<BeritaModel>> fetchManagement() async {
-    List<BeritaModel> listStruktur = [];
+  Future<List<StrukturManajemenModel>> fetchManagement() async {
+    List<StrukturManajemenModel> hasil = [];
 
     try {
-      // final response = await http.get(Uri.parse(
-      //     '$apiUrl/api/beritas?populate=*&locale=en'));
       final response = await http.get(Uri.parse(
-          'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=15'));
+          '$apiUrl/api/struktur-manajemens?locale=$useLanguage&populate[0]=detailAnggota&populate[1]=detailAnggota.fotoAnggota'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
-        // for (var article in jsonData['data']) {
-        for (var article in jsonData['features']) {
-          BeritaModel newBlog = BeritaModel(
-            //   title: article['attributes']['judul'],
-            //   isi: article['attributes']['konten'],
-            //   img: apiUrl +
-            //       article['attributes']['gambarBerita']['data']['attributes']
-            //           ['formats']['large']['url'],
-            //   penulis: article['attributes']['authorEditor']['author'],
-            //   editor: article['attributes']['authorEditor']['editor'],
-            // );
-            title: article['properties']['title'],
-            isi: article['properties']['type'],
-            img:
-                'https://www.hdwallpapers.in/download/avengers_infinity_war_4k_8k-wide.jpg',
-            penulis: 'JONI',
-            editor: 'JONI',
-          );
-          listStruktur.add(newBlog);
+        for (var tingkat in jsonData['data']) {
+          List<AnggotaManajemen> listAnggota = [];
+          for (var anggota in tingkat['attributes']['detailAnggota']) {
+            String gambar = '';
+            if (anggota['fotoAnggota']['data'] != null) {
+              gambar =
+                  apiUrl + anggota['fotoAnggota']['data']['attributes']['url'];
+            }
+            AnggotaManajemen getAnggota = AnggotaManajemen(
+              nama: anggota['namaAnggota'],
+              jabatan: anggota['jabatanAnggota'],
+              foto: gambar,
+            );
+            listAnggota.add(getAnggota);
+          }
+          StrukturManajemenModel manajemen = StrukturManajemenModel(
+              tingkat: tingkat['attributes']['namaBidang']);
+          manajemen.listAnggota = listAnggota;
+          hasil.add(manajemen);
         }
       } else {
         print('Request failed with status: ${response.statusCode}');
       }
+
+      //   final response = await http.get(Uri.parse(
+      //       'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=15'));
+      //   if (response.statusCode == 200) {
+      //     dynamic jsonData = json.decode(response.body);
+      //     for (var article in jsonData['features']) {
+      //       BeritaModel newBlog = BeritaModel(
+
+      //         title: article['properties']['title'],
+      //         isi: article['properties']['type'],
+      //         img:
+      //             'https://www.hdwallpapers.in/download/avengers_infinity_war_4k_8k-wide.jpg',
+      //         penulis: 'JONI',
+      //         editor: 'JONI',
+      //       );
+      //       listStruktur.add(newBlog);
+      //     }
+      //   } else {
+      //     print('Request failed with status: ${response.statusCode}');
+      //   }
     } catch (e) {
       print('Error: $e');
     }
-    return listStruktur;
+    return hasil;
   }
 
   Future<List<BeritaModel>> fetchProcess() async {

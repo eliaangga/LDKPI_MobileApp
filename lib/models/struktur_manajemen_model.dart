@@ -1,4 +1,7 @@
+import 'package:ldkpi_news_app/models/anggota_manajemen.dart';
+
 class StrukturManajemenModel {
-  String? konten;
-  StrukturManajemenModel({this.konten});
+  String tingkat;
+  List<AnggotaManajemen> listAnggota = [];
+  StrukturManajemenModel({required this.tingkat});
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/berita_model.dart';
+import 'package:ldkpi_news_app/models/struktur_manajemen_model.dart';
 
 class StrukturManajemen extends StatefulWidget {
   StrukturManajemen({super.key, required this.listManajemen});
 
-  List<BeritaModel> listManajemen;
+  List<StrukturManajemenModel> listManajemen;
   @override
   State<StrukturManajemen> createState() => _StrukturManajemen();
 }
@@ -22,13 +23,13 @@ class Item {
   bool isExpanded;
 }
 
-List<BeritaModel> listAllManajemen = [];
+List<StrukturManajemenModel> listAllManajemen = [];
 
 List<Item> generateItems() {
   return List<Item>.generate(listAllManajemen.length, (int index) {
     return Item(
-      headerValue: listAllManajemen[index].title,
-      expandedValue: listAllManajemen[index].isi,
+      headerValue: listAllManajemen[index].tingkat,
+      expandedValue: listAllManajemen[index].listAnggota[0].nama,
       isExpanded: index == 0 ? true : false,
     );
   });
@@ -96,7 +97,7 @@ class _StrukturManajemen extends State<StrukturManajemen> {
                       iconColor: Colors.white,
                       collapsedIconColor: Colors.white,
                       title: Text(
-                        listAllManajemen[index].title,
+                        listAllManajemen[index].tingkat,
                         style: const TextStyle(color: Colors.white),
                       ),
                       children: [
@@ -106,7 +107,7 @@ class _StrukturManajemen extends State<StrukturManajemen> {
                           width: double.maxFinite,
                           color: Colors.white,
                           child: Text(
-                            listAllManajemen[index].isi,
+                            listAllManajemen[index].listAnggota[0].nama,
                           ),
                         )
                       ],
