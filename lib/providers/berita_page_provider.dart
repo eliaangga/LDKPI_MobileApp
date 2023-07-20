@@ -5,6 +5,7 @@ import 'package:ldkpi_news_app/models/berita_model.dart';
 class BeritaPageProvider extends ChangeNotifier {
   bool firstTime = true;
   List<BeritaModel> listAllBerita = [];
+  List<BeritaModel> listBeritaTerbaru = [];
   List<BeritaModel> listBeritaTampil = [];
   bool isLoading = false;
   int jumlahTampil = 0;
@@ -47,6 +48,17 @@ class BeritaPageProvider extends ChangeNotifier {
           firstTime = false;
           notifyListeners();
           loadMore();
+        }
+      },
+    );
+  }
+
+  void latestNews() {
+    koneksi.fetchLatestNews().then(
+      (response) {
+        if (response != []) {
+          listBeritaTerbaru = response;
+          notifyListeners();
         }
       },
     );

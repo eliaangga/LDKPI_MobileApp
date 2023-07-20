@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ldkpi_news_app/components/kontainer_berita_terbaru.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/slider.dart';
 import 'package:ldkpi_news_app/components/slider2.dart';
 import 'package:ldkpi_news_app/components/video_player.dart';
 import 'package:ldkpi_news_app/main.dart';
+import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
+import 'package:ldkpi_news_app/screens/berita_konten.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
 import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
 import 'package:marquee_widget/marquee_widget.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   List<String> carouselHome = [];
@@ -19,8 +23,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-
-  var jsonData;
   String berita = marqueeKonten;
 
   @override
@@ -46,7 +48,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-
+    final beritaProvider =
+        Provider.of<BeritaPageProvider>(context, listen: false);
+    beritaProvider.latestNews();
     return Scaffold(
       body: ListView(
         children: [
@@ -464,339 +468,22 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => ()),
-              // );
-            },
-            child: Container(
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 14),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 14),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              style:
-                              TextButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                              );
-                            },
-                            style: TextButton.styleFrom(
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(right: 10),
-                                  width: 98,
-                                  height: 69,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(5),
-                                    child: Image.asset(
-                                        'assets/assets/images/kemenkeu.png'),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    margin: const EdgeInsets.only(
-                                        top: 8, bottom: 13),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          margin:
-                                              const EdgeInsets.only(bottom: 8),
-                                          child: Text(
-                                            'LDKPI Meraih Penghargaan',
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xff000000),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          constraints: const BoxConstraints(
-                                            maxWidth: 330,
-                                          ),
-                                          child: RichText(
-                                            text: const TextSpan(
-                                              style: TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.w300,
-                                                color: Color(0xff000000),
-                                              ),
-                                              children: [
-                                                TextSpan(
-                                                  text:
-                                                      'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-                                                ),
-                                                TextSpan(
-                                                  text: ' ....More',
-                                                  style: TextStyle(
-                                                    fontSize: 10,
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Color(0xff000000),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+          for (var i = 0; i < 3; i++)
+            Consumer<BeritaPageProvider>(builder: (context, value, child) {
+              return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BeritaKonten(
+                          kontenBerita: beritaProvider.listBeritaTerbaru[i],
                         ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => ()),
-              // );
-            },
-            child: Container(
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 14),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 14),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              style:
-                              TextButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                              );
-                            },
-                            style: TextButton.styleFrom(
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(right: 10),
-                                  width: 98,
-                                  height: 69,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(5),
-                                    child: Image.asset(
-                                        'assets/assets/images/kemenkeu.png'),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    margin: const EdgeInsets.only(
-                                        top: 8, bottom: 13),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          margin:
-                                              const EdgeInsets.only(bottom: 8),
-                                          child: const Text(
-                                            'LDKPI Meraih Penghargaan',
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xff000000),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          constraints: const BoxConstraints(
-                                            maxWidth: 330,
-                                          ),
-                                          child: RichText(
-                                            text: const TextSpan(
-                                              style: TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.w300,
-                                                color: Color(0xff000000),
-                                              ),
-                                              children: [
-                                                TextSpan(
-                                                  text:
-                                                      'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-                                                ),
-                                                TextSpan(
-                                                  text: ' ....More',
-                                                  style: TextStyle(
-                                                    fontSize: 10,
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Color(0xff000000),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => ()),
-              // );
-            },
-            child: Container(
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 14),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 14),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              style:
-                              TextButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                              );
-                            },
-                            style: TextButton.styleFrom(
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(right: 10),
-                                  width: 98,
-                                  height: 69,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(5),
-                                    child: Image.asset(
-                                        'assets/assets/images/kemenkeu.png'),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    margin: const EdgeInsets.only(
-                                        top: 8, bottom: 13),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          margin:
-                                              const EdgeInsets.only(bottom: 8),
-                                          child: const Text(
-                                            'LDKPI Meraih Penghargaan',
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xff000000),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          constraints: const BoxConstraints(
-                                            maxWidth: 330,
-                                          ),
-                                          child: RichText(
-                                            text: const TextSpan(
-                                              style: TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.w300,
-                                                color: Color(0xff000000),
-                                              ),
-                                              children: [
-                                                TextSpan(
-                                                  text:
-                                                      'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-                                                ),
-                                                TextSpan(
-                                                  text: ' ....More',
-                                                  style: TextStyle(
-                                                    fontSize: 10,
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Color(0xff000000),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+                      ),
+                    );
+                  },
+                  child:
+                      KontainerBeritaTerbaru(provider: beritaProvider, i: i));
+            }),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 0),
             child: Container(
