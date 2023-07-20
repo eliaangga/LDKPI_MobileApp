@@ -9,7 +9,7 @@ class TombolKembali extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 0, 55, 0),
+      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
       child: TextButton(
         onPressed: () {
           Navigator.pop(context);

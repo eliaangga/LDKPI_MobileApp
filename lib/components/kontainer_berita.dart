@@ -57,7 +57,6 @@ class KontainerBerita extends StatelessWidget {
                 lineHeight: LineHeight(1),
                 color: Color(0xff000000),
                 maxLines: 2,
-                // textOverflow: TextOverflow.ellipsis,
               ),
             },
           ),
