@@ -49,7 +49,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: ListView(
         children: [
-          const SizedBox(height: 10),
+          const SizedBox(height: 2.5),
           SliderScreen(carousel: widget.carouselHome),
           const SizedBox(height: 10),
           Padding(
@@ -798,7 +798,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(30, 0, 0, 10),
+            padding: EdgeInsets.fromLTRB(30, 10, 0, 0),
             child: Container(
               width: double.infinity,
               child: RichText(
@@ -823,7 +823,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           VideoPlayerWidget(
               url: 'assets/assets/images/Abby.mp4',
               dataSourceType: DataSourceType.asset),
-          const SizedBox(height: 20),
+          const SizedBox(height: 5),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 10),
             child: Text(

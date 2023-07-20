@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/main.dart';
+import 'package:ldkpi_news_app/screens/informasi_pengadaan.dart';
 import 'package:ldkpi_news_app/screens/nilai_&_budaya.dart';
 import 'package:ldkpi_news_app/screens/penerima_hibah.dart';
 import 'package:ldkpi_news_app/screens/peraturan.dart';
@@ -8,11 +10,10 @@ import 'package:ldkpi_news_app/screens/struktur_manajemen_page.dart';
 import 'package:ldkpi_news_app/screens/struktur_organisasi.dart';
 import 'package:ldkpi_news_app/screens/survei_layanan.dart';
 import 'package:ldkpi_news_app/screens/visi_&_misi.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'investasi.dart';
 import 'pemberian_hibah.dart';
 import 'sejarah.dart';
-import 'package:ldkpi_news_app/screens/informasi_pengadaan.dart';
 
 class Kategori extends StatefulWidget {
   const Kategori({super.key});
@@ -111,7 +112,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -193,7 +193,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -315,7 +314,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -398,7 +396,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -493,7 +490,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -578,7 +574,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -673,7 +668,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -758,7 +752,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -881,7 +874,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -966,7 +958,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -1061,7 +1052,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -1142,7 +1132,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -1238,7 +1227,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -1321,7 +1309,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
@@ -1416,7 +1403,6 @@ class _KategoriState extends State<Kategori> {
                             width: 150,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff000000)),
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(5),
                               boxShadow: [
