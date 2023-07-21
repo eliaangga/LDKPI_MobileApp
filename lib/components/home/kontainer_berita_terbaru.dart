@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/screens/berita_konten.dart';
 
@@ -41,7 +42,7 @@ class KontainerBeritaTerbaru extends StatelessWidget {
                           width: 10,
                         ),
                         Container(
-                          margin: const EdgeInsets.only(right: 10),
+                          margin: const EdgeInsets.fromLTRB(1, 1, 10, 25),
                           width: 98,
                           height: 69,
                           child: ClipRRect(
@@ -53,48 +54,40 @@ class KontainerBeritaTerbaru extends StatelessWidget {
                         ),
                         Expanded(
                           child: Container(
-                            margin: const EdgeInsets.only(top: 8, bottom: 13),
+                            margin: const EdgeInsets.fromLTRB(10, 10, 15, 13),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  margin: const EdgeInsets.only(bottom: 8),
+                                  margin: const EdgeInsets.fromLTRB(5, 1, 1, 1),
                                   child: Text(
                                     provider.listBeritaTerbaru[i].title,
                                     style: TextStyle(
                                       fontSize: 13,
-                                      fontWeight: FontWeight.w500,
+                                      fontWeight: FontWeight.w900,
                                       color: Color(0xff000000),
                                     ),
                                   ),
                                 ),
                                 Container(
-                                  constraints: const BoxConstraints(
-                                    maxWidth: 330,
-                                  ),
-                                  child: RichText(
-                                    text: TextSpan(
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w300,
-                                        color: Color(0xff000000),
-                                      ),
-                                      children: [
-                                        TextSpan(
-                                            text: provider
-                                                .listBeritaTerbaru[i].isi),
-                                        TextSpan(
-                                          text: ' ....More',
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w700,
-                                            color: Color(0xff000000),
-                                          ),
-                                        ),
-                                      ],
+                                    margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                    constraints: const BoxConstraints(
+                                      maxWidth: 330,
                                     ),
-                                  ),
-                                ),
+                                    child: Html(
+                                      data: provider.listBeritaTerbaru[i].isi,
+                                      style: {
+                                        'html': Style(
+                                            fontFamily: 'Gotham',
+                                            textAlign: TextAlign.justify,
+                                            fontSize: FontSize(10),
+                                            fontWeight: FontWeight.w200,
+                                            lineHeight:
+                                                LineHeight(1.1111111111),
+                                            color: Color(0xff000000),
+                                            maxLines: 2),
+                                      },
+                                    )),
                               ],
                             ),
                           ),
