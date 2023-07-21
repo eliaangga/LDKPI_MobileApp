@@ -45,8 +45,7 @@ class _PenerimaHState extends State<PenerimaH> {
             ),
           ),
           Padding(
-            padding:
-                EdgeInsets.all(10.0), // Add your desired padding value here
+            padding: EdgeInsets.all(10.0),
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 10,
               child: Image(image: NetworkImage(widget.konten.gambarPenerima)),
