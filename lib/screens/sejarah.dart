@@ -46,7 +46,7 @@ class _SejarahState extends State<Sejarah> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 70),
+                  const SizedBox(width: 70),
                 ],
               ),
             ),

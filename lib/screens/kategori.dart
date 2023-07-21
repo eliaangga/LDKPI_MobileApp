@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/main.dart';
+import 'package:ldkpi_news_app/screens/faq.dart';
 import 'package:ldkpi_news_app/screens/informasi_pengadaan.dart';
 import 'package:ldkpi_news_app/screens/nilai_&_budaya.dart';
 import 'package:ldkpi_news_app/screens/penerima_hibah.dart';
@@ -8,7 +9,9 @@ import 'package:ldkpi_news_app/screens/peraturan.dart';
 import 'package:ldkpi_news_app/screens/proses_bisnis_page.dart';
 import 'package:ldkpi_news_app/screens/struktur_manajemen_page.dart';
 import 'package:ldkpi_news_app/screens/struktur_organisasi.dart';
+import 'package:ldkpi_news_app/screens/support_center.dart';
 import 'package:ldkpi_news_app/screens/survei_layanan.dart';
+import 'package:ldkpi_news_app/screens/tugas_&_fungsi.dart';
 import 'package:ldkpi_news_app/screens/visi_&_misi.dart';
 
 import 'investasi.dart';
@@ -736,17 +739,14 @@ class _KategoriState extends State<Kategori> {
                           ),
                         ),
                         GestureDetector(
-                          // onTap: () {
-                          //   koneksi.fetch().then((response) {
-                          //     Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) => TugasFungsi(
-                          //                 konten: response,
-                          //               )),
-                          //     );
-                          //   });
-                          // },
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TugasFungsi(),
+                              ),
+                            );
+                          },
                           child: Container(
                             padding: EdgeInsets.fromLTRB(29, 10, 25, 2.5),
                             width: 150,
@@ -1293,17 +1293,14 @@ class _KategoriState extends State<Kategori> {
                           ),
                         ),
                         GestureDetector(
-                          // onTap: () {
-                          //   koneksi.fetch().then((response) {
-                          //     Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) => CallUs(
-                          //                 konten: response,
-                          //               )),
-                          //     );
-                          //   });
-                          // },
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CallUs(),
+                              ),
+                            );
+                          },
                           child: Container(
                             padding: EdgeInsets.fromLTRB(29, 20, 25, 2.5),
                             width: 150,
@@ -1386,17 +1383,14 @@ class _KategoriState extends State<Kategori> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         GestureDetector(
-                          // onTap: () {
-                          //   koneksi.fetch().then((response) {
-                          //     Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) => FAQ(
-                          //                 konten: response,
-                          //               )),
-                          //     );
-                          //   });
-                          // },
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FAQ(),
+                              ),
+                            );
+                          },
                           child: Container(
                             margin: EdgeInsets.fromLTRB(30, 0, 34, 0),
                             padding: EdgeInsets.fromLTRB(31, 30, 31, 27),
