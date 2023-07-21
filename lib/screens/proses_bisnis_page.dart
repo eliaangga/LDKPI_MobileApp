@@ -59,20 +59,23 @@ class _ProsesBisnis extends State<ProsesBisnis> {
                 const TombolKembali(),
                 Expanded(
                   child: Container(
-                    width: 150,
+                    width: double.infinity,
                     alignment: Alignment.center,
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    child: Text(
-                      'Proses Bisnis',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
+                      child: Text(
+                        'Proses Bisnis',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.5,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(width: 50),
+                const SizedBox(width: 55),
               ],
             ),
           ),

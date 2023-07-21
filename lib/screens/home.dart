@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ldkpi_news_app/components/kontainer_berita_terbaru.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:ldkpi_news_app/components/kontainer_berita_terbaru.dart';
 import 'package:ldkpi_news_app/components/slider.dart';
 import 'package:ldkpi_news_app/components/slider2.dart';
 import 'package:ldkpi_news_app/components/video_player.dart';
@@ -471,18 +471,21 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           for (var i = 0; i < 3; i++)
             Consumer<BeritaPageProvider>(builder: (context, value, child) {
               return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BeritaKonten(
-                          kontenBerita: beritaProvider.listBeritaTerbaru[i],
-                        ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BeritaKonten(
+                        kontenBerita: beritaProvider.listBeritaTerbaru[i],
                       ),
-                    );
-                  },
-                  child:
-                      KontainerBeritaTerbaru(provider: beritaProvider, i: i));
+                    ),
+                  );
+                },
+                child: KontainerBeritaTerbaru(
+                  provider: beritaProvider,
+                  i: i,
+                ),
+              );
             }),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 0),
