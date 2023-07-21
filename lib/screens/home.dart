@@ -1,10 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ldkpi_news_app/components/home/kontainer_berita_terbaru.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ldkpi_news_app/components/kontainer_berita_terbaru.dart';
-import 'package:ldkpi_news_app/components/slider.dart';
-import 'package:ldkpi_news_app/components/slider2.dart';
-import 'package:ldkpi_news_app/components/video_player.dart';
+import 'package:ldkpi_news_app/components/home/slider.dart';
+import 'package:ldkpi_news_app/components/home/slider2.dart';
+import 'package:ldkpi_news_app/components/home/video_player.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/screens/berita_konten.dart';
@@ -470,22 +471,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           ),
           for (var i = 0; i < 3; i++)
             Consumer<BeritaPageProvider>(builder: (context, value, child) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BeritaKonten(
-                        kontenBerita: beritaProvider.listBeritaTerbaru[i],
-                      ),
-                    ),
-                  );
-                },
-                child: KontainerBeritaTerbaru(
-                  provider: beritaProvider,
-                  i: i,
-                ),
-              );
+              if (value.listBeritaTerbaru.isEmpty) {
+                return CupertinoActivityIndicator();
+              } else {
+                return KontainerBeritaTerbaru(provider: beritaProvider, i: i);
+              }
             }),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 0),
@@ -511,7 +501,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ),
           ),
           VideoPlayerWidget(
-              url: 'assets/assets/images/Abby.mp4',
+              // url: linkVideo, dataSourceType: DataSourceType.contentUri),
+              // url: 'assets/assets/images/Abby.mp4',
+              url: linkVideo,
               dataSourceType: DataSourceType.asset),
           const SizedBox(height: 5),
           Padding(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
+import 'package:ldkpi_news_app/screens/berita_konten.dart';
 
 class KontainerBeritaTerbaru extends StatelessWidget {
   BeritaPageProvider provider;
@@ -8,30 +9,31 @@ class KontainerBeritaTerbaru extends StatelessWidget {
   KontainerBeritaTerbaru({super.key, required this.provider, required this.i});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 14),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(bottom: 14),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      style:
-                      TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                      );
-                    },
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BeritaKonten(
+              kontenBerita: provider.listBeritaTerbaru[i],
+            ),
+          ),
+        );
+      },
+      child: Container(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 14),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,11 +95,11 @@ class KontainerBeritaTerbaru extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

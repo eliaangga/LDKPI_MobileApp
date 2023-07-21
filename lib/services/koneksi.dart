@@ -276,6 +276,27 @@ class Koneksi {
     return hasil;
   }
 
+  Future<String> fetchVideoProfile() async {
+    String hasil = '';
+    try {
+      final response =
+          await http.get(Uri.parse('$apiUrl/api/home?populate[0]=profilAID'));
+      if (response.statusCode == 200) {
+        dynamic jsonData = json.decode(response.body);
+        if (jsonData['data']['attributes']['profilAID']['data'][0] != null) {
+          hasil = apiUrl +
+              jsonData['data']['attributes']['profilAID']['data'][0]
+                  ['attributes']['url'];
+        }
+      } else {
+        hasil = 'Data not found';
+      }
+    } catch (e) {
+      hasil = 'Data catch';
+    }
+    return hasil;
+  }
+
   Future<InformasiPengadaanModel> fetchPengadaan() async {
     InformasiPengadaanModel hasil = InformasiPengadaanModel();
     try {

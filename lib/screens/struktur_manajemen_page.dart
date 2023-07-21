@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/components/pengarah.dart';
+import 'package:ldkpi_news_app/components/struktur_manajemen/direksi.dart';
+import 'package:ldkpi_news_app/components/struktur_manajemen/kadiv.dart';
+import 'package:ldkpi_news_app/components/struktur_manajemen/pemeriksa.dart';
+import 'package:ldkpi_news_app/components/struktur_manajemen/pengarah.dart';
+import 'package:ldkpi_news_app/components/struktur_manajemen/pengawas.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/struktur_manajemen_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StrukturManajemen extends StatefulWidget {
   StrukturManajemen({super.key, required this.listManajemen});
@@ -33,6 +38,29 @@ List<Item> generateItems() {
       isExpanded: index == 0 ? true : false,
     );
   });
+}
+
+Widget showComponent(int index) {
+  if (index == 0) {
+    return Pengarah(model: listAllManajemen[index].listAnggota);
+  } else if (index == 1) {
+    return Pengawas(
+      model: listAllManajemen[index].listAnggota,
+    );
+  } else if (index == 2) {
+    return Direksi(
+      model: listAllManajemen[index].listAnggota,
+    );
+  } else if (index == 3) {
+    return Pemeriksa(
+      model: listAllManajemen[index].listAnggota,
+    );
+  } else if (index == 4) {
+    return Kadiv(
+      model: listAllManajemen[index].listAnggota,
+    );
+  }
+  return Text('Data not found');
 }
 
 class _StrukturManajemen extends State<StrukturManajemen> {
@@ -67,7 +95,7 @@ class _StrukturManajemen extends State<StrukturManajemen> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
-                          'Struktur Manajemen',
+                          AppLocalizations.of(context)!.struktur_manajemen,
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -112,17 +140,7 @@ class _StrukturManajemen extends State<StrukturManajemen> {
                             vertical: 10, horizontal: 15),
                         width: double.maxFinite,
                         color: Colors.white,
-                        child:
-                            // ListView.builder(
-                            //   itemCount: 3,
-                            //   itemBuilder: (context, subIndex) => Text(
-                            //     listAllManajemen[subIndex].listAnggota[0].nama,
-                            //   ),
-                            // // )
-                            //     Text(
-                            //   listAllManajemen[index].listAnggota[0].nama,
-                            // ),
-                            Pengarah(model: listAllManajemen[index]),
+                        child: showComponent(index),
                       )
                     ],
                   ),

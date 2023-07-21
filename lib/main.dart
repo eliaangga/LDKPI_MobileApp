@@ -15,6 +15,10 @@ void main() {
   koneksi.fetchMarquee().then((response) {
     marqueeKonten = response;
   });
+  koneksi.fetchVideoProfile().then((response) {
+    linkVideo = response;
+    print('link video $linkVideo');
+  });
   koneksi.fetchSebaranHibah().then((response) {
     listSebaranHibah = response;
     runApp(ChangeNotifierProvider(
@@ -35,6 +39,7 @@ ConfigLanguage konfig = ConfigLanguage();
 List<String> listCarousel = [];
 List<String> listSebaranHibah = [];
 String marqueeKonten = '';
+String linkVideo = '';
 
 class App extends StatefulWidget {
   App({Key? key}) : super(key: key);
