@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/investasi_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Investasi extends StatefulWidget {
@@ -85,9 +86,11 @@ class _InvestasiState extends State<Investasi> {
                                   child: Text('Data Not Found'),
                                 )
                               : Html(
-                                  onLinkTap:
-                                      (url, context, attributes, element) {
-                                    launchUrlString(url!);
+                                  onLinkTap: (url, context, attributes,
+                                      element) async {
+                                    if (await canLaunchUrl(Uri.parse(url!))) {
+                                      await launchUrl(Uri.parse(url));
+                                    }
                                   },
                                   data: widget.invest.konten,
                                   style: {

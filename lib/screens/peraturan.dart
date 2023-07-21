@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/peraturan_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Peraturan extends StatefulWidget {
@@ -75,8 +76,14 @@ class _PeraturanState extends State<Peraturan> {
                                     color: Color(0xff000000),
                                   ),
                                 },
-                                onLinkTap: (url, context, attributes, element) {
-                                  launchUrlString(url!);
+                                // onLinkTap: (url, context, attributes, element) {
+                                //   launchUrlString(url!);
+                                // },
+                                onLinkTap:
+                                    (url, context, attributes, element) async {
+                                  if (await canLaunchUrl(Uri.parse(url!))) {
+                                    await launchUrl(Uri.parse(url));
+                                  }
                                 },
                               ),
                       ],
