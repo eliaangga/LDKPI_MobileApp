@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ldkpi_news_app/models/negara_model.dart';
 
 class KontainerNegara extends StatelessWidget {
-  String nama, gambar;
-  KontainerNegara({Key? key, required this.nama, required this.gambar})
-      : super(key: key);
+  final NegaraModel model;
+  const KontainerNegara({Key? key, required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +15,11 @@ class KontainerNegara extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: MediaQuery.of(context).size.width / 8 - 15,
-            backgroundImage: NetworkImage(gambar),
+            backgroundImage: NetworkImage(model.gambar),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
-            nama,
+            model.nama,
             softWrap: true,
             textAlign: TextAlign.center,
             style: TextStyle(

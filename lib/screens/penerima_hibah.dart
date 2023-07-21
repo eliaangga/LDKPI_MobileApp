@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/components/kontainer_negara.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/penerima_hibah_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PenerimaH extends StatefulWidget {
   PenerimaHibahModel konten;
@@ -29,10 +30,10 @@ class _PenerimaHState extends State<PenerimaH> {
                   child: Container(
                     width: 100,
                     alignment: Alignment.center,
-                    margin: EdgeInsets.fromLTRB(30, 20, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(30, 20, 0, 0),
                     child: Text(
-                      'Penerima Hibah',
-                      style: TextStyle(
+                      AppLocalizations.of(context)!.penerima_hibah,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 22,
@@ -45,8 +46,7 @@ class _PenerimaHState extends State<PenerimaH> {
             ),
           ),
           Padding(
-            padding:
-                EdgeInsets.all(10.0), // Add your desired padding value here
+            padding: const EdgeInsets.all(10.0),
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 10,
               child: Image(image: NetworkImage(widget.konten.gambarPenerima)),
@@ -66,21 +66,16 @@ class _PenerimaHState extends State<PenerimaH> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      KontainerNegara(
-                          nama: tahun.listNegara[(index * 4)].nama,
-                          gambar: tahun.listNegara[(index * 4)].gambar),
+                      KontainerNegara(model: tahun.listNegara[(index * 4)]),
                       if ((index * 4) + 1 < tahun.listNegara.length)
                         KontainerNegara(
-                            nama: tahun.listNegara[(index * 4) + 1].nama,
-                            gambar: tahun.listNegara[(index * 4) + 1].gambar),
+                            model: tahun.listNegara[(index * 4) + 1]),
                       if ((index * 4) + 2 < tahun.listNegara.length)
                         KontainerNegara(
-                            nama: tahun.listNegara[(index * 4) + 2].nama,
-                            gambar: tahun.listNegara[(index * 4) + 2].gambar),
+                            model: tahun.listNegara[(index * 4) + 2]),
                       if ((index * 4) + 3 < tahun.listNegara.length)
                         KontainerNegara(
-                            nama: tahun.listNegara[(index * 4) + 3].nama,
-                            gambar: tahun.listNegara[(index * 4) + 3].gambar),
+                            model: tahun.listNegara[(index * 4) + 3]),
                     ],
                   ),
                 Container(
