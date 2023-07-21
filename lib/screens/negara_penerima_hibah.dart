@@ -17,7 +17,7 @@ class BeritaKonten extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: 90,
+            height: 70,
             color: const Color(0xFF02347C),
             child: Row(
               children: [

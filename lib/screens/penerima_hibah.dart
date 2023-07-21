@@ -44,7 +44,7 @@ class _PenerimaHState extends State<PenerimaH> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 60),
+                  const SizedBox(width: 55),
                 ],
               ),
             ),
