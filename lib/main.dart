@@ -14,13 +14,20 @@ void main() {
   });
   koneksi.fetchMarquee().then((response) {
     marqueeKonten = response;
-    print('marquee $marqueeKonten');
   });
   koneksi.fetchSebaranHibah().then((response) {
     listSebaranHibah = response;
     runApp(ChangeNotifierProvider(
-        create: (context) => BeritaPageProvider(), child: App()));
+      create: (context) => BeritaPageProvider(),
+      child: App(),
+    ));
   });
+  // koneksi.fetchLatestNews().then((response) {
+  //   runApp(ChangeNotifierProvider(
+  //     create: (context) => BeritaPageProvider(),
+  //     child: App(),
+  //   ));
+  // });
 }
 
 Koneksi koneksi = Koneksi();
