@@ -13,7 +13,7 @@ class VideoPlayerWidget extends StatefulWidget {
       {super.key, required this.url, required this.dataSourceType});
 
   @override
-  _VideoPlayerWidgetState createState() => _VideoPlayerWidgetState();
+  State<VideoPlayerWidget> createState() => _VideoPlayerWidgetState();
 }
 
 enum DataSourceType {

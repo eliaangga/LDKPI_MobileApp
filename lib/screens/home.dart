@@ -474,28 +474,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               if (value.listBeritaTerbaru.isEmpty) {
                 return CupertinoActivityIndicator();
               } else {
-                return GestureDetector(
-                    onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => BeritaKonten(
-                      //       kontenBerita: beritaProvider.listBeritaTerbaru[i],
-                      //     ),
-                      //   ),
-                      // );
-                      koneksi.fetchInvest().then((response) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Investasi(
-                                    invest: response,
-                                  )),
-                        );
-                      });
-                    },
-                    child:
-                        KontainerBeritaTerbaru(provider: beritaProvider, i: i));
+                return KontainerBeritaTerbaru(provider: beritaProvider, i: i);
               }
             }),
           Padding(
