@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ldkpi_news_app/components/home/kontainer_berita_terbaru.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:ldkpi_news_app/components/home/kontainer_berita_terbaru.dart';
 import 'package:ldkpi_news_app/components/home/slider.dart';
 import 'package:ldkpi_news_app/components/home/slider2.dart';
 import 'package:ldkpi_news_app/components/home/video_player.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
-import 'package:ldkpi_news_app/screens/berita_konten.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
 import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
 import 'package:marquee_widget/marquee_widget.dart';

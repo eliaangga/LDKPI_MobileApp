@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ldkpi_news_app/models/berita_model.dart';
 
-class BeritaKonten extends StatelessWidget {
-  final BeritaModel kontenBerita;
-  const BeritaKonten({
-    super.key,
-    required this.kontenBerita,
-  });
+class NPH extends StatefulWidget {
+  const NPH({Key? key}) : super(key: key);
+
+  @override
+  _NPHState createState() => _NPHState();
+}
+
+class _NPHState extends State<NPH> {
+  final TextEditingController _controllerSearch = TextEditingController();
+  late List<String> _listNPH;
+
+  @override
+  void initState() {
+    super.initState();
+    _listNPH = [];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +87,7 @@ class BeritaKonten extends StatelessWidget {
                   margin: const EdgeInsets.only(
                       top: 1, left: 25, bottom: 10, right: 25),
                   child: Text(
-                    kontenBerita.title,
+                    'mew',
                     style: const TextStyle(
                         fontSize: 23, fontWeight: FontWeight.w900),
                   ),
@@ -88,12 +96,8 @@ class BeritaKonten extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width - 50,
-                      child: Image.network(
-                        kontenBerita.img,
-                        fit: BoxFit.fitWidth,
-                      ),
-                    ),
+                        width: MediaQuery.of(context).size.width - 50,
+                        child: Image.asset('')),
                   ],
                 ),
                 Container(
@@ -104,7 +108,7 @@ class BeritaKonten extends StatelessWidget {
                     right: 20,
                   ),
                   child: Html(
-                    data: kontenBerita.isi,
+                    data: 'mew mew',
                     style: {
                       'html': Style(
                         fontFamily: 'Gotham',
@@ -123,15 +127,6 @@ class BeritaKonten extends StatelessWidget {
                     left: 25,
                     right: 25,
                     bottom: 20,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                          '${AppLocalizations.of(context)!.penulis} : ${kontenBerita.penulis}'),
-                      Text(
-                          '${AppLocalizations.of(context)!.editor}  : ${kontenBerita.editor}'),
-                    ],
                   ),
                 )
               ],
