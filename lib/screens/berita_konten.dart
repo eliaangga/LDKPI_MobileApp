@@ -38,13 +38,51 @@ class BeritaKonten extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 115),
               ],
             ),
           ),
           Expanded(
             child: ListView(
               children: [
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.fromLTRB(4, 0, 20, 20),
+                        ),
+                        child: Container(
+                          width: 61,
+                          height: 18,
+                          decoration: BoxDecoration(
+                            color: Color(0xff02275c),
+                            borderRadius: BorderRadius.circular(3),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '< Kembali',
+                              style: TextStyle(
+                                fontFamily: 'Gotham',
+                                fontSize: 8,
+                                fontWeight: FontWeight.w700,
+                                height: 1.25,
+                                color: Color(0xffffffff),
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 Container(
                   margin: const EdgeInsets.only(
                       top: 1, left: 25, bottom: 10, right: 25),

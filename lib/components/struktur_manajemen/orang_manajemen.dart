@@ -12,8 +12,8 @@ class OrangManajemen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(5),
-      width: MediaQuery.of(context).size.width / 2 - 10,
+      margin: const EdgeInsets.all(1),
+      width: MediaQuery.of(context).size.width / 3 - 10,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

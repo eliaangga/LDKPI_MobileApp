@@ -56,8 +56,14 @@ class _ProsesBisnis extends State<ProsesBisnis> {
         children: [
           Container(
             width: double.infinity,
-            height: 90,
-            color: const Color(0xFF02347C),
+            height: 135,
+            decoration: BoxDecoration(
+              color: const Color(0xFF02347C),
+              image: DecorationImage(
+                image: AssetImage('assets/assets/images/kemenkeu.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
             child: Row(
               children: [
                 SizedBox(width: 20),

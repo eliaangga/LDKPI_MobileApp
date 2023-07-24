@@ -21,8 +21,14 @@ class _SurveiLayananState extends State<SurveiLayanan> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              height: 100,
-              color: const Color(0xFF02347C),
+              height: 145,
+              decoration: BoxDecoration(
+                color: const Color(0xFF02347C),
+                image: DecorationImage(
+                  image: AssetImage('assets/assets/images/kemenkeu.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
               child: Row(
                 children: [
                   SizedBox(width: 20),
