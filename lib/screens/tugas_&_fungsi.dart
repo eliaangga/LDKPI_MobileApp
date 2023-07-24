@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
+import 'package:ldkpi_news_app/models/tugas_fungsi_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TugasFungsi extends StatefulWidget {
-  const TugasFungsi({Key? key}) : super(key: key);
+  final TugasFungsiModel model;
+  const TugasFungsi({Key? key, required this.model}) : super(key: key);
 
   @override
   State<TugasFungsi> createState() => _TugasFungsiState();
@@ -32,7 +35,7 @@ class _TugasFungsiState extends State<TugasFungsi> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
-                          'Tugas & Fungsi',
+                          AppLocalizations.of(context)!.tugas_fungsi,
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -65,35 +68,15 @@ class _TugasFungsiState extends State<TugasFungsi> {
                         children: [
                           Container(
                             margin: EdgeInsets.only(bottom: 60.5),
-                            width: 328,
+                            width: MediaQuery.of(context).size.width - 25,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Align(
                               alignment: Alignment.center,
                               child: SizedBox(
-                                width: 329,
-                                height: 154,
-                                child:
-                                    Image.asset('assets/assets/images/8.gif'),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(
-                              top: 0,
-                              left: 25,
-                              bottom: 0,
-                              right: 25,
-                            ),
-                            child: Text(
-                              "The child of prophecy, who was chosen along with the Staff of Selection. She appears a touch younger, looking as she did at the halfway point, right in the middle of her journey to reach Camelot. Yay, it's finally my turn to shine! Caster Altria will do the very best she can!",
-                              style: TextStyle(
-                                fontFamily: 'Gotham',
-                                fontSize: 9,
-                                fontWeight: FontWeight.w400,
-                                height: 1.1111111111,
-                                color: Color(0xff000000),
+                                child: Image(
+                                    image: NetworkImage(widget.model.gambar)),
                               ),
                             ),
                           ),

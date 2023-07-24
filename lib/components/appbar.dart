@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Appbar extends StatelessWidget implements PreferredSizeWidget {
   const Appbar({super.key});
@@ -29,8 +30,8 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
           Container(
             margin: const EdgeInsets.only(left: 2.5),
             width: 40,
-            child: const Image(
-              image: AssetImage('assets/assets/images/kemenkeu.png'),
+            child: Image(
+              image: AssetImage(AppLocalizations.of(context)!.gambarAppBar),
             ),
           ),
           Container(

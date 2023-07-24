@@ -15,8 +15,9 @@ import 'package:ldkpi_news_app/models/struktur_manajemen_model.dart';
 import 'package:ldkpi_news_app/models/struktur_organisasi_model.dart';
 import 'package:ldkpi_news_app/models/survei_layanan_model.dart';
 import 'package:ldkpi_news_app/models/tahun_model.dart';
+import 'package:ldkpi_news_app/models/tugas_fungsi_model.dart';
 import 'package:ldkpi_news_app/models/visimisi_model.dart';
-import 'package:ldkpi_news_app/screens/struktur_manajemen_page.dart';
+import 'package:ldkpi_news_app/screens/tugas_&_fungsi.dart';
 
 class Koneksi {
   String apiUrl = "http://10.201.18.243:1337";
@@ -253,6 +254,33 @@ class Koneksi {
           gambarPenerima: gambar,
         );
         hasil.listTahun = listTahun;
+      } else {
+        print('Request failed with status: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+    return hasil;
+  }
+
+  Future<TugasFungsiModel> fetchTugasFungsi() async {
+    TugasFungsiModel hasil = TugasFungsiModel();
+    try {
+      final response = await http.get(
+          Uri.parse('$apiUrl/api/tugas-fungsi?locale=$useLanguage&populate=*'));
+      if (response.statusCode == 200) {
+        dynamic jsonData = json.decode(response.body);
+        String gambar = '';
+        if (jsonData['data']['attributes']['gambarTugasFungsi']['data'] !=
+            null) {
+          gambar = apiUrl +
+              jsonData['data']['attributes']['gambarTugasFungsi']['data']
+                  ['attributes']['url'];
+        }
+
+        hasil = TugasFungsiModel(
+          gambar: gambar,
+        );
       } else {
         print('Request failed with status: ${response.statusCode}');
       }

@@ -31,5 +31,6 @@
     "editor": "Editor",
     "urlLang": "en",
     "bahasa": "Language",
-    "kembali": "Back"
+    "kembali": "Back",
+    "gambarAppBar": "assets/assets/images/kemenkeu.png"
 }

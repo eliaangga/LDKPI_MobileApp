@@ -31,5 +31,6 @@
     "editor": "Editor",
     "urlLang": "id",
     "bahasa": "Bahasa",
-    "kembali": "Kembali"
+    "kembali": "Kembali",
+    "gambarAppBar": "assets/assets/images/ldkpi.png"
 }

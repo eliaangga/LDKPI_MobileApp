@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/negara_model.dart';
 import 'package:ldkpi_news_app/main.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DetailPenerimaHibah extends StatelessWidget {
   final NegaraModel negara;
@@ -26,38 +26,7 @@ class DetailPenerimaHibah extends StatelessWidget {
             child: Row(
               children: [
                 SizedBox(width: 20),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 55, 0),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.fromLTRB(4, 20, 4, 4),
-                    ),
-                    child: Container(
-                      width: 61,
-                      height: 18,
-                      decoration: BoxDecoration(
-                        color: Color(0xff02275c),
-                        borderRadius: BorderRadius.circular(3),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '< ${AppLocalizations.of(context)!.kembali}',
-                          style: TextStyle(
-                            fontFamily: 'Gotham',
-                            fontSize: 8,
-                            fontWeight: FontWeight.w700,
-                            height: 1.25,
-                            color: Color(0xffffffff),
-                            letterSpacing: 0.5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                TombolKembali(),
                 Expanded(
                   child: Container(
                     width: double.infinity,

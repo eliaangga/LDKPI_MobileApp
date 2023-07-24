@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/pemberian_hibah_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PH extends StatefulWidget {
   PemberianHibahModel konten;
@@ -33,7 +34,7 @@ class _PHState extends State<PH> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(5, 25, 10, 10),
                         child: Text(
-                          'Pemberian Hibah',
+                          AppLocalizations.of(context)!.pemberian_hibah,
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
