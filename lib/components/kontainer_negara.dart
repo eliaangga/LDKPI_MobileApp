@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/models/negara_model.dart';
+import 'package:ldkpi_news_app/screens/detail_penerima_hibah.dart';
 
 class KontainerNegara extends StatelessWidget {
   final NegaraModel model;
@@ -8,7 +9,15 @@ class KontainerNegara extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => DetailPenerimaHibah(
+                    negara: model,
+                  )),
+        );
+      },
       child: Container(
         margin: const EdgeInsets.all(10),
         width: MediaQuery.of(context).size.width / 4 - 20,

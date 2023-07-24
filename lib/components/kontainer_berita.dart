@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:ldkpi_news_app/models/berita_model.dart';
 
 class KontainerBerita extends StatelessWidget {
-  String judul, isi, gambar;
+  BeritaModel model;
 
-  KontainerBerita(
-      {super.key,
-      required this.judul,
-      required this.isi,
-      required this.gambar});
+  KontainerBerita({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +35,17 @@ class KontainerBerita extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image(
-                image: NetworkImage(gambar),
+                image: NetworkImage(model.img),
                 fit: BoxFit.fitWidth,
               ),
             ),
           ),
-          Text(judul),
+          Text(model.title),
           const SizedBox(
             height: 5,
           ),
           Html(
-            data: isi,
+            data: model.isi,
             style: {
               'html': Style(
                 fontFamily: 'Gotham',

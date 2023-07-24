@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ldkpi_news_app/models/berita_model.dart';
+import 'package:ldkpi_news_app/models/negara_model.dart';
 
-class BeritaKonten extends StatelessWidget {
-  final BeritaModel kontenBerita;
-  const BeritaKonten({
+class DetailPenerimaHibah extends StatelessWidget {
+  final NegaraModel negara;
+  const DetailPenerimaHibah({
     super.key,
-    required this.kontenBerita,
+    required this.negara,
   });
 
   @override
@@ -40,7 +40,7 @@ class BeritaKonten extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          '< Kembali',
+                          '< ${AppLocalizations.of(context)!.kembali}',
                           style: TextStyle(
                             fontFamily: 'Gotham',
                             fontSize: 8,
@@ -79,7 +79,7 @@ class BeritaKonten extends StatelessWidget {
                   margin: const EdgeInsets.only(
                       top: 1, left: 25, bottom: 10, right: 25),
                   child: Text(
-                    kontenBerita.title,
+                    negara.nama,
                     style: const TextStyle(
                         fontSize: 23, fontWeight: FontWeight.w900),
                   ),
@@ -90,7 +90,7 @@ class BeritaKonten extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width - 50,
                       child: Image.network(
-                        kontenBerita.img,
+                        negara.gambar,
                         fit: BoxFit.fitWidth,
                       ),
                     ),
@@ -104,7 +104,7 @@ class BeritaKonten extends StatelessWidget {
                     right: 20,
                   ),
                   child: Html(
-                    data: kontenBerita.isi,
+                    data: negara.detail,
                     style: {
                       'html': Style(
                         fontFamily: 'Gotham',
@@ -117,23 +117,6 @@ class BeritaKonten extends StatelessWidget {
                     },
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 50,
-                    left: 25,
-                    right: 25,
-                    bottom: 20,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                          '${AppLocalizations.of(context)!.penulis} : ${kontenBerita.penulis}'),
-                      Text(
-                          '${AppLocalizations.of(context)!.editor}  : ${kontenBerita.editor}'),
-                    ],
-                  ),
-                )
               ],
             ),
           ),

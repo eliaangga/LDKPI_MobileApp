@@ -239,6 +239,7 @@ class Koneksi {
           for (var negara in tahun['detailNegara']) {
             NegaraModel hasilNegara = NegaraModel(
                 nama: negara['namaNegara'],
+                detail: negara['detail'],
                 gambar: apiUrl +
                     negara['gambarNegara']['data']['attributes']['url']);
             listNegara.add(hasilNegara);
