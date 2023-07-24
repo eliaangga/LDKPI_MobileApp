@@ -3,6 +3,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/peraturan_model.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Peraturan extends StatefulWidget {
   PeraturanModel konten;
@@ -40,7 +41,7 @@ class _PeraturanState extends State<Peraturan> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
-                          'Peraturan',
+                          AppLocalizations.of(context)!.peraturan,
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

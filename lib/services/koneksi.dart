@@ -9,13 +9,15 @@ import 'package:ldkpi_news_app/models/nilai_budaya_model.dart';
 import 'package:ldkpi_news_app/models/pemberian_hibah_model.dart';
 import 'package:ldkpi_news_app/models/penerima_hibah_model.dart';
 import 'package:ldkpi_news_app/models/peraturan_model.dart';
+import 'package:ldkpi_news_app/models/proses_bisnis_model.dart';
 import 'package:ldkpi_news_app/models/sejarah_model.dart';
 import 'package:ldkpi_news_app/models/struktur_manajemen_model.dart';
 import 'package:ldkpi_news_app/models/struktur_organisasi_model.dart';
 import 'package:ldkpi_news_app/models/survei_layanan_model.dart';
 import 'package:ldkpi_news_app/models/tahun_model.dart';
+import 'package:ldkpi_news_app/models/tugas_fungsi_model.dart';
 import 'package:ldkpi_news_app/models/visimisi_model.dart';
-import 'package:ldkpi_news_app/screens/struktur_manajemen_page.dart';
+import 'package:ldkpi_news_app/screens/tugas_&_fungsi.dart';
 
 class Koneksi {
   String apiUrl = "http://10.201.18.243:1337";
@@ -46,8 +48,8 @@ class Koneksi {
   Future<NilaiBudayaModel> fetchNilaiBudaya() async {
     NilaiBudayaModel hasil = NilaiBudayaModel();
     try {
-      final response = await http
-          .get(Uri.parse('$apiUrl/api/nilai-budaya?populate=*&locale=id'));
+      final response = await http.get(
+          Uri.parse('$apiUrl/api/nilai-budaya?populate=*&locale=$useLanguage'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = NilaiBudayaModel(
@@ -89,8 +91,8 @@ class Koneksi {
   Future<StrukturOrganisasiModel> fetchOrganisasi() async {
     StrukturOrganisasiModel hasil = StrukturOrganisasiModel();
     try {
-      final response = await http
-          .get(Uri.parse('$apiUrl/api/organisasi?populate=*&locale=id'));
+      final response = await http.get(
+          Uri.parse('$apiUrl/api/organisasi?populate=*&locale=$useLanguage'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         String gambar = '';
@@ -115,8 +117,8 @@ class Koneksi {
   Future<PemberianHibahModel> fetchPemberiHibah() async {
     PemberianHibahModel hasil = PemberianHibahModel();
     try {
-      final response = await http
-          .get(Uri.parse('$apiUrl/api/pemberian-hibah?populate=*&locale=id'));
+      final response = await http.get(Uri.parse(
+          '$apiUrl/api/pemberian-hibah?populate=*&locale=$useLanguage'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = PemberianHibahModel(
@@ -134,8 +136,8 @@ class Koneksi {
   Future<PeraturanModel> fetchPeraturan() async {
     PeraturanModel hasil = PeraturanModel();
     try {
-      final response = await http
-          .get(Uri.parse('$apiUrl/api/peraturan?populate=*&locale=id'));
+      final response = await http.get(
+          Uri.parse('$apiUrl/api/peraturan?populate=*&locale=$useLanguage'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = PeraturanModel(
@@ -153,8 +155,8 @@ class Koneksi {
   Future<SejarahModel> fetchSejarah() async {
     SejarahModel hasil = SejarahModel();
     try {
-      final response =
-          await http.get(Uri.parse('$apiUrl/api/sejarah?populate=*&locale=id'));
+      final response = await http
+          .get(Uri.parse('$apiUrl/api/sejarah?populate=*&locale=$useLanguage'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         String gambar = '';
@@ -179,8 +181,8 @@ class Koneksi {
   Future<SurveiLayananModel> fetchSurvei() async {
     SurveiLayananModel hasil = SurveiLayananModel();
     try {
-      final response = await http
-          .get(Uri.parse('$apiUrl/api/survey-layanan?populate=*&locale=id'));
+      final response = await http.get(Uri.parse(
+          '$apiUrl/api/survey-layanan?populate=*&locale=$useLanguage'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = SurveiLayananModel(
@@ -198,8 +200,8 @@ class Koneksi {
   Future<VisiMisiModel> fetchVisiMisi() async {
     VisiMisiModel hasil = VisiMisiModel();
     try {
-      final response = await http
-          .get(Uri.parse('$apiUrl/api/visi-misi?populate=*&locale=id'));
+      final response = await http.get(
+          Uri.parse('$apiUrl/api/visi-misi?populate=*&locale=$useLanguage'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         String gambar = '';
@@ -224,7 +226,7 @@ class Koneksi {
     PenerimaHibahModel hasil = PenerimaHibahModel();
     try {
       final response = await http.get(Uri.parse(
-          '$apiUrl/api/penerima-hibah?locale=id&populate[0]=gambarPenerima&populate[1]=listPenerima&populate[2]=listPenerima.detailNegara&populate[3]=listPenerima.detailNegara.gambarNegara'));
+          '$apiUrl/api/penerima-hibah?locale=$useLanguage&populate[0]=gambarPenerima&populate[1]=listPenerima&populate[2]=listPenerima.detailNegara&populate[3]=listPenerima.detailNegara.gambarNegara'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         String gambar = '';
@@ -252,6 +254,33 @@ class Koneksi {
           gambarPenerima: gambar,
         );
         hasil.listTahun = listTahun;
+      } else {
+        print('Request failed with status: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+    return hasil;
+  }
+
+  Future<TugasFungsiModel> fetchTugasFungsi() async {
+    TugasFungsiModel hasil = TugasFungsiModel();
+    try {
+      final response = await http.get(
+          Uri.parse('$apiUrl/api/tugas-fungsi?locale=$useLanguage&populate=*'));
+      if (response.statusCode == 200) {
+        dynamic jsonData = json.decode(response.body);
+        String gambar = '';
+        if (jsonData['data']['attributes']['gambarTugasFungsi']['data'] !=
+            null) {
+          gambar = apiUrl +
+              jsonData['data']['attributes']['gambarTugasFungsi']['data']
+                  ['attributes']['url'];
+        }
+
+        hasil = TugasFungsiModel(
+          gambar: gambar,
+        );
       } else {
         print('Request failed with status: ${response.statusCode}');
       }
@@ -444,61 +473,25 @@ class Koneksi {
       } else {
         print('Request failed with status: ${response.statusCode}');
       }
-
-      //   final response = await http.get(Uri.parse(
-      //       'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=15'));
-      //   if (response.statusCode == 200) {
-      //     dynamic jsonData = json.decode(response.body);
-      //     for (var article in jsonData['features']) {
-      //       BeritaModel newBlog = BeritaModel(
-
-      //         title: article['properties']['title'],
-      //         isi: article['properties']['type'],
-      //         img:
-      //             'https://www.hdwallpapers.in/download/avengers_infinity_war_4k_8k-wide.jpg',
-      //         penulis: 'JONI',
-      //         editor: 'JONI',
-      //       );
-      //       listStruktur.add(newBlog);
-      //     }
-      //   } else {
-      //     print('Request failed with status: ${response.statusCode}');
-      //   }
     } catch (e) {
       print('Error: $e');
     }
     return hasil;
   }
 
-  Future<List<BeritaModel>> fetchProcess() async {
-    List<BeritaModel> listProsesBisnis = [];
-
+  Future<ProsesBisnisModel> fetchProcess() async {
+    ProsesBisnisModel hasil = ProsesBisnisModel();
     try {
-      // final response = await http.get(Uri.parse(
-      //     '$apiUrl/api/beritas?populate=*&locale=en'));
-      final response = await http.get(Uri.parse(
-          'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2022-03-05&endtime=2022-03-06&limit=5'));
+      final response = await http.get(
+          Uri.parse('$apiUrl/api/proses-bizz?locale=$useLanguage&populate=*'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
-        // for (var article in jsonData['data']) {
-        for (var article in jsonData['features']) {
-          BeritaModel newBlog = BeritaModel(
-            //   title: article['attributes']['judul'],
-            //   isi: article['attributes']['konten'],
-            //   img: apiUrl +
-            //       article['attributes']['gambarBerita']['data']['attributes']
-            //           ['formats']['large']['url'],
-            //   penulis: article['attributes']['authorEditor']['author'],
-            //   editor: article['attributes']['authorEditor']['editor'],
-            // );
-            title: article['properties']['title'],
-            isi: article['properties']['type'],
-            img:
-                'https://www.hdwallpapers.in/download/avengers_infinity_war_4k_8k-wide.jpg',
-            penulis: 'JONI',
-            editor: 'JONI',
-          );
-          listProsesBisnis.add(newBlog);
+        if (jsonData['data'] != null) {
+          hasil = ProsesBisnisModel(
+              konten: jsonData['data']['attributes']['konten'],
+              gambar: apiUrl +
+                  jsonData['data']['attributes']['gambarProses']['data']
+                      ['attributes']['url']);
         }
       } else {
         print('Request failed with status: ${response.statusCode}');
@@ -506,14 +499,14 @@ class Koneksi {
     } catch (e) {
       print('Error: $e');
     }
-    return listProsesBisnis;
+    return hasil;
   }
 
   Future<List<String>> fetchSebaranHibah() async {
     List<String> hasil = [];
     try {
       final response = await http.get(Uri.parse(
-          '$apiUrl/api/penerima-hibah?locale=en&populate[0]=gambarPenerimaMobile'));
+          '$apiUrl/api/penerima-hibah?populate[0]=gambarPenerimaMobile'));
 
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);

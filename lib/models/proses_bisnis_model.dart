@@ -1,4 +1,4 @@
 class ProsesBisnisModel {
-  String? konten;
-  ProsesBisnisModel({this.konten});
+  String konten, gambar;
+  ProsesBisnisModel({this.konten = '', this.gambar = ''});
 }

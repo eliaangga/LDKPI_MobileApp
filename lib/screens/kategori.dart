@@ -740,12 +740,16 @@ class _KategoriState extends State<Kategori> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => TugasFungsi(),
-                              ),
-                            );
+                            koneksi.fetchTugasFungsi().then((response) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => TugasFungsi(
+                                    model: response,
+                                  ),
+                                ),
+                              );
+                            });
                           },
                           child: Container(
                             padding: EdgeInsets.fromLTRB(29, 10, 25, 2.5),
@@ -863,7 +867,7 @@ class _KategoriState extends State<Kategori> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => ProsesBisnis(
-                                          listProsesBisnis: response,
+                                          model: response,
                                         )),
                               );
                             });
