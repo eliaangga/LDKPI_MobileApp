@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:ldkpi_news_app/models/negara_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class NPH extends StatefulWidget {
-  const NPH({Key? key}) : super(key: key);
-
-  @override
-  _NPHState createState() => _NPHState();
-}
-
-class _NPHState extends State<NPH> {
-  final TextEditingController _controllerSearch = TextEditingController();
-  late List<String> _listNPH;
-
-  @override
-  void initState() {
-    super.initState();
-    _listNPH = [];
-  }
+class DetailPenerimaHibah extends StatelessWidget {
+  final NegaraModel negara;
+  const DetailPenerimaHibah({
+    super.key,
+    required this.negara,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +40,7 @@ class _NPHState extends State<NPH> {
                       ),
                       child: Center(
                         child: Text(
-                          '< Kembali',
+                          '< ${AppLocalizations.of(context)!.kembali}',
                           style: TextStyle(
                             fontFamily: 'Gotham',
                             fontSize: 8,
@@ -87,7 +79,7 @@ class _NPHState extends State<NPH> {
                   margin: const EdgeInsets.only(
                       top: 1, left: 25, bottom: 10, right: 25),
                   child: Text(
-                    'mew',
+                    negara.nama,
                     style: const TextStyle(
                         fontSize: 23, fontWeight: FontWeight.w900),
                   ),
@@ -96,8 +88,12 @@ class _NPHState extends State<NPH> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                        width: MediaQuery.of(context).size.width - 50,
-                        child: Image.asset('')),
+                      width: MediaQuery.of(context).size.width - 50,
+                      child: Image.network(
+                        negara.gambar,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
                   ],
                 ),
                 Container(
@@ -108,7 +104,7 @@ class _NPHState extends State<NPH> {
                     right: 20,
                   ),
                   child: Html(
-                    data: 'mew mew',
+                    data: negara.detail,
                     style: {
                       'html': Style(
                         fontFamily: 'Gotham',

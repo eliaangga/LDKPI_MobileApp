@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/models/negara_model.dart';
-import 'package:ldkpi_news_app/screens/negara_penerima_hibah.dart';
+import 'package:ldkpi_news_app/screens/detail_penerima_hibah.dart';
 
 class KontainerNegara extends StatelessWidget {
   final NegaraModel model;
-  const KontainerNegara({Key? key, required this.model}) : super(key: key);
+  KontainerNegara({Key? key, required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +13,9 @@ class KontainerNegara extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const NPH(),
-          ),
+              builder: (context) => DetailPenerimaHibah(
+                    negara: model,
+                  )),
         );
       },
       child: Container(

@@ -158,13 +158,8 @@ class _BeritaPageState extends State<BeritaPage> {
                                       );
                                     },
                                     child: KontainerBerita(
-                                      judul: beritaProvider
-                                          .listBeritaTampil[index * 2].title,
-                                      isi: beritaProvider
-                                          .listBeritaTampil[index * 2].isi,
-                                      gambar: beritaProvider
-                                          .listBeritaTampil[index * 2].img,
-                                    ),
+                                        model: beritaProvider
+                                            .listBeritaTampil[index * 2]),
                                   ),
                                   if ((index * 2) + 1 <
                                       beritaProvider.listBeritaTampil.length)
@@ -182,15 +177,8 @@ class _BeritaPageState extends State<BeritaPage> {
                                         );
                                       },
                                       child: KontainerBerita(
-                                        judul: beritaProvider
-                                            .listBeritaTampil[(index * 2) + 1]
-                                            .title,
-                                        isi: beritaProvider
-                                            .listBeritaTampil[(index * 2) + 1]
-                                            .isi,
-                                        gambar: beritaProvider
-                                            .listBeritaTampil[(index * 2) + 1]
-                                            .img,
+                                        model: beritaProvider
+                                            .listBeritaTampil[(index * 2) + 1],
                                       ),
                                     ),
                                 ],
