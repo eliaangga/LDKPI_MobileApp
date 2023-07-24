@@ -4,7 +4,7 @@ import 'package:ldkpi_news_app/screens/detail_penerima_hibah.dart';
 
 class KontainerNegara extends StatelessWidget {
   final NegaraModel model;
-  const KontainerNegara({Key? key, required this.model}) : super(key: key);
+  KontainerNegara({Key? key, required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
