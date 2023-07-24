@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ldkpi_news_app/language/config.dart';
 import 'package:ldkpi_news_app/language/l10n.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/services/koneksi.dart';
-import 'components/base.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'components/base.dart';
 
 void main() {
   koneksi.fetchCarousel().then((response) {
@@ -26,12 +27,6 @@ void main() {
       child: App(),
     ));
   });
-  // koneksi.fetchLatestNews().then((response) {
-  //   runApp(ChangeNotifierProvider(
-  //     create: (context) => BeritaPageProvider(),
-  //     child: App(),
-  //   ));
-  // });
 }
 
 Koneksi koneksi = Koneksi();
