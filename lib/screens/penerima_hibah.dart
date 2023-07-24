@@ -32,10 +32,10 @@ class _PenerimaHState extends State<PenerimaH> {
                       width: double.infinity,
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(5, 25, 10, 10),
+                        padding: const EdgeInsets.fromLTRB(5, 25, 10, 10),
                         child: Text(
-                          'Penerima Hibah',
-                          style: TextStyle(
+                          AppLocalizations.of(context)!.penerima_hibah,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.5,
@@ -50,7 +50,7 @@ class _PenerimaHState extends State<PenerimaH> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width - 10,
                 child: Image(image: NetworkImage(widget.konten.gambarPenerima)),

@@ -863,7 +863,7 @@ class _KategoriState extends State<Kategori> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => ProsesBisnis(
-                                          listProsesBisnis: response,
+                                          model: response,
                                         )),
                               );
                             });

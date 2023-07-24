@@ -1,49 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
-import 'package:ldkpi_news_app/models/berita_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ldkpi_news_app/models/proses_bisnis_model.dart';
 
 class ProsesBisnis extends StatefulWidget {
-  ProsesBisnis({super.key, required this.listProsesBisnis});
+  // ProsesBisnis({super.key, required this.listProsesBisnis});
+  // List<BeritaModel> listProsesBisnis;
 
-  List<BeritaModel> listProsesBisnis;
+  ProsesBisnis({super.key, required this.model});
+  ProsesBisnisModel model;
+
   @override
   State<ProsesBisnis> createState() => _ProsesBisnis();
 }
 
-class Item {
-  Item({
-    required this.expandedValue,
-    required this.headerValue,
-    required this.isExpanded,
-  });
+// class Item {
+//   Item({
+//     required this.expandedValue,
+//     required this.headerValue,
+//     required this.isExpanded,
+//   });
 
-  String expandedValue;
-  String headerValue;
-  bool isExpanded;
-}
+//   String expandedValue;
+//   String headerValue;
+//   bool isExpanded;
+// }
 
-List<BeritaModel> listProsesBisnis = [];
+// List<BeritaModel> listProsesBisnis = [];
 
-List<Item> generateItems() {
-  return List<Item>.generate(listProsesBisnis.length, (int index) {
-    return Item(
-      headerValue: '${listProsesBisnis[index].title}',
-      expandedValue: '${listProsesBisnis[index].isi}',
-      isExpanded: index == 0 ? true : false,
-    );
-  });
-}
+// List<Item> generateItems() {
+//   return List<Item>.generate(listProsesBisnis.length, (int index) {
+//     return Item(
+//       headerValue: '${listProsesBisnis[index].title}',
+//       expandedValue: '${listProsesBisnis[index].isi}',
+//       isExpanded: index == 0 ? true : false,
+//     );
+//   });
+// }
 
 class _ProsesBisnis extends State<ProsesBisnis> {
-  @override
-  void initState() {
-    super.initState();
-    listProsesBisnis = widget.listProsesBisnis;
-    _data = generateItems();
-    debugPrint(_data.length.toString());
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   listProsesBisnis = widget.listProsesBisnis;
+  //   _data = generateItems();
+  //   debugPrint(_data.length.toString());
+  // }
 
-  List<Item> _data = [];
+  // List<Item> _data = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +69,7 @@ class _ProsesBisnis extends State<ProsesBisnis> {
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
                       child: Text(
-                        'Proses Bisnis',
+                        AppLocalizations.of(context)!.proses_bisnis,
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -80,36 +85,70 @@ class _ProsesBisnis extends State<ProsesBisnis> {
             ),
           ),
           Expanded(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-              child: ListView.builder(
-                itemCount: listProsesBisnis.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    color: const Color(0xFF02347C),
-                    child: ExpansionTile(
-                      initiallyExpanded: index == 0 ? true : false,
-                      iconColor: Colors.white,
-                      collapsedIconColor: Colors.white,
-                      title: Text(
-                        listProsesBisnis[index].title,
-                        style: const TextStyle(color: Colors.white),
+            child: ListView(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(
+                      top: 1, left: 25, bottom: 10, right: 25),
+                  child: Text(
+                    AppLocalizations.of(context)!.proses_bisnis,
+                    style: const TextStyle(
+                        fontSize: 23, fontWeight: FontWeight.w900),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width - 50,
+                      child: Image.network(
+                        widget.model.gambar,
+                        fit: BoxFit.fitWidth,
                       ),
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 15),
-                          width: double.maxFinite,
-                          color: Colors.white,
-                          child: Text(
-                            listProsesBisnis[index].isi,
-                          ),
-                        )
-                      ],
                     ),
-                  );
-                },
-              ),
+                  ],
+                ),
+                Container(
+                  margin: const EdgeInsets.only(
+                    top: 20,
+                    left: 5,
+                    bottom: 10,
+                    right: 5,
+                  ),
+                  child: Html(
+                    data: widget.model.konten,
+                    style: {
+                      'html': Style(
+                        fontFamily: 'Gotham',
+                        textAlign: TextAlign.justify,
+                        fontSize: FontSize(16),
+                        fontWeight: FontWeight.w100,
+                        lineHeight: LineHeight(1.1111111111),
+                        color: Color(0xff000000),
+                      ),
+                      'tr': Style(
+                        border: const Border(
+                          bottom: BorderSide(color: Colors.grey),
+                          top: BorderSide(color: Colors.grey),
+                          left: BorderSide(color: Colors.grey),
+                          right: BorderSide(color: Colors.grey),
+                        ),
+                      ),
+                      'table': Style(
+                        alignment: Alignment.topCenter,
+                      ),
+                    },
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(
+                    top: 50,
+                    left: 25,
+                    right: 25,
+                    bottom: 20,
+                  ),
+                )
+              ],
             ),
           ),
         ],

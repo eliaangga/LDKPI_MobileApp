@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/models/negara_model.dart';
+import 'package:ldkpi_news_app/main.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DetailPenerimaHibah extends StatelessWidget {
@@ -12,6 +13,9 @@ class DetailPenerimaHibah extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String detailBaru = negara.detail
+        .replaceAll(RegExp(r'img src=\"'), 'img src=\"${koneksi.apiUrl}');
+
     return Scaffold(
       body: Column(
         children: [
@@ -104,7 +108,7 @@ class DetailPenerimaHibah extends StatelessWidget {
                     right: 20,
                   ),
                   child: Html(
-                    data: negara.detail,
+                    data: detailBaru,
                     style: {
                       'html': Style(
                         fontFamily: 'Gotham',
@@ -113,6 +117,17 @@ class DetailPenerimaHibah extends StatelessWidget {
                         fontWeight: FontWeight.w100,
                         lineHeight: LineHeight(1.1111111111),
                         color: Color(0xff000000),
+                      ),
+                      'tr': Style(
+                        border: const Border(
+                          bottom: BorderSide(color: Colors.grey),
+                          top: BorderSide(color: Colors.grey),
+                          left: BorderSide(color: Colors.grey),
+                          right: BorderSide(color: Colors.grey),
+                        ),
+                      ),
+                      'table': Style(
+                        alignment: Alignment.topCenter,
                       ),
                     },
                   ),
