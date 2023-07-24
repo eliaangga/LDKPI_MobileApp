@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/components/kontainer_negara.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/penerima_hibah_model.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PenerimaH extends StatefulWidget {
   PenerimaHibahModel konten;
@@ -21,8 +20,14 @@ class _PenerimaHState extends State<PenerimaH> {
           children: [
             Container(
               width: double.infinity,
-              height: 95,
-              color: const Color(0xFF02347C),
+              height: 135,
+              decoration: BoxDecoration(
+                color: const Color(0xFF02347C),
+                image: DecorationImage(
+                  image: AssetImage('assets/assets/images/kemenkeu.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
               child: Row(
                 children: [
                   const SizedBox(width: 20),

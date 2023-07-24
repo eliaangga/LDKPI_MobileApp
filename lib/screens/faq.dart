@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 
@@ -26,8 +28,14 @@ class _FAQState extends State<FAQ> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              height: 95,
-              color: const Color(0xFF02347C),
+              height: 135,
+              decoration: BoxDecoration(
+                color: const Color(0xFF02347C),
+                image: DecorationImage(
+                  image: AssetImage('assets/assets/images/kemenkeu.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
               child: Row(
                 children: [
                   SizedBox(
@@ -55,6 +63,38 @@ class _FAQState extends State<FAQ> {
                   ),
                   const SizedBox(width: 65),
                 ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              child: ClipRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: 64,
+                    sigmaY: 64,
+                  ),
+                  child: Container(
+                    width: 170,
+                    height: 37,
+                    decoration: BoxDecoration(
+                      color: Color(0x33ffffff),
+                      borderRadius: BorderRadius.circular(130),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Ayok Hubungi Kami',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'Gotham',
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500,
+                          height: 0.9569999695,
+                          color: Color(0xffffffff),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
             Container(

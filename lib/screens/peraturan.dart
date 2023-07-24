@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/peraturan_model.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Peraturan extends StatefulWidget {
@@ -22,8 +21,14 @@ class _PeraturanState extends State<Peraturan> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              height: 95,
-              color: const Color(0xFF02347C),
+              height: 135,
+              decoration: BoxDecoration(
+                color: const Color(0xFF02347C),
+                image: DecorationImage(
+                  image: AssetImage('assets/assets/images/kemenkeu.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
               child: Row(
                 children: [
                   SizedBox(width: 20),
