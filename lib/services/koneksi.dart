@@ -27,22 +27,22 @@ class Koneksi {
   String useLanguage = '';
 
   Future<InvestasiModel> fetchInvest() async {
-    InvestasiModel investasi = InvestasiModel();
+    InvestasiModel hasil = InvestasiModel();
     try {
       final response = await http.get(
           Uri.parse('$apiUrl/api/investment?populate=*&locale=$useLanguage'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
-        investasi = InvestasiModel(
+        hasil = InvestasiModel(
           konten: jsonData['data']['attributes']['konten'],
         );
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        return hasil;
       }
     } catch (e) {
-      print('Error: $e');
+      return hasil;
     }
-    return investasi;
+    return hasil;
   }
 
   Future<NilaiBudayaModel> fetchNilaiBudaya() async {
@@ -76,6 +76,8 @@ class Koneksi {
               'https://www.hdwallpapers.in/download/avengers_infinity_war_4k_8k-wide.jpg';
           if (article['attributes']['url'] != null) {
             gambar = apiUrl + article['attributes']['url'];
+          } else {
+            gambar = 'not';
           }
           hasil.add(gambar);
         }
@@ -506,23 +508,23 @@ class Koneksi {
     List<String> hasil = [];
     try {
       final response = await http.get(Uri.parse(
-          '$apiUrl/api/penerima-hibah?populate[0]=gambarPenerimaMobile'));
+          '$apiUrl/sapi/penerima-hibah?populate[0]=gambarPenerimaMobile'));
 
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         for (var article in jsonData['data']['attributes']
             ['gambarPenerimaMobile']['data']) {
-          String gambar = '';
+          String gambar = 'not';
           if (article != null) {
             gambar = apiUrl + article['attributes']['url'];
           }
           hasil.add(gambar);
         }
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        hasil = ['not', 'not', 'not'];
       }
     } catch (e) {
-      print('Error: $e');
+      hasil = ['not', 'not', 'not'];
     }
     return hasil;
   }

@@ -13,13 +13,25 @@ class TugasFungsi extends StatefulWidget {
 }
 
 class _TugasFungsiState extends State<TugasFungsi> {
+  double _initialscale = 1.0;
+  double _scaleFactor = 1.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GestureZoomBox(
-        maxScale: 5.0,
-        doubleTapScale: 2.0,
-        duration: Duration(milliseconds: 200),
+      body: GestureDetector(
+        onScaleStart: (ScaleStartDetails details) {
+          _initialscale = _scaleFactor;
+        },
+        onScaleUpdate: (ScaleUpdateDetails details) {
+          setState(() {
+            _scaleFactor = _initialscale * details.scale;
+          });
+        },
+        onScaleEnd: (ScaleEndDetails details) {
+          _scaleFactor = 1.0;
+          setState(() {});
+        },
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[

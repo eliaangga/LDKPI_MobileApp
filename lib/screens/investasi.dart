@@ -3,6 +3,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/investasi_model.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Investasi extends StatefulWidget {
   InvestasiModel invest;
@@ -40,7 +41,7 @@ class _InvestasiState extends State<Investasi> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(40, 25, 10, 10),
                         child: Text(
-                          'Investasi',
+                          AppLocalizations.of(context)!.investasi,
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

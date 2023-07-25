@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/main.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/models/informasi_pengadaan_model.dart';
 
 class InformasiP extends StatefulWidget {
@@ -51,7 +52,7 @@ class _InformasiPState extends State<InformasiP> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
-                          'Informasi Pengadaan',
+                          AppLocalizations.of(context)!.informasi_pengadaan,
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

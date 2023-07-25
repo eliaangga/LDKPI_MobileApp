@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/visimisi_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VisiMisi extends StatefulWidget {
   VisiMisiModel konten;
@@ -43,7 +44,7 @@ class _VisiMisiState extends State<VisiMisi> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
-                          'Visi & Misi',
+                          AppLocalizations.of(context)!.visi_misi,
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
