@@ -503,7 +503,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               // url: linkVideo, dataSourceType: DataSourceType.contentUri),
               // url: 'assets/assets/images/Abby.mp4',
               url: linkVideo,
-              dataSourceType: DataSourceType.asset),
+              dataSourceType: DataSourceType.network),
           const SizedBox(height: 5),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 10),
