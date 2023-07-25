@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/components/tombol_kembali.dart';
-import 'package:ldkpi_news_app/models/tugas_fungsi_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:gesture_zoom_box/gesture_zoom_box.dart';
+import 'package:ldkpi_news_app/components/tombol_kembali.dart';
+import 'package:ldkpi_news_app/models/tugas_fungsi_model.dart';
 
 class TugasFungsi extends StatefulWidget {
   final TugasFungsiModel model;
