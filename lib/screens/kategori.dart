@@ -44,7 +44,7 @@ class _KategoriState extends State<Kategori> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 100,
+                  height: 140,
                   decoration: BoxDecoration(
                     color: const Color(0xFF02347C),
                     image: DecorationImage(

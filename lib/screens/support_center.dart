@@ -22,13 +22,16 @@ class _CallUsState extends State<CallUs> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
               width: double.infinity,
-              height: 135,
+              height: screenHeight * 0.2,
               decoration: BoxDecoration(
                 color: const Color(0xFF02347C),
                 image: DecorationImage(
@@ -39,15 +42,18 @@ class _CallUsState extends State<CallUs> {
               child: Row(
                 children: [
                   SizedBox(
-                    width: 20,
+                    width: screenWidth * 0.04,
                   ),
                   const TombolKembali(),
                   Expanded(
                     child: Container(
-                      width: double.infinity,
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
+                        padding: EdgeInsets.fromLTRB(
+                            screenWidth * 0.01,
+                            screenHeight * 0.06,
+                            screenWidth * 0.03,
+                            screenHeight * 0.04),
                         child: Text(
                           'Hubungi Kami',
                           style: TextStyle(
@@ -74,8 +80,8 @@ class _CallUsState extends State<CallUs> {
                     sigmaY: 64,
                   ),
                   child: Container(
-                    width: 170,
-                    height: 37,
+                    width: screenWidth * 0.45,
+                    height: screenHeight * 0.035,
                     decoration: BoxDecoration(
                       color: Color(0x33ffffff),
                       borderRadius: BorderRadius.circular(130),
@@ -102,24 +108,25 @@ class _CallUsState extends State<CallUs> {
             ),
             Container(
               width: double.infinity,
-              height: 700,
+              height: screenHeight * 0.7,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Positioned(
                 child: Container(
-                  width: 320,
-                  height: 194,
+                  width: screenWidth * 0.9,
+                  height: screenHeight * 0.2,
                   child: Stack(
                     children: [
                       Positioned(
-                        left: 40,
-                        top: 20,
+                        left: screenWidth * 0.05,
+                        top: screenHeight * 0.02,
                         child: Container(
-                          padding: EdgeInsets.fromLTRB(95, 12, 95, 0),
-                          width: 317,
-                          height: 174,
+                          padding: EdgeInsets.fromLTRB(screenWidth * 0.25,
+                              screenHeight * 0.009, screenWidth * 0.25, 0),
+                          width: screenWidth * 0.9,
+                          height: screenHeight * 0.17,
                           decoration: BoxDecoration(
                             border: Border.all(color: Color(0xff000000)),
                             color: Color(0xffffffff),
@@ -128,8 +135,8 @@ class _CallUsState extends State<CallUs> {
                           child: Align(
                             alignment: Alignment.center,
                             child: SizedBox(
-                              width: 0.5,
-                              height: 162,
+                              width: screenWidth * 0.0025,
+                              height: screenHeight * 0.162,
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Color(0xff000000),
@@ -140,13 +147,16 @@ class _CallUsState extends State<CallUs> {
                         ),
                       ),
                       Positioned(
-                        left: 0,
-                        top: 0,
                         child: Container(
-                          margin: EdgeInsets.fromLTRB(38, 1, 1, 1),
-                          padding: EdgeInsets.fromLTRB(24, 0, 0, 0),
-                          width: 320,
-                          height: 32,
+                          margin: EdgeInsets.fromLTRB(
+                              screenWidth * 0.035,
+                              screenHeight * 0.0005,
+                              screenWidth * 0.0005,
+                              screenHeight * 0.0005),
+                          padding: EdgeInsets.fromLTRB(
+                              screenWidth * 0.075, 0, screenWidth * 0.035, 0),
+                          width: screenWidth * 0.9,
+                          height: screenHeight * 0.032,
                           decoration: BoxDecoration(
                             color: Color(0xff02347c),
                             borderRadius: BorderRadius.circular(5),
@@ -156,8 +166,13 @@ class _CallUsState extends State<CallUs> {
                             children: [
                               Center(
                                 child: Container(
-                                  margin: EdgeInsets.fromLTRB(0, 0, 24, 2),
-                                  padding: EdgeInsets.fromLTRB(35, 1, 17.5, 1),
+                                  margin: EdgeInsets.fromLTRB(0, 0,
+                                      screenWidth * 0.04, screenHeight * 0.001),
+                                  padding: EdgeInsets.fromLTRB(
+                                      screenWidth * 0.1,
+                                      0,
+                                      screenWidth * 0.05,
+                                      0),
                                   child: Text(
                                     'Deskripsi',
                                     textAlign: TextAlign.center,
@@ -172,18 +187,24 @@ class _CallUsState extends State<CallUs> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.fromLTRB(16, 0, 0, 0),
-                                width: 0.1,
-                                height: 32,
+                                margin: EdgeInsets.fromLTRB(
+                                    screenWidth * 0.0275, 0, 0, 0),
+                                width: screenWidth * 0.0005,
+                                height: screenHeight * 0.032,
                                 decoration: BoxDecoration(
                                   color: Color(0xffffffff),
                                 ),
                               ),
                               Center(
                                 child: Container(
-                                  width: 150,
-                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
-                                  padding: EdgeInsets.fromLTRB(35, 1, 17.5, 1),
+                                  width: screenWidth * 0.18,
+                                  margin: EdgeInsets.fromLTRB(
+                                      0, 0, 0, screenHeight * 0.001),
+                                  padding: EdgeInsets.fromLTRB(
+                                      screenWidth * 0.075,
+                                      0,
+                                      screenWidth * 0.0375,
+                                      0),
                                   child: Text(
                                     'Keterangan',
                                     textAlign: TextAlign.center,
@@ -202,18 +223,16 @@ class _CallUsState extends State<CallUs> {
                         ),
                       ),
                       Positioned(
-                        left: 23,
-                        top: 39,
+                        left: screenWidth * 0.04,
+                        top: screenHeight * 0.055,
                         child: Container(
-                          width: 400,
-                          height: 16,
+                          width: screenWidth * 0.9,
+                          height: screenHeight * 0.03,
                           child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Center(
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(0, 0, 77, 0),
-                                  padding: EdgeInsets.fromLTRB(85, 0, 10, 0),
+                              Expanded(
+                                child: Center(
                                   child: Text(
                                     'Lembaga',
                                     textAlign: TextAlign.center,
@@ -221,25 +240,20 @@ class _CallUsState extends State<CallUs> {
                                       fontFamily: 'Gotham',
                                       fontSize: 10,
                                       fontWeight: FontWeight.w700,
-                                      height: 1,
                                       color: Color(0xff000000),
                                     ),
                                   ),
                                 ),
                               ),
-                              Center(
-                                child: Container(
-                                  constraints: BoxConstraints(
-                                    maxWidth: 111,
-                                  ),
+                              Expanded(
+                                child: Center(
                                   child: Text(
-                                    'Lembaga Dana Kerja Sama \nPembangunan Internasional',
+                                    'Lembaga Dana Kerja Sama Pembangunan Internasional',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: 'Gotham',
                                       fontSize: 8,
                                       fontWeight: FontWeight.w400,
-                                      height: 1,
                                       color: Color(0xff000000),
                                     ),
                                   ),
@@ -250,18 +264,16 @@ class _CallUsState extends State<CallUs> {
                         ),
                       ),
                       Positioned(
-                        left: 25,
-                        top: 76,
+                        left: screenWidth * 0.04,
+                        top: screenHeight * 0.095,
                         child: Container(
-                          width: 400,
-                          height: 10,
+                          width: screenWidth * 0.9,
+                          height: screenHeight * 0.03,
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Center(
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(0, 0, 77, 0),
-                                  padding: EdgeInsets.fromLTRB(85, 0, 10, 0),
+                              Expanded(
+                                child: Center(
                                   child: Text(
                                     'Gedung',
                                     textAlign: TextAlign.center,
@@ -269,22 +281,22 @@ class _CallUsState extends State<CallUs> {
                                       fontFamily: 'Gotham',
                                       fontSize: 10,
                                       fontWeight: FontWeight.w700,
-                                      height: 1,
                                       color: Color(0xff000000),
                                     ),
                                   ),
                                 ),
                               ),
-                              Center(
-                                child: Text(
-                                  'Gedung Sutikno Slamet Lt. 19 ',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontFamily: 'Gotham',
-                                    fontSize: 8,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.25,
-                                    color: Color(0xff000000),
+                              Expanded(
+                                child: Center(
+                                  child: Text(
+                                    'Gedung Sutikno Slamet Lt. 19',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontFamily: 'Gotham',
+                                      fontSize: 8,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff000000),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -293,18 +305,16 @@ class _CallUsState extends State<CallUs> {
                         ),
                       ),
                       Positioned(
-                        left: 27,
-                        top: 102,
+                        left: screenWidth * 0.04,
+                        top: screenHeight * 0.13,
                         child: Container(
-                          width: 400,
-                          height: 20,
+                          width: screenWidth * 0.9,
+                          height: screenHeight * 0.03,
                           child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Center(
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(0, 0, 25, 0),
-                                  padding: EdgeInsets.fromLTRB(85, 0, 10, 0),
+                              Expanded(
+                                child: Center(
                                   child: Text(
                                     'Alamat',
                                     textAlign: TextAlign.center,
@@ -312,23 +322,20 @@ class _CallUsState extends State<CallUs> {
                                       fontFamily: 'Gotham',
                                       fontSize: 10,
                                       fontWeight: FontWeight.w700,
-                                      height: 1,
                                       color: Color(0xff000000),
                                     ),
                                   ),
                                 ),
                               ),
-                              Center(
-                                child: Container(
-                                  padding: EdgeInsets.fromLTRB(30, 0, 10, 0),
+                              Expanded(
+                                child: Center(
                                   child: Text(
-                                    'Jl. Dr. Wahidin Raya No.1 Jakarta Pusat, \nDKI Jakarta 10710',
+                                    'Jl. Dr. Wahidin Raya No.1 Jakarta Pusat, DKI Jakarta 10710',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: 'Gotham',
                                       fontSize: 8,
                                       fontWeight: FontWeight.w400,
-                                      height: 1.25,
                                       color: Color(0xff000000),
                                     ),
                                   ),
@@ -339,18 +346,16 @@ class _CallUsState extends State<CallUs> {
                         ),
                       ),
                       Positioned(
-                        left: 27.5,
-                        top: 130,
+                        left: screenWidth * 0.04,
+                        top: screenHeight * 0.165,
                         child: Container(
-                          width: 400,
-                          height: 14,
+                          width: screenWidth * 0.9,
+                          height: screenHeight * 0.03,
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Center(
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(0, 0, 77, 0),
-                                  padding: EdgeInsets.fromLTRB(85, 0, 10, 0),
+                              Expanded(
+                                child: Center(
                                   child: Text(
                                     'Telepon',
                                     textAlign: TextAlign.center,
@@ -358,16 +363,13 @@ class _CallUsState extends State<CallUs> {
                                       fontFamily: 'Gotham',
                                       fontSize: 10,
                                       fontWeight: FontWeight.w700,
-                                      height: 1,
                                       color: Color(0xff000000),
                                     ),
                                   ),
                                 ),
                               ),
-                              Center(
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(0, 4, 0, 0),
-                                  padding: EdgeInsets.fromLTRB(30, 0, 10, 0),
+                              Expanded(
+                                child: Center(
                                   child: Text(
                                     '(021) 3510725',
                                     textAlign: TextAlign.center,
@@ -375,7 +377,6 @@ class _CallUsState extends State<CallUs> {
                                       fontFamily: 'Gotham',
                                       fontSize: 8,
                                       fontWeight: FontWeight.w400,
-                                      height: 1.25,
                                       color: Color(0xff000000),
                                     ),
                                   ),
@@ -386,18 +387,16 @@ class _CallUsState extends State<CallUs> {
                         ),
                       ),
                       Positioned(
-                        left: 31,
-                        top: 157,
+                        left: screenWidth * 0.04,
+                        top: screenHeight * 0.2,
                         child: Container(
-                          width: 400,
-                          height: 14,
+                          width: screenWidth * 0.9,
+                          height: screenHeight * 0.03,
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Center(
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(0, 0, 77, 0),
-                                  padding: EdgeInsets.fromLTRB(80, 0, 10, 0),
+                              Expanded(
+                                child: Center(
                                   child: Text(
                                     'E-mail',
                                     textAlign: TextAlign.center,
@@ -405,16 +404,13 @@ class _CallUsState extends State<CallUs> {
                                       fontFamily: 'Gotham',
                                       fontSize: 10,
                                       fontWeight: FontWeight.w700,
-                                      height: 1,
                                       color: Color(0xff000000),
                                     ),
                                   ),
                                 ),
                               ),
-                              Center(
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(0, 4, 0, 0),
-                                  padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
+                              Expanded(
+                                child: Center(
                                   child: Text(
                                     'ldkpi@kemenkeu.go.id',
                                     textAlign: TextAlign.center,
@@ -422,7 +418,6 @@ class _CallUsState extends State<CallUs> {
                                       fontFamily: 'Gotham',
                                       fontSize: 8,
                                       fontWeight: FontWeight.w400,
-                                      height: 1.25,
                                       color: Color(0xff000000),
                                     ),
                                   ),
