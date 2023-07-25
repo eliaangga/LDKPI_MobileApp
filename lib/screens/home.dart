@@ -471,7 +471,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           for (var i = 0; i < 3; i++)
             Consumer<BeritaPageProvider>(builder: (context, value, child) {
               if (value.listBeritaTerbaru.isEmpty) {
-                return CupertinoActivityIndicator();
+                return const CupertinoActivityIndicator();
               } else {
                 return KontainerBeritaTerbaru(provider: beritaProvider, i: i);
               }
@@ -500,10 +500,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ),
           ),
           VideoPlayerWidget(
-              // url: linkVideo, dataSourceType: DataSourceType.contentUri),
-              // url: 'assets/assets/images/Abby.mp4',
-              url: linkVideo,
-              dataSourceType: DataSourceType.asset),
+              url: linkVideo, dataSourceType: DataSourceType.network),
           const SizedBox(height: 5),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 10),
@@ -517,9 +514,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               width: 500,
               height: 176,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: Image(image: NetworkImage(listSebaranHibah[0])),
-              ),
+                  borderRadius: BorderRadius.circular(5),
+                  child: listSebaranHibah[0] == 'not'
+                      ? const CupertinoActivityIndicator()
+                      : Image(image: NetworkImage(listSebaranHibah[0]))),
             ),
           ),
           const SizedBox(height: 12),
@@ -529,7 +527,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               height: 125,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
-                child: Image(image: NetworkImage(listSebaranHibah[1])),
+                child: listSebaranHibah[1] == 'not'
+                    ? const CupertinoActivityIndicator()
+                    : Image(image: NetworkImage(listSebaranHibah[1])),
               ),
             ),
           ),

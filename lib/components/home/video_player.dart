@@ -39,7 +39,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
         _controller = VideoPlayerController.asset(widget.url);
         break;
       case DataSourceType.network:
-        // _controller = VideoPlayerController.networkUrl(widget.url);
+        _controller = VideoPlayerController.networkUrl(Uri.parse(widget.url));
         break;
       case DataSourceType.file:
         _controller = VideoPlayerController.file(File(widget.url));

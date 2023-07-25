@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/sejarah_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Sejarah extends StatefulWidget {
   SejarahModel konten;
@@ -41,7 +42,7 @@ class _SejarahState extends State<Sejarah> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(5, 25, 10, 10),
                         child: Text(
-                          'Sejarah',
+                          AppLocalizations.of(context)!.sejarah,
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/struktur_organisasi_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StrukturOrg extends StatefulWidget {
   StrukturOrganisasiModel konten;
@@ -43,7 +44,7 @@ class _StrukturOrgState extends State<StrukturOrg> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(5, 25, 10, 10),
                         child: Text(
-                          'Organisasi',
+                          AppLocalizations.of(context)!.struktur_organisasi,
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -77,7 +78,7 @@ class _StrukturOrgState extends State<StrukturOrg> {
                             width: 192,
                             height: 20,
                             child: Text(
-                              'Struktur Organisasi',
+                              AppLocalizations.of(context)!.struktur_organisasi,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: 'Inter',

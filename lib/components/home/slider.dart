@@ -13,16 +13,16 @@ class SliderScreen extends StatefulWidget {
 }
 
 class _SliderScreenState extends State<SliderScreen> {
-  List<Map<String, dynamic>> imageList = [
-    {"id": 1, "image_path": listCarousel[0]},
-    {"id": 2, "image_path": listCarousel[1]},
-    {"id": 3, "image_path": listCarousel[2]}
-  ];
   final CarouselController carouselController = CarouselController();
   int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> imageList = [
+      {"id": 1, "image_path": listCarousel[0]},
+      {"id": 2, "image_path": listCarousel[1]},
+      {"id": 3, "image_path": listCarousel[2]}
+    ];
     List<Widget> carouselItems = imageList.map((item) {
       return GestureDetector(
         onTap: () {
@@ -74,6 +74,11 @@ class _SliderScreenState extends State<SliderScreen> {
       );
     }).toList();
 
+    // List<Widget> carouselItems = [
+    //   const CupertinoActivityIndicator(),
+    //   const CupertinoActivityIndicator(),
+    //   const CupertinoActivityIndicator()
+    // ];
     return Column(
       children: [
         Stack(
