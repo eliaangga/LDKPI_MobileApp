@@ -32,5 +32,7 @@
     "urlLang": "id",
     "bahasa": "Bahasa",
     "kembali": "Kembali",
-    "gambarAppBar": "assets/assets/images/ldkpi.png"
+    "gambarAppBar": "assets/assets/images/ldkpi.png",
+    "namaAppBarBarisSatu": "Lembaga Dana Kerja Sama",
+    "namaAppBarBarisDua": "Pembangunan Internasional"
 }

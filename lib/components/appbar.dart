@@ -16,9 +16,11 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text('Lembaga Dana Kerja Sama', style: TextStyle(fontSize: 12)),
-              Text('Pembangunan Internasional', style: TextStyle(fontSize: 12)),
+            children: [
+              Text(AppLocalizations.of(context)!.namaAppBarBarisSatu,
+                  style: TextStyle(fontSize: 12)),
+              Text(AppLocalizations.of(context)!.namaAppBarBarisDua,
+                  style: TextStyle(fontSize: 12)),
             ],
           ),
         ),

@@ -32,5 +32,7 @@
     "urlLang": "en",
     "bahasa": "Language",
     "kembali": "Back",
-    "gambarAppBar": "assets/assets/images/kemenkeu.png"
+    "gambarAppBar": "assets/assets/images/kemenkeu.png",
+    "namaAppBarBarisSatu": "Indonesian Agency for",
+    "namaAppBarBarisDua": "International Development (Indonesian AID)"
 }
