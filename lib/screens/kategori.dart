@@ -15,7 +15,6 @@ import 'package:ldkpi_news_app/screens/tugas_&_fungsi.dart';
 import 'package:ldkpi_news_app/screens/visi_&_misi.dart';
 
 import 'investasi.dart';
-import 'pemberian_hibah.dart';
 import 'sejarah.dart';
 
 class Kategori extends StatefulWidget {
@@ -67,9 +66,7 @@ class _KategoriState extends State<Kategori> {
             ),
           ),
           Positioned(
-            left: 24,
-            top: 128.5,
-            child: Container(
+            child: SizedBox(
               width: 334,
               height: 255,
               child: Column(
@@ -92,178 +89,155 @@ class _KategoriState extends State<Kategori> {
                     ),
                   ),
                   Container(
-                    width: double.infinity,
-                    height: 155,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchInvest().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Investasi(
-                                          invest: response,
-                                        )),
-                              );
-                            });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(30, 0, 34, 0),
-                            padding: EdgeInsets.fromLTRB(31, 28, 31, 27),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x0c000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(30, 0, 11, 20),
+                      width: double.infinity,
+                      height: 155,
+                      alignment: Alignment.center,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchInvest().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Investasi(
+                                              invest: response,
+                                            )),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding: EdgeInsets.fromLTRB(19, 15, 19, 16),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(14, 0, 14, 21),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
+                                child: Container(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        margin:
+                                            EdgeInsets.fromLTRB(0, 0, 10, 0),
                                         width: 40,
-                                        height: 40,
+                                        height: 50,
                                         child: Image.asset(
-                                          'assets/assets/images/Giving.jpg',
-                                          fit: BoxFit.contain,
+                                            'assets/assets/images/Investment.jpg'),
+                                      ),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .investasi,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 88),
-                                      child: Text(
-                                        AppLocalizations.of(context)!.investasi,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 0.5,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchPemberiHibah().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PH(
-                                          konten: response,
-                                        )),
-                              );
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(29, 28, 25, 2.5),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x19000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchInvest().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Investasi(
+                                              invest: response,
+                                            )),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding: EdgeInsets.fromLTRB(19, 15, 19, 16),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(16, 0, 20, 4.5),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
+                                child: Container(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        margin:
+                                            EdgeInsets.fromLTRB(0, 0, 10, 0),
                                         width: 40,
-                                        height: 40,
+                                        height: 50,
                                         child: Image.asset(
-                                          'assets/assets/images/Investment.jpg',
-                                          fit: BoxFit.contain,
+                                            'assets/assets/images/Investment.jpg'),
+                                      ),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .investasi,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 96),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .pemberian_hibah,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),

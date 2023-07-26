@@ -123,7 +123,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: 'Gotham',
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w700,
                                     height: 1,
                                     color: Color(0xff000000),
@@ -191,7 +191,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: 'Gotham',
-                                      fontSize: 14,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w700,
                                       height: 1,
                                       color: Color(0xff000000),
