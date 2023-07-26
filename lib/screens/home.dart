@@ -14,8 +14,7 @@ import 'package:marquee_widget/marquee_widget.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
-  List<String> carouselHome = [];
-  Home({Key? key, required this.carouselHome}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -55,7 +54,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       body: ListView(
         children: [
           const SizedBox(height: 2.5),
-          SliderScreen(carousel: widget.carouselHome),
+          const SliderScreen(),
           const SizedBox(height: 10),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 10),

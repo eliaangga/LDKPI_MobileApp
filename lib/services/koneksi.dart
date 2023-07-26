@@ -17,10 +17,10 @@ import 'package:ldkpi_news_app/models/survei_layanan_model.dart';
 import 'package:ldkpi_news_app/models/tahun_model.dart';
 import 'package:ldkpi_news_app/models/tugas_fungsi_model.dart';
 import 'package:ldkpi_news_app/models/visimisi_model.dart';
-import 'package:ldkpi_news_app/screens/tugas_&_fungsi.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Koneksi {
-  String apiUrl = "http://10.201.18.243:1337";
+  String apiUrl = dotenv.env['FLUTTER_APP_API_URL']!;
   List<BeritaModel> listBerita = [];
   List<String> getListCarousel = [];
   String marqueeKonten = '';
@@ -508,7 +508,7 @@ class Koneksi {
     List<String> hasil = [];
     try {
       final response = await http.get(Uri.parse(
-          '$apiUrl/sapi/penerima-hibah?populate[0]=gambarPenerimaMobile'));
+          '$apiUrl/api/penerima-hibah?populate[0]=gambarPenerimaMobile'));
 
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
@@ -521,10 +521,10 @@ class Koneksi {
           hasil.add(gambar);
         }
       } else {
-        hasil = ['not', 'not', 'not'];
+        hasil = ['not', 'not'];
       }
     } catch (e) {
-      hasil = ['not', 'not', 'not'];
+      hasil = ['not', 'not'];
     }
     return hasil;
   }

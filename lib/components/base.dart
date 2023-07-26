@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/components/appbar.dart';
 import 'package:ldkpi_news_app/components/navbar.dart';
 import 'package:ldkpi_news_app/components/openapp_page.dart';
-import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/screens/berita_page.dart';
 import 'package:ldkpi_news_app/screens/home.dart';
 import 'package:ldkpi_news_app/screens/kategori.dart';
@@ -10,13 +9,11 @@ import 'package:ldkpi_news_app/screens/kategori.dart';
 class Base extends StatefulWidget {
   final Function(String) ubahBahasa;
   String startLanguage;
-  List<String> carousel;
-  Base(
-      {Key? key,
-      required this.ubahBahasa,
-      required this.startLanguage,
-      required this.carousel})
-      : super(key: key);
+  Base({
+    Key? key,
+    required this.ubahBahasa,
+    required this.startLanguage,
+  }) : super(key: key);
 
   @override
   State<Base> createState() => _BaseScreenState();
@@ -25,12 +22,9 @@ class Base extends StatefulWidget {
 class _BaseScreenState extends State<Base> {
   int _selectedIndex = 0;
   static List<Widget> _pilihanMenu = [
-    Home(
-      carouselHome: listCarousel,
-    ),
+    Home(),
     BeritaPage(),
     Kategori(),
-    OpenApp()
   ];
 
   void changePage(int index) {
