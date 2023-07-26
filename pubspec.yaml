@@ -51,6 +51,8 @@ dependencies:
   provider: ^6.0.5
   video_player: ^2.1.0
   gesture_zoom_box: ^0.0.4
+  flutter_dotenv: ^5.1.0
+  animated_splash_screen: ^1.3.0
 
 dev_dependencies:
   flutter_test:
@@ -65,7 +67,7 @@ flutter:
   generate: true
 
   assets:
-    - lib/language/translation.json
+    - lib/.env
     - assets/
     - assets/assets/images/
     - assets/assets/images/ldkpi.png

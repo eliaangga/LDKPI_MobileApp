@@ -5,11 +5,15 @@ import 'package:ldkpi_news_app/language/config.dart';
 import 'package:ldkpi_news_app/language/l10n.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/services/koneksi.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 import 'components/base.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: "lib/.env");
   koneksi.fetchCarousel().then((response) {
     listCarousel = response;
   });
@@ -18,15 +22,14 @@ void main() {
   });
   koneksi.fetchVideoProfile().then((response) {
     linkVideo = response;
-    print('link video $linkVideo');
   });
   koneksi.fetchSebaranHibah().then((response) {
     listSebaranHibah = response;
-    runApp(ChangeNotifierProvider(
-      create: (context) => BeritaPageProvider(),
-      child: App(),
-    ));
   });
+  runApp(ChangeNotifierProvider(
+    create: (context) => BeritaPageProvider(),
+    child: const App(),
+  ));
 }
 
 Koneksi koneksi = Koneksi();
@@ -37,7 +40,7 @@ String marqueeKonten = '';
 String linkVideo = '';
 
 class App extends StatefulWidget {
-  App({Key? key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   State<App> createState() => _AppState();
@@ -68,37 +71,42 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'LDKPI',
-      supportedLocales: L10n.all,
-      locale: Locale(bahasa),
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      theme: ThemeData(
-        primarySwatch: const MaterialColor(
-          0xFF02347C,
-          <int, Color>{
-            50: Color(0xFF02347C),
-            100: Color(0xFF02347C),
-            200: Color(0xFF02347C),
-            300: Color(0xFF02347C),
-            400: Color(0xFF02347C),
-            500: Color(0xFF02347C),
-            600: Color(0xFF02347C),
-            700: Color(0xFF02347C),
-            800: Color(0xFF02347C),
-            900: Color(0xFF02347C),
-          },
+        title: 'LDKPI',
+        supportedLocales: L10n.all,
+        locale: Locale(bahasa),
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        theme: ThemeData(
+          primarySwatch: const MaterialColor(
+            0xFF02347C,
+            <int, Color>{
+              50: Color(0xFF02347C),
+              100: Color(0xFF02347C),
+              200: Color(0xFF02347C),
+              300: Color(0xFF02347C),
+              400: Color(0xFF02347C),
+              500: Color(0xFF02347C),
+              600: Color(0xFF02347C),
+              700: Color(0xFF02347C),
+              800: Color(0xFF02347C),
+              900: Color(0xFF02347C),
+            },
+          ),
         ),
-      ),
-      home: Base(
-        ubahBahasa: ubahBahasa,
-        startLanguage: bahasa,
-        carousel: listCarousel,
-      ),
-    );
+        home: AnimatedSplashScreen(
+          duration: 5000,
+          splash: 'assets/assets/images/ldkpi.png',
+          backgroundColor: const Color(0xFF02347C),
+          splashTransition: SplashTransition.slideTransition,
+          pageTransitionType: PageTransitionType.fade,
+          nextScreen: Base(
+            ubahBahasa: ubahBahasa,
+            startLanguage: bahasa,
+          ),
+        ));
   }
 }

@@ -5,8 +5,7 @@ import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
 
 class SliderScreen extends StatefulWidget {
-  List<String> carousel = [];
-  SliderScreen({Key? key, required this.carousel}) : super(key: key);
+  const SliderScreen({Key? key}) : super(key: key);
 
   @override
   State<SliderScreen> createState() => _SliderScreenState();
