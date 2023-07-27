@@ -319,10 +319,10 @@ class Koneksi {
                   ['attributes']['url'];
         }
       } else {
-        hasil = '';
+        hasil = 'not';
       }
     } catch (e) {
-      hasil = '';
+      hasil = 'not';
     }
     return hasil;
   }
@@ -405,7 +405,7 @@ class Koneksi {
         print('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      print('ErrorLatestNews: $e');
     }
     return getList;
   }

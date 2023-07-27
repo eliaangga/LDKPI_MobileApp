@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ldkpi_news_app/language/config.dart';
 import 'package:ldkpi_news_app/language/l10n.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
+import 'package:ldkpi_news_app/providers/home_page_provider.dart';
 import 'package:ldkpi_news_app/services/koneksi.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
@@ -14,34 +15,21 @@ import 'components/base.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: "lib/.env");
-  koneksi.fetchCarousel().then((response) {
-    listCarousel = response;
-    // print('listCarousel $listCarousel');
-    print('listCarousel ${listCarousel.length}');
-  });
-  koneksi.fetchMarquee().then((response) {
-    marqueeKonten = response;
-  });
-  koneksi.fetchVideoProfile().then((response) {
-    linkVideo = response;
-  });
-  koneksi.fetchSebaranHibah().then((response) {
-    listSebaranHibah = response;
-    // print('listSebaranHibah $listSebaranHibah');
-    print('listCarousel ${listSebaranHibah.length}');
-  });
-  runApp(ChangeNotifierProvider(
-    create: (context) => BeritaPageProvider(),
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => BeritaPageProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => HomePageProvider(),
+      ),
+    ],
     child: const App(),
   ));
 }
 
 Koneksi koneksi = Koneksi();
 ConfigLanguage konfig = ConfigLanguage();
-List<String> listCarousel = [];
-List<String> listSebaranHibah = [];
-String marqueeKonten = '';
-String linkVideo = '';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);

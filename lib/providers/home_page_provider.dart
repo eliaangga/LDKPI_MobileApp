@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/main.dart';
-import 'package:ldkpi_news_app/models/berita_model.dart';
 
 class HomePageProvider extends ChangeNotifier {
   List<String> listCarousel = [];
@@ -8,25 +7,39 @@ class HomePageProvider extends ChangeNotifier {
   String marqueeKonten = '';
   String linkVideo = '';
 
-  void initHomePage() {
-    koneksi.fetchCarousel().then((response) {
-      listCarousel = response;
-      notifyListeners();
-      print('listCarousel ${listCarousel.length}');
-    });
-    koneksi.fetchMarquee().then((response) {
-      marqueeKonten = response;
-      notifyListeners();
-    });
-    koneksi.fetchVideoProfile().then((response) {
-      linkVideo = response;
-      notifyListeners();
-    });
-    koneksi.fetchSebaranHibah().then((response) {
-      listSebaranHibah = response;
-      notifyListeners();
-      // print('listSebaranHibah $listSebaranHibah');
-      print('listCarousel ${listSebaranHibah.length}');
-    });
+  Future<List<String>> getListCarousel() async {
+    if (listCarousel.isEmpty) {
+      await koneksi.fetchCarousel().then((response) {
+        listCarousel = response;
+      });
+    }
+    return listCarousel;
+  }
+
+  Future<List<String>> getListSebaranHibah() async {
+    if (listSebaranHibah.isEmpty) {
+      await koneksi.fetchSebaranHibah().then((response) {
+        listSebaranHibah = response;
+      });
+    }
+    return listSebaranHibah;
+  }
+
+  Future<String> getMarquee() async {
+    if (marqueeKonten == '') {
+      await koneksi.fetchMarquee().then((response) {
+        marqueeKonten = response;
+      });
+    }
+    return marqueeKonten;
+  }
+
+  Future<String> getLinkVideo() async {
+    if (linkVideo == '') {
+      await koneksi.fetchVideoProfile().then((response) {
+        linkVideo = response;
+      });
+    }
+    return linkVideo;
   }
 }

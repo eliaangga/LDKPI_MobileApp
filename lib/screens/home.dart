@@ -44,7 +44,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     final screenWidth = MediaQuery.of(context).size.width;
     final beritaProvider =
         Provider.of<BeritaPageProvider>(context, listen: false);
-    String berita = marqueeKonten;
+    final homeProvider = Provider.of<HomePageProvider>(context, listen: false);
     return Scaffold(
       body: ListView(
         children: [
@@ -428,17 +428,25 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 },
                 child: Marquee(
                   textDirection: TextDirection.ltr,
-                  child: Html(
-                    data: berita,
-                    style: {
-                      'html': Style(
-                        fontFamily: 'Gotham',
-                        textAlign: TextAlign.justify,
-                        fontSize: FontSize(14),
-                        fontWeight: FontWeight.w100,
-                        lineHeight: LineHeight(1.1111111111),
-                        color: Color(0xff000000),
-                      ),
+                  child: FutureBuilder(
+                    future: homeProvider.getMarquee(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.hasData) {
+                        return Html(
+                          data: snapshot.data,
+                          style: {
+                            'html': Style(
+                              fontFamily: 'Gotham',
+                              textAlign: TextAlign.justify,
+                              fontSize: FontSize(14),
+                              fontWeight: FontWeight.w100,
+                              lineHeight: LineHeight(1.1111111111),
+                              color: Color(0xff000000),
+                            ),
+                          },
+                        );
+                      }
+                      return const Text('');
                     },
                   ),
                 ),
@@ -488,10 +496,16 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ),
             ),
           ),
-          linkVideo != ''
-              ? VideoPlayerWidget(
-                  url: linkVideo, dataSourceType: DataSourceType.network)
-              : const CupertinoActivityIndicator(),
+          FutureBuilder(
+            future: homeProvider.getLinkVideo(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.hasData && snapshot.data != 'not') {
+                return VideoPlayerWidget(
+                    url: snapshot.data, dataSourceType: DataSourceType.network);
+              }
+              return const CupertinoActivityIndicator();
+            },
+          ),
           const SizedBox(height: 5),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 10),
@@ -500,29 +514,44 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ),
-          Center(
-            child: SizedBox(
-              width: 500,
-              height: 176,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: listSebaranHibah[0] == 'not'
-                      ? const CupertinoActivityIndicator()
-                      : Image(image: NetworkImage(listSebaranHibah[0]))),
-            ),
+          FutureBuilder(
+            future: homeProvider.getListSebaranHibah(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 500,
+                    height: 176,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: snapshot.data![0] == 'not'
+                            ? const CupertinoActivityIndicator()
+                            : Image(image: NetworkImage(snapshot.data![0]))),
+                  ),
+                );
+              }
+              return const CupertinoActivityIndicator();
+            },
           ),
           const SizedBox(height: 12),
-          Center(
-            child: SizedBox(
-              width: 335,
-              height: 125,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: listSebaranHibah[1] == 'not'
-                    ? const CupertinoActivityIndicator()
-                    : Image(image: NetworkImage(listSebaranHibah[1])),
-              ),
-            ),
+          FutureBuilder(
+            future: homeProvider.getListSebaranHibah(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 500,
+                    height: 176,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: snapshot.data![1] == 'not'
+                            ? const CupertinoActivityIndicator()
+                            : Image(image: NetworkImage(snapshot.data![1]))),
+                  ),
+                );
+              }
+              return const CupertinoActivityIndicator();
+            },
           ),
           const SizedBox(height: 5),
           const SliderScreen2(),
