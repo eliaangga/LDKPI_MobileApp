@@ -123,7 +123,7 @@ class _FAQState extends State<FAQ> {
                               "The child of prophecy, who was chosen along with the Staff of Selection. She appears a touch younger, looking as she did at the halfway point, right in the middle of her journey to reach Camelot. Yay, it's finally my turn to shine! Caster Altria will do the very best she can!",
                               style: TextStyle(
                                 fontFamily: 'Gotham',
-                                fontSize: 9,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 height: 1.1111111111,
                                 color: Color(0xff000000),

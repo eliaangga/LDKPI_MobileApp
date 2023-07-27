@@ -1,14 +1,13 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ldkpi_news_app/language/config.dart';
 import 'package:ldkpi_news_app/language/l10n.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/services/koneksi.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:page_transition/page_transition.dart';
 
 import 'components/base.dart';
 
@@ -98,11 +97,11 @@ class _AppState extends State<App> {
           ),
         ),
         home: AnimatedSplashScreen(
-          duration: 5000,
+          duration: 250,
           splash: 'assets/assets/images/ldkpi.png',
           backgroundColor: const Color(0xFF02347C),
           splashTransition: SplashTransition.slideTransition,
-          pageTransitionType: PageTransitionType.fade,
+          // pageTransitionType: PageTransitionType.fade,
           nextScreen: Base(
             ubahBahasa: ubahBahasa,
             startLanguage: bahasa,

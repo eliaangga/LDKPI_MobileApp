@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/pemberian_hibah_model.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PH extends StatefulWidget {
   PemberianHibahModel konten;
@@ -22,10 +22,10 @@ class _PHState extends State<PH> {
             Container(
               width: double.infinity,
               height: 135,
-              decoration: BoxDecoration(
-                color: const Color(0xFF02347C),
+              decoration: const BoxDecoration(
+                color: Color(0xFF02347C),
                 image: DecorationImage(
-                  image: AssetImage('assets/assets/images/kemenkeu.png'),
+                  image: AssetImage('assets/assets/images/doodle.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -38,10 +38,10 @@ class _PHState extends State<PH> {
                       width: double.infinity,
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(5, 25, 10, 10),
+                        padding: const EdgeInsets.fromLTRB(5, 25, 10, 10),
                         child: Text(
                           AppLocalizations.of(context)!.pemberian_hibah,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.5,
@@ -51,7 +51,7 @@ class _PHState extends State<PH> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 60),
+                  const SizedBox(width: 30),
                 ],
               ),
             ),

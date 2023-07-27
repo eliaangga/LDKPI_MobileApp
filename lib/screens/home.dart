@@ -175,7 +175,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Container(
-                                margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
                                 width: 50,
                                 height: 50,
                                 child: Image.asset(

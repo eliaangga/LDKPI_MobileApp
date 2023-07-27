@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/main.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/models/informasi_pengadaan_model.dart';
 
 class InformasiP extends StatefulWidget {
@@ -34,26 +34,26 @@ class _InformasiPState extends State<InformasiP> {
             Container(
               width: double.infinity,
               height: 135,
-              decoration: BoxDecoration(
-                color: const Color(0xFF02347C),
+              decoration: const BoxDecoration(
+                color: Color(0xFF02347C),
                 image: DecorationImage(
-                  image: AssetImage('assets/assets/images/kemenkeu.png'),
+                  image: AssetImage('assets/assets/images/doodle.png'),
                   fit: BoxFit.cover,
                 ),
               ),
               child: Row(
                 children: [
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   const TombolKembali(),
                   Expanded(
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
+                        padding: const EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
                           AppLocalizations.of(context)!.informasi_pengadaan,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.5,
@@ -78,12 +78,12 @@ class _InformasiPState extends State<InformasiP> {
                 children: [
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                      padding: const EdgeInsets.fromLTRB(31, 15, 30, 9.5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(
+                            margin: const EdgeInsets.only(
                               top: 0,
                               left: 25,
                               bottom: 0,
@@ -99,10 +99,11 @@ class _InformasiPState extends State<InformasiP> {
                                       'html': Style(
                                         fontFamily: 'Gotham',
                                         textAlign: TextAlign.justify,
-                                        fontSize: FontSize(9),
+                                        fontSize: const FontSize(14),
                                         fontWeight: FontWeight.w400,
-                                        lineHeight: LineHeight(1.1111111111),
-                                        color: Color(0xff000000),
+                                        lineHeight:
+                                            const LineHeight(1.1111111111),
+                                        color: const Color(0xff000000),
                                       ),
                                     },
                                   ),

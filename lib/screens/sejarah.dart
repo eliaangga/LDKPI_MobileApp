@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/sejarah_model.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Sejarah extends StatefulWidget {
   SejarahModel konten;
@@ -22,10 +22,10 @@ class _SejarahState extends State<Sejarah> {
             Container(
               width: double.infinity,
               height: 135,
-              decoration: BoxDecoration(
-                color: const Color(0xFF02347C),
+              decoration: const BoxDecoration(
+                color: Color(0xFF02347C),
                 image: DecorationImage(
-                  image: AssetImage('assets/assets/images/kemenkeu.png'),
+                  image: AssetImage('assets/assets/images/doodle.png'),
                   fit: BoxFit.cover,
                 ),
               ),

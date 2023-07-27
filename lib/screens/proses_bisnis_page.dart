@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/models/proses_bisnis_model.dart';
 
 class ProsesBisnis extends StatefulWidget {
-  // ProsesBisnis({super.key, required this.listProsesBisnis});
-  // List<BeritaModel> listProsesBisnis;
-
   ProsesBisnis({super.key, required this.model});
   ProsesBisnisModel model;
 
@@ -15,40 +12,7 @@ class ProsesBisnis extends StatefulWidget {
   State<ProsesBisnis> createState() => _ProsesBisnis();
 }
 
-// class Item {
-//   Item({
-//     required this.expandedValue,
-//     required this.headerValue,
-//     required this.isExpanded,
-//   });
-
-//   String expandedValue;
-//   String headerValue;
-//   bool isExpanded;
-// }
-
-// List<BeritaModel> listProsesBisnis = [];
-
-// List<Item> generateItems() {
-//   return List<Item>.generate(listProsesBisnis.length, (int index) {
-//     return Item(
-//       headerValue: '${listProsesBisnis[index].title}',
-//       expandedValue: '${listProsesBisnis[index].isi}',
-//       isExpanded: index == 0 ? true : false,
-//     );
-//   });
-// }
-
 class _ProsesBisnis extends State<ProsesBisnis> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   listProsesBisnis = widget.listProsesBisnis;
-  //   _data = generateItems();
-  //   debugPrint(_data.length.toString());
-  // }
-
-  // List<Item> _data = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,26 +21,26 @@ class _ProsesBisnis extends State<ProsesBisnis> {
           Container(
             width: double.infinity,
             height: 135,
-            decoration: BoxDecoration(
-              color: const Color(0xFF02347C),
+            decoration: const BoxDecoration(
+              color: Color(0xFF02347C),
               image: DecorationImage(
-                image: AssetImage('assets/assets/images/kemenkeu.png'),
+                image: AssetImage('assets/assets/images/doodle.png'),
                 fit: BoxFit.cover,
               ),
             ),
             child: Row(
               children: [
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 const TombolKembali(),
                 Expanded(
                   child: Container(
                     width: double.infinity,
                     alignment: Alignment.center,
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
+                      padding: const EdgeInsets.fromLTRB(5, 25, 15, 10),
                       child: Text(
                         AppLocalizations.of(context)!.proses_bisnis,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 0.5,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/struktur_organisasi_model.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StrukturOrg extends StatefulWidget {
   StrukturOrganisasiModel konten;
@@ -26,10 +26,10 @@ class _StrukturOrgState extends State<StrukturOrg> {
             Container(
               width: double.infinity,
               height: 135,
-              decoration: BoxDecoration(
-                color: const Color(0xFF02347C),
+              decoration: const BoxDecoration(
+                color: Color(0xFF02347C),
                 image: DecorationImage(
-                  image: AssetImage('assets/assets/images/kemenkeu.png'),
+                  image: AssetImage('assets/assets/images/doodle.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -45,7 +45,7 @@ class _StrukturOrgState extends State<StrukturOrg> {
                         padding: EdgeInsets.fromLTRB(5, 25, 10, 10),
                         child: Text(
                           AppLocalizations.of(context)!.struktur_organisasi,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.5,
@@ -55,7 +55,7 @@ class _StrukturOrgState extends State<StrukturOrg> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 75),
+                  const SizedBox(width: 40),
                 ],
               ),
             ),

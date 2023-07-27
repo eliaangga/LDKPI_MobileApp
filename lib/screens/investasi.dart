@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/investasi_model.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Investasi extends StatefulWidget {
   InvestasiModel invest;
@@ -23,16 +23,16 @@ class _InvestasiState extends State<Investasi> {
             Container(
               width: double.infinity,
               height: 135,
-              decoration: BoxDecoration(
-                color: const Color(0xFF02347C),
+              decoration: const BoxDecoration(
+                color: Color(0xFF02347C),
                 image: DecorationImage(
-                  image: AssetImage('assets/assets/images/kemenkeu.png'),
+                  image: AssetImage('assets/assets/images/doodle.png'),
                   fit: BoxFit.cover,
                 ),
               ),
               child: Row(
                 children: [
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   const TombolKembali(),
                   Expanded(
                     child: Container(

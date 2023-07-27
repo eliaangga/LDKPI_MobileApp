@@ -22,22 +22,22 @@ class _SurveiLayananState extends State<SurveiLayanan> {
             Container(
               width: double.infinity,
               height: 145,
-              decoration: BoxDecoration(
-                color: const Color(0xFF02347C),
+              decoration: const BoxDecoration(
+                color: Color(0xFF02347C),
                 image: DecorationImage(
-                  image: AssetImage('assets/assets/images/kemenkeu.png'),
+                  image: AssetImage('assets/assets/images/doodle.png'),
                   fit: BoxFit.cover,
                 ),
               ),
               child: Row(
                 children: [
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   const TombolKembali(),
                   Expanded(
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
-                      child: Padding(
+                      child: const Padding(
                         padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
                           'Survey Kepuasaan Layanan LDKPI',
@@ -67,12 +67,12 @@ class _SurveiLayananState extends State<SurveiLayanan> {
                 children: [
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                      padding: const EdgeInsets.fromLTRB(31, 15, 30, 9.5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(
+                            margin: const EdgeInsets.only(
                               top: 0,
                               left: 25,
                               bottom: 0,
@@ -91,8 +91,9 @@ class _SurveiLayananState extends State<SurveiLayanan> {
                                     style: {
                                       'html': Style(
                                         fontFamily: 'Gotham',
-                                        fontSize: FontSize(9),
+                                        fontSize: FontSize(14),
                                         fontWeight: FontWeight.w400,
+                                        textAlign: TextAlign.justify,
                                         lineHeight: LineHeight(1.1111111111),
                                         color: Color(0xff000000),
                                       ),

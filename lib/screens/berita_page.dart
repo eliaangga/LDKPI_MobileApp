@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
-import 'package:ldkpi_news_app/screens/berita_konten.dart';
 import 'package:ldkpi_news_app/components/kontainer_berita.dart';
 import 'package:ldkpi_news_app/models/berita_model.dart';
+import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
+import 'package:ldkpi_news_app/screens/berita_konten.dart';
 import 'package:provider/provider.dart';
 
 class BeritaPage extends StatefulWidget {
@@ -45,15 +45,23 @@ class _BeritaPageState extends State<BeritaPage> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  color: const Color(0xFF02347C),
-                  height: 70,
+                  height: 140,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF02347C),
+                    image: DecorationImage(
+                      image: AssetImage('assets/assets/images/doodle.png'),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                   child: Center(
                     child: Text(
                       AppLocalizations.of(context)!.berita,
                       style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 2,
+                        fontSize: 34,
+                      ),
                     ),
                   ),
                 ),
@@ -93,7 +101,7 @@ class _BeritaPageState extends State<BeritaPage> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 120),
+            margin: const EdgeInsets.only(top: 195),
             child: Consumer<BeritaPageProvider>(
               builder: (context, beritaConsume, child) {
                 return FutureBuilder(

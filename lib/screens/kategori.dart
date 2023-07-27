@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/screens/faq.dart';
-import 'package:ldkpi_news_app/screens/informasi_pengadaan.dart';
 import 'package:ldkpi_news_app/screens/nilai_&_budaya.dart';
+import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
 import 'package:ldkpi_news_app/screens/penerima_hibah.dart';
-import 'package:ldkpi_news_app/screens/peraturan.dart';
-import 'package:ldkpi_news_app/screens/proses_bisnis_page.dart';
-import 'package:ldkpi_news_app/screens/struktur_manajemen_page.dart';
+import 'package:ldkpi_news_app/screens/sejarah.dart';
 import 'package:ldkpi_news_app/screens/struktur_organisasi.dart';
-import 'package:ldkpi_news_app/screens/support_center.dart';
-import 'package:ldkpi_news_app/screens/survei_layanan.dart';
-import 'package:ldkpi_news_app/screens/tugas_&_fungsi.dart';
-import 'package:ldkpi_news_app/screens/visi_&_misi.dart';
 
+import 'Informasi_pengadaan.dart';
 import 'investasi.dart';
-import 'sejarah.dart';
+import 'peraturan.dart';
+import 'proses_bisnis_page.dart';
+import 'struktur_manajemen_page.dart';
+import 'support_center.dart';
+import 'survei_layanan.dart';
+import 'tugas_&_fungsi.dart';
+import 'visi_&_misi.dart';
 
 class Kategori extends StatefulWidget {
   const Kategori({super.key});
@@ -44,20 +45,21 @@ class _KategoriState extends State<Kategori> {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 140,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF02347C),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF02347C),
                     image: DecorationImage(
-                      image: AssetImage('assets/assets/images/kemenkeu.png'),
-                      fit: BoxFit.cover,
+                      image: AssetImage('assets/assets/images/doodle.png'),
+                      fit: BoxFit.fill,
                     ),
                   ),
                   child: Center(
                     child: Text(
                       AppLocalizations.of(context)!.kategori,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 2,
+                        fontSize: 34,
                       ),
                     ),
                   ),
@@ -68,7 +70,7 @@ class _KategoriState extends State<Kategori> {
           Positioned(
             child: SizedBox(
               width: 334,
-              height: 255,
+              height: 260,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -88,9 +90,12 @@ class _KategoriState extends State<Kategori> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     child: Container(
-                      margin: EdgeInsets.fromLTRB(30, 0, 11, 20),
+                      margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
                       width: double.infinity,
                       height: 155,
                       alignment: Alignment.center,
@@ -114,12 +119,13 @@ class _KategoriState extends State<Kategori> {
                                 padding: EdgeInsets.zero,
                               ),
                               child: Container(
-                                margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                                padding: EdgeInsets.fromLTRB(19, 15, 19, 16),
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
                                 width: 165,
                                 height: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Color(0xffffffff),
+                                  color: const Color(0xffffffff),
                                   borderRadius: BorderRadius.circular(5),
                                   boxShadow: const [
                                     BoxShadow(
@@ -129,7 +135,7 @@ class _KategoriState extends State<Kategori> {
                                     ),
                                   ],
                                 ),
-                                child: Container(
+                                child: SizedBox(
                                   width: double.infinity,
                                   height: double.infinity,
                                   child: Column(
@@ -137,10 +143,10 @@ class _KategoriState extends State<Kategori> {
                                         CrossAxisAlignment.center,
                                     children: [
                                       Container(
-                                        margin:
-                                            EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                        width: 40,
-                                        height: 50,
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        width: 90,
+                                        height: 90,
                                         child: Image.asset(
                                             'assets/assets/images/Investment.jpg'),
                                       ),
@@ -149,9 +155,9 @@ class _KategoriState extends State<Kategori> {
                                           AppLocalizations.of(context)!
                                               .investasi,
                                           textAlign: TextAlign.center,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontFamily: 'Gotham',
-                                            fontSize: 12,
+                                            fontSize: 15,
                                             fontWeight: FontWeight.w700,
                                             height: 1,
                                             color: Color(0xff000000),
@@ -164,18 +170,15 @@ class _KategoriState extends State<Kategori> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            width: 20,
-                          ),
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchInvest().then((response) {
+                                koneksi.fetchPemberiHibah().then((response) {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Investasi(
-                                              invest: response,
+                                        builder: (context) => PH(
+                                              konten: response,
                                             )),
                                   );
                                 });
@@ -184,12 +187,13 @@ class _KategoriState extends State<Kategori> {
                                 padding: EdgeInsets.zero,
                               ),
                               child: Container(
-                                margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                                padding: EdgeInsets.fromLTRB(19, 15, 19, 16),
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
                                 width: 165,
                                 height: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Color(0xffffffff),
+                                  color: const Color(0xffffffff),
                                   borderRadius: BorderRadius.circular(5),
                                   boxShadow: const [
                                     BoxShadow(
@@ -199,29 +203,29 @@ class _KategoriState extends State<Kategori> {
                                     ),
                                   ],
                                 ),
-                                child: Container(
+                                child: SizedBox(
                                   width: double.infinity,
                                   height: double.infinity,
-                                  child: Row(
+                                  child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
                                       Container(
-                                        margin:
-                                            EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                        width: 40,
-                                        height: 50,
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 15, 0, 0),
+                                        width: 90,
+                                        height: 90,
                                         child: Image.asset(
-                                            'assets/assets/images/Investment.jpg'),
+                                            'assets/assets/images/Giving.jpg'),
                                       ),
                                       Center(
                                         child: Text(
                                           AppLocalizations.of(context)!
-                                              .investasi,
+                                              .pemberian_hibah,
                                           textAlign: TextAlign.center,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontFamily: 'Gotham',
-                                            fontSize: 12,
+                                            fontSize: 15,
                                             fontWeight: FontWeight.w700,
                                             height: 1,
                                             color: Color(0xff000000),
@@ -267,536 +271,498 @@ class _KategoriState extends State<Kategori> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Container(
-                    width: double.infinity,
-                    height: 155,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchSejarah().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Sejarah(
-                                          konten: response,
-                                        )),
-                              );
-                            });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(30, 0, 34, 0),
-                            padding: EdgeInsets.fromLTRB(31, 28, 31, 27),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x0c000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
+                      width: double.infinity,
+                      height: 145,
+                      alignment: Alignment.center,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchSejarah().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Sejarah(
+                                              konten: response,
+                                            )),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(14, 0, 14, 21),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.history,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.history,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 88),
-                                      child: Text(
-                                        AppLocalizations.of(context)!.sejarah,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 0.5,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!.sejarah,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchPenerimaHibah().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PenerimaH(
-                                          konten: response,
-                                        )),
-                              );
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(29, 32, 25, 2.5),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x19000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchPenerimaHibah().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => PenerimaH(
+                                              konten: response,
+                                            )),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(16, 0, 20, 4.5),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.money_sharp,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 15, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.money_sharp,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 96),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .penerima_hibah,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1.2575,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .penerima_hibah,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   Container(
-                    width: double.infinity,
-                    height: 155,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchNilaiBudaya().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => NilaiBudaya(
-                                          konten: response,
-                                        )),
-                              );
-                            });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(30, 0, 34, 0),
-                            padding: EdgeInsets.fromLTRB(31, 24, 31, 5),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x0c000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
+                      width: double.infinity,
+                      height: 155,
+                      alignment: Alignment.center,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchNilaiBudaya().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => NilaiBudaya(
+                                              konten: response,
+                                            )),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(14, 0, 14, 12),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.history,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.credit_score_outlined,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(
-                                          maxWidth: 100, maxHeight: 100),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .nilai_budaya,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .nilai_budaya,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchOrganisasi().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => StrukturOrg(
-                                          konten: response,
-                                        )),
-                              );
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(29, 24, 25, 2.5),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x19000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchOrganisasi().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => StrukturOrg(
+                                              konten: response,
+                                            )),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(16, 0, 20, 13),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.account_tree,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 15, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.groups_2_outlined,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 96),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .struktur_organisasi,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .struktur_organisasi,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   Container(
-                    width: double.infinity,
-                    height: 155,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchManagement().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => StrukturManajemen(
-                                          listManajemen: response,
-                                        )),
-                              );
-                            });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(30, 0, 34, 0),
-                            padding: EdgeInsets.fromLTRB(31, 15, 31, 27),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x0c000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
+                      width: double.infinity,
+                      height: 155,
+                      alignment: Alignment.center,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchManagement().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => StrukturManajemen(
+                                              listManajemen: response,
+                                            )),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(14, 0, 14, 21),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.account_tree,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.account_tree,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints:
-                                          BoxConstraints(maxWidth: 100),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .struktur_manajemen,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .struktur_manajemen,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchTugasFungsi().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => TugasFungsi(
-                                    model: response,
-                                  ),
-                                ),
-                              );
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(29, 10, 25, 2.5),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x19000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
-                                ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(16, 0, 20, 18),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 15, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.add_business,
-                                          color: Colors.black,
-                                          size: 40,
-                                        ),
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchTugasFungsi().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => TugasFungsi(
+                                        model: response,
                                       ),
                                     ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 96),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .tugas_fungsi,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1.2575,
-                                          color: Color(0xff000000),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
+                                ),
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 15, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.add_business,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .tugas_fungsi,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -808,7 +774,7 @@ class _KategoriState extends State<Kategori> {
             top: 128.5,
             child: Container(
               width: 334,
-              height: 775,
+              height: 805,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -828,619 +794,576 @@ class _KategoriState extends State<Kategori> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Container(
-                    width: double.infinity,
-                    height: 155,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchProcess().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ProsesBisnis(
-                                          model: response,
-                                        )),
-                              );
-                            });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(30, 0, 34, 0),
-                            padding: EdgeInsets.fromLTRB(31, 15, 31, 27),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x0c000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
+                      width: double.infinity,
+                      height: 155,
+                      alignment: Alignment.center,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchProcess().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ProsesBisnis(
+                                              model: response,
+                                            )),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(14, 0, 14, 21),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.change_circle_outlined,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.change_circle_outlined,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(
-                                          maxWidth: 88, maxHeight: 100),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .proses_bisnis,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .proses_bisnis,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchVisiMisi().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => VisiMisi(
-                                          konten: response,
-                                        )),
-                              );
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(29, 20, 25, 2.5),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x19000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchVisiMisi().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => VisiMisi(
+                                              konten: response,
+                                            )),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin:
-                                        EdgeInsets.fromLTRB(16, 0, 20, 14.5),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.business_outlined,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 15, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.business_outlined,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 96),
-                                      child: Text(
-                                        AppLocalizations.of(context)!.visi_misi,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .visi_misi,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   Container(
-                    width: double.infinity,
-                    height: 155,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchPeraturan().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Peraturan(
-                                          konten: response,
-                                        )),
-                              );
-                            });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(30, 0, 34, 0),
-                            padding: EdgeInsets.fromLTRB(31, 30, 31, 27),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x0c000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
+                      width: double.infinity,
+                      height: 155,
+                      alignment: Alignment.center,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchPeraturan().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Peraturan(
+                                              konten: response,
+                                            )),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(14, 0, 14, 21),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.rule,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.rule,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 88),
-                                      child: Text(
-                                        AppLocalizations.of(context)!.peraturan,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .peraturan,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchPengadaan().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => InformasiP()),
-                              );
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(29, 32, 25, 2.5),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x19000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchPengadaan().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => InformasiP()),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin:
-                                        EdgeInsets.fromLTRB(16, 0, 20, 14.5),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.info_outline,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 15, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.info_outline,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 96),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .informasi_pengadaan,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .informasi_pengadaan,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   Container(
-                    width: double.infinity,
-                    height: 155,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            koneksi.fetchSurvei().then((response) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SurveiLayanan(
-                                          konten: response,
-                                        )),
-                              );
-                            });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(30, 0, 34, 0),
-                            padding: EdgeInsets.fromLTRB(31, 15, 31, 27),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x0c000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
+                      width: double.infinity,
+                      height: 155,
+                      alignment: Alignment.center,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                koneksi.fetchSurvei().then((response) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SurveiLayanan(
+                                              konten: response,
+                                            )),
+                                  );
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(14, 0, 14, 21),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.design_services_outlined,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.design_services_outlined,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 88),
-                                      child: Text(
-                                        AppLocalizations.of(context)!.survei,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!.survei,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CallUs(),
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => CallUs(),
+                                  ),
+                                );
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
                               ),
-                            );
-                          },
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(29, 20, 25, 2.5),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x19000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin:
-                                        EdgeInsets.fromLTRB(16, 0, 20, 14.5),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.call_end,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 15, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.call_end,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 96),
-                                      child: Text(
-                                        AppLocalizations.of(context)!.hubungi,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!.hubungi,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 10),
                   Container(
-                    width: double.infinity,
-                    height: 155,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => FAQ(),
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
+                      width: double.infinity,
+                      height: 155,
+                      alignment: Alignment.center,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => FAQ(),
+                                  ),
+                                );
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
                               ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(30, 0, 34, 0),
-                            padding: EdgeInsets.fromLTRB(31, 30, 31, 27),
-                            width: 150,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x0c000000),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 2,
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(19, 10, 19, 0),
+                                width: 165,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffffffff),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(14, 0, 14, 21),
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 2,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: Icon(
-                                          Icons.question_answer,
-                                          color: Colors.black,
-                                          size: 40,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        width: 90,
+                                        height: 90,
+                                        child: const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Icon(
+                                            Icons.question_answer,
+                                            color: Colors.black,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      constraints: BoxConstraints(maxWidth: 88),
-                                      child: Text(
-                                        AppLocalizations.of(context)!.faq,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Gotham',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1,
-                                          color: Color(0xff000000),
+                                      Center(
+                                        child: Text(
+                                          AppLocalizations.of(context)!.faq,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontFamily: 'Gotham',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1,
+                                            color: Color(0xff000000),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],

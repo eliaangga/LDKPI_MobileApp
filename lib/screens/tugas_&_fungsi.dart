@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:gesture_zoom_box/gesture_zoom_box.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/tugas_fungsi_model.dart';
 
@@ -38,16 +37,16 @@ class _TugasFungsiState extends State<TugasFungsi> {
               Container(
                 width: double.infinity,
                 height: 135,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF02347C),
+                decoration: const BoxDecoration(
+                  color: Color(0xFF02347C),
                   image: DecorationImage(
-                    image: AssetImage('assets/assets/images/kemenkeu.png'),
+                    image: AssetImage('assets/assets/images/doodle.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
                 child: Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     const TombolKembali(),
