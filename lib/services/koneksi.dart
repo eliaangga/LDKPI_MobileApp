@@ -22,8 +22,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class Koneksi {
   String apiUrl = dotenv.env['FLUTTER_APP_API_URL']!;
   List<BeritaModel> listBerita = [];
-  List<String> getListCarousel = [];
-  String marqueeKonten = '';
   String useLanguage = '';
 
   Future<InvestasiModel> fetchInvest() async {
@@ -321,10 +319,10 @@ class Koneksi {
                   ['attributes']['url'];
         }
       } else {
-        hasil = 'Data not found';
+        hasil = '';
       }
     } catch (e) {
-      hasil = 'Data catch';
+      hasil = '';
     }
     return hasil;
   }

@@ -16,6 +16,8 @@ Future<void> main() async {
   await dotenv.load(fileName: "lib/.env");
   koneksi.fetchCarousel().then((response) {
     listCarousel = response;
+    // print('listCarousel $listCarousel');
+    print('listCarousel ${listCarousel.length}');
   });
   koneksi.fetchMarquee().then((response) {
     marqueeKonten = response;
@@ -25,6 +27,8 @@ Future<void> main() async {
   });
   koneksi.fetchSebaranHibah().then((response) {
     listSebaranHibah = response;
+    // print('listSebaranHibah $listSebaranHibah');
+    print('listCarousel ${listSebaranHibah.length}');
   });
   runApp(ChangeNotifierProvider(
     create: (context) => BeritaPageProvider(),
@@ -70,6 +74,9 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    final beritaProvider =
+        Provider.of<BeritaPageProvider>(context, listen: false);
+    beritaProvider.latestNews();
     return MaterialApp(
         title: 'LDKPI',
         supportedLocales: L10n.all,

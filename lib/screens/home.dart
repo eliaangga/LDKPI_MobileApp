@@ -8,6 +8,7 @@ import 'package:ldkpi_news_app/components/home/slider2.dart';
 import 'package:ldkpi_news_app/components/home/video_player.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
+import 'package:ldkpi_news_app/providers/home_page_provider.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
 import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
 import 'package:marquee_widget/marquee_widget.dart';
@@ -22,7 +23,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  String berita = marqueeKonten;
 
   @override
   void initState() {
@@ -39,17 +39,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
-  late Future<String> _berita = Future.delayed(
-    const Duration(seconds: 1),
-    () => berita,
-  );
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final beritaProvider =
         Provider.of<BeritaPageProvider>(context, listen: false);
-    beritaProvider.latestNews();
+    String berita = marqueeKonten;
     return Scaffold(
       body: ListView(
         children: [
@@ -404,56 +399,51 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               height: 25,
             ),
           ),
-          FutureBuilder<String>(
-            future: _berita,
-            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-              return Container(
-                width: double.infinity,
-                color: Colors.yellow,
-                height: 40,
-                child: AnimatedBuilder(
-                  animation: _animationController,
-                  builder: (context, child) {
-                    return Transform.translate(
-                      offset: Offset(
-                        (0.5 - _animationController.value) * screenWidth,
-                        1,
-                      ),
-                      child: child,
+          Container(
+            width: double.infinity,
+            color: Colors.yellow,
+            height: 40,
+            child: AnimatedBuilder(
+              animation: _animationController,
+              builder: (context, child) {
+                return Transform.translate(
+                  offset: Offset(
+                    (0.5 - _animationController.value) * screenWidth,
+                    1,
+                  ),
+                  child: child,
+                );
+              },
+              child: GestureDetector(
+                onTap: () {
+                  koneksi.fetchInvest().then((response) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Investasi(
+                                invest: response,
+                              )),
                     );
-                  },
-                  child: GestureDetector(
-                    onTap: () {
-                      koneksi.fetchInvest().then((response) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Investasi(
-                                    invest: response,
-                                  )),
-                        );
-                      });
-                    },
-                    child: Marquee(
-                      textDirection: TextDirection.ltr,
-                      child: Html(
-                        data: berita,
-                        style: {
-                          'html': Style(
-                            fontFamily: 'Gotham',
-                            textAlign: TextAlign.justify,
-                            fontSize: FontSize(14),
-                            fontWeight: FontWeight.w100,
-                            lineHeight: LineHeight(1.1111111111),
-                            color: Color(0xff000000),
-                          ),
-                        },
+                  });
+                },
+                child: Marquee(
+                  textDirection: TextDirection.ltr,
+                  child: Html(
+                    data: berita,
+                    style: {
+                      'html': Style(
+                        fontFamily: 'Gotham',
+                        textAlign: TextAlign.justify,
+                        fontSize: FontSize(14),
+                        fontWeight: FontWeight.w100,
+                        lineHeight: LineHeight(1.1111111111),
+                        color: Color(0xff000000),
                       ),
-                    ),
+                    },
                   ),
                 ),
-              );
-            },
+              ),
+            ),
           ),
           Expanded(
             child: SizedBox(
@@ -498,8 +488,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ),
             ),
           ),
-          VideoPlayerWidget(
-              url: linkVideo, dataSourceType: DataSourceType.network),
+          linkVideo != ''
+              ? VideoPlayerWidget(
+                  url: linkVideo, dataSourceType: DataSourceType.network)
+              : const CupertinoActivityIndicator(),
           const SizedBox(height: 5),
           Padding(
             padding: EdgeInsets.fromLTRB(30, 10, 0, 10),
