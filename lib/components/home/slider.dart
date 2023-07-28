@@ -2,7 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/main.dart';
+import 'package:ldkpi_news_app/providers/home_page_provider.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
+import 'package:provider/provider.dart';
 
 class SliderScreen extends StatefulWidget {
   const SliderScreen({Key? key}) : super(key: key);
@@ -17,15 +19,27 @@ class _SliderScreenState extends State<SliderScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final homeProvider = Provider.of<HomePageProvider>(context, listen: false);
     List<Map<String, dynamic>> imageList = [
-      {"id": 1, "image_path": listCarousel[0]},
-      {"id": 2, "image_path": listCarousel[1]},
-      {"id": 3, "image_path": listCarousel[2]}
+      {"id": 0, "image_path": ''},
+      {"id": 1, "image_path": ''},
+      {"id": 2, "image_path": ''}
     ];
     List<Widget> carouselItems = imageList.map((item) {
       return GestureDetector(
         onTap: () {
           switch (item['id']) {
+            case 0:
+              koneksi.fetchInvest().then((response) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Investasi(
+                            invest: response,
+                          )),
+                );
+              });
+              break;
             case 1:
               koneksi.fetchInvest().then((response) {
                 Navigator.push(
@@ -48,36 +62,34 @@ class _SliderScreenState extends State<SliderScreen> {
                 );
               });
               break;
-            case 3:
-              koneksi.fetchInvest().then((response) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Investasi(
-                            invest: response,
-                          )),
-                );
-              });
-              break;
             default:
               break;
           }
         },
-        child: item['image_path'] == 'not'
-            ? const CupertinoActivityIndicator()
-            : Image(
-                image: NetworkImage(item['image_path']),
-                fit: BoxFit.cover,
-                width: double.infinity,
-              ),
+        child: FutureBuilder(
+          future: homeProvider.getListCarousel(),
+          builder:
+              (BuildContext contect, AsyncSnapshot<List<String>> snapshot) {
+            if (snapshot.hasData) {
+              if (snapshot.data![item['id']] != 'not') {
+                return Image(
+                  image: NetworkImage(snapshot.data![item['id']]),
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                );
+              } else {
+                return Icon(
+                  Icons.verified_user_rounded,
+                  color: Colors.black,
+                );
+              }
+            }
+            return const CupertinoActivityIndicator();
+          },
+        ),
       );
     }).toList();
 
-    // List<Widget> carouselItems = [
-    //   const CupertinoActivityIndicator(),
-    //   const CupertinoActivityIndicator(),
-    //   const CupertinoActivityIndicator()
-    // ];
     return Column(
       children: [
         Stack(
