@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/berita_model.dart';
 
 class BeritaKonten extends StatelessWidget {
@@ -17,18 +16,14 @@ class BeritaKonten extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            width: double.infinity,
-            height: 90,
-            color: const Color(0xFF02347C),
             child: Row(
               children: [
-                SizedBox(width: 20),
-                TombolKembali(),
+                const SizedBox(width: 20),
                 Expanded(
                   child: Container(
                     width: double.infinity,
                     alignment: Alignment.center,
-                    child: Text(
+                    child: const Text(
                       '',
                       style: TextStyle(
                         color: Colors.white,
@@ -46,17 +41,17 @@ class BeritaKonten extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                       child: TextButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
                         style: TextButton.styleFrom(
-                          padding: EdgeInsets.fromLTRB(4, 0, 20, 20),
+                          padding: const EdgeInsets.fromLTRB(4, 0, 20, 20),
                         ),
                         child: Container(
                           width: 61,
@@ -65,7 +60,7 @@ class BeritaKonten extends StatelessWidget {
                             color: Color(0xff02275c),
                             borderRadius: BorderRadius.circular(3),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               '< Kembali',
                               style: TextStyle(
@@ -117,10 +112,10 @@ class BeritaKonten extends StatelessWidget {
                       'html': Style(
                         fontFamily: 'Gotham',
                         textAlign: TextAlign.justify,
-                        fontSize: FontSize(16),
+                        fontSize: const FontSize(16),
                         fontWeight: FontWeight.w100,
-                        lineHeight: LineHeight(1.1111111111),
-                        color: Color(0xff000000),
+                        lineHeight: const LineHeight(1.1111111111),
+                        color: const Color(0xff000000),
                       ),
                     },
                   ),

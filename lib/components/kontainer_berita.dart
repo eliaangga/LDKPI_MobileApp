@@ -49,10 +49,10 @@ class KontainerBerita extends StatelessWidget {
             style: {
               'html': Style(
                 fontFamily: 'Gotham',
-                fontSize: FontSize(12),
+                fontSize: const FontSize(12),
                 fontWeight: FontWeight.w400,
-                lineHeight: LineHeight(1),
-                color: Color(0xff000000),
+                lineHeight: const LineHeight(1),
+                color: const Color(0xff000000),
                 maxLines: 2,
               ),
             },

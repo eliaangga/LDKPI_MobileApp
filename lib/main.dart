@@ -97,7 +97,7 @@ class _AppState extends State<App> {
           ),
         ),
         home: AnimatedSplashScreen(
-          duration: 250,
+          duration: 5000,
           splash: 'assets/assets/images/ldkpi.png',
           backgroundColor: const Color(0xFF02347C),
           splashTransition: SplashTransition.slideTransition,
