@@ -1,4 +1,4 @@
 class SurveiLayananModel {
-  String? konten;
-  SurveiLayananModel({this.konten});
+  String konten;
+  SurveiLayananModel({this.konten = ''});
 }

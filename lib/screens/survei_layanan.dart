@@ -1,12 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
+import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/survei_layanan_model.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SurveiLayanan extends StatefulWidget {
-  SurveiLayananModel konten;
-  SurveiLayanan({Key? key, required this.konten}) : super(key: key);
+  SurveiLayanan({Key? key}) : super(key: key);
 
   @override
   State<SurveiLayanan> createState() => _SurveiLayananState();
@@ -37,10 +39,10 @@ class _SurveiLayananState extends State<SurveiLayanan> {
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
-                      child: const Padding(
-                        padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
-                          'Survey Kepuasaan Layanan LDKPI',
+                          AppLocalizations.of(context)!.judulSurvei,
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -78,16 +80,22 @@ class _SurveiLayananState extends State<SurveiLayanan> {
                               bottom: 0,
                               right: 25,
                             ),
-                            child: widget.konten.konten == ''
-                                ? const Center(
-                                    child: Text('Data Not Found'),
-                                  )
-                                : Html(
-                                    data: widget.konten.konten,
-                                    onLinkTap:
-                                        (url, context, attributes, element) {
-                                      launchUrlString(url!);
+                            child: FutureBuilder(
+                              future: koneksi.fetchSurvei(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<SurveiLayananModel> snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return const CupertinoActivityIndicator();
+                                } else if (snapshot.data!.konten != '') {
+                                  return Html(
+                                    onLinkTap: (url, context, attributes,
+                                        element) async {
+                                      if (await canLaunchUrl(Uri.parse(url!))) {
+                                        await launchUrl(Uri.parse(url));
+                                      }
                                     },
+                                    data: snapshot.data!.konten,
                                     style: {
                                       'html': Style(
                                         fontFamily: 'Gotham',
@@ -98,7 +106,14 @@ class _SurveiLayananState extends State<SurveiLayanan> {
                                         color: Color(0xff000000),
                                       ),
                                     },
-                                  ),
+                                  );
+                                } else {
+                                  return const Center(
+                                    child: Text('Data Not Found'),
+                                  );
+                                }
+                              },
+                            ),
                           ),
                         ],
                       ),

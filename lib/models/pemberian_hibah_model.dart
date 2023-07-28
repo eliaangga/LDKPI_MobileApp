@@ -1,4 +1,4 @@
 class PemberianHibahModel {
-  String? konten;
-  PemberianHibahModel({this.konten});
+  String konten;
+  PemberianHibahModel({this.konten = ''});
 }

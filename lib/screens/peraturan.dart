@@ -1,13 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
+import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/peraturan_model.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Peraturan extends StatefulWidget {
-  PeraturanModel konten;
-  Peraturan({Key? key, required this.konten}) : super(key: key);
+  const Peraturan({Key? key}) : super(key: key);
 
   @override
   State<Peraturan> createState() => _PeraturanState();
@@ -56,47 +57,68 @@ class _PeraturanState extends State<Peraturan> {
                 ],
               ),
             ),
-            Container(
-              width: double.infinity,
-              height: 844,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          widget.konten.konten == ''
-                              ? const Center(
-                                  child: Text('Data Not Found'),
-                                )
-                              : Html(
-                                  data: widget.konten.konten,
-                                  style: {
-                                    'html': Style(
-                                      fontFamily: 'Gotham',
-                                      textAlign: TextAlign.justify,
-                                      fontSize: FontSize(9),
-                                      fontWeight: FontWeight.w400,
-                                      lineHeight: LineHeight(1.1111111111),
-                                      color: Color(0xff000000),
-                                    ),
-                                  },
-                                  onLinkTap:
-                                      (url, context, attributes, element) {
-                                    launchUrlString(url!);
-                                  },
-                                ),
-                        ],
+            InteractiveViewer(
+              child: Container(
+                width: double.infinity,
+                height: 844,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: FutureBuilder(
+                        future: koneksi.fetchPeraturan(),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<PeraturanModel> snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const CupertinoActivityIndicator();
+                          } else if (snapshot.data!.konten != '') {
+                            return Container(
+                              padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  snapshot.data!.konten == ''
+                                      ? const Center(
+                                          child: Text('Data Not Found'),
+                                        )
+                                      : Html(
+                                          data: snapshot.data!.konten,
+                                          style: {
+                                            'html': Style(
+                                              fontFamily: 'Gotham',
+                                              textAlign: TextAlign.justify,
+                                              fontSize: FontSize(9),
+                                              fontWeight: FontWeight.w400,
+                                              lineHeight:
+                                                  LineHeight(1.1111111111),
+                                              color: Color(0xff000000),
+                                            ),
+                                          },
+                                          onLinkTap: (url, context, attributes,
+                                              element) async {
+                                            if (await canLaunchUrl(
+                                                Uri.parse(url!))) {
+                                              await launchUrl(Uri.parse(url));
+                                            }
+                                          },
+                                        ),
+                                ],
+                              ),
+                            );
+                          } else {
+                            return const Center(
+                              child: Text('Data Not Found'),
+                            );
+                          }
+                        },
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

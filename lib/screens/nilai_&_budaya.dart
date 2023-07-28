@@ -1,12 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
+import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/nilai_budaya_model.dart';
 
 class NilaiBudaya extends StatefulWidget {
-  NilaiBudayaModel konten;
-  NilaiBudaya({Key? key, required this.konten}) : super(key: key);
+  NilaiBudaya({Key? key}) : super(key: key);
 
   @override
   State<NilaiBudaya> createState() => _NilaiBudayaState();
@@ -77,12 +78,16 @@ class _NilaiBudayaState extends State<NilaiBudaya> {
                               bottom: 0,
                               right: 25,
                             ),
-                            child: widget.konten.konten == ''
-                                ? const Center(
-                                    child: Text('Data Not Found'),
-                                  )
-                                : Html(
-                                    data: widget.konten.konten,
+                            child: FutureBuilder(
+                              future: koneksi.fetchNilaiBudaya(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<NilaiBudayaModel> snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return const CupertinoActivityIndicator();
+                                } else if (snapshot.data!.konten != '') {
+                                  return Html(
+                                    data: snapshot.data!.konten,
                                     style: {
                                       'html': Style(
                                         fontFamily: 'Gotham',
@@ -93,7 +98,14 @@ class _NilaiBudayaState extends State<NilaiBudaya> {
                                         color: Color(0xff000000),
                                       ),
                                     },
-                                  ),
+                                  );
+                                } else {
+                                  return const Center(
+                                    child: Text('Data Not Found'),
+                                  );
+                                }
+                              },
+                            ),
                           ),
                         ],
                       ),

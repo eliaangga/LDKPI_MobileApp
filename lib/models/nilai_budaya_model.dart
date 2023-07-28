@@ -1,4 +1,4 @@
 class NilaiBudayaModel {
-  String? konten;
-  NilaiBudayaModel({this.konten});
+  String konten;
+  NilaiBudayaModel({this.konten = ''});
 }

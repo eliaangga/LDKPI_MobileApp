@@ -1,22 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
+import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/visimisi_model.dart';
 
 class VisiMisi extends StatefulWidget {
-  VisiMisiModel konten;
-  VisiMisi({Key? key, required this.konten}) : super(key: key);
+  VisiMisi({Key? key}) : super(key: key);
 
   @override
   State<VisiMisi> createState() => _VisiMisiState();
 }
 
 class _VisiMisiState extends State<VisiMisi> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,44 +55,63 @@ class _VisiMisiState extends State<VisiMisi> {
                 ],
               ),
             ),
-            Container(
-              width: double.infinity,
-              height: 844,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Column(
-                children: [
-                  Expanded(
+            FutureBuilder(
+              future: koneksi.fetchVisiMisi(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<VisiMisiModel> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CupertinoActivityIndicator();
+                } else if (snapshot.data!.konten != '') {
+                  return InteractiveViewer(
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                      width: double.infinity,
+                      height: 844,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          if (widget.konten.konten != '')
-                            Container(
-                              margin: EdgeInsets.only(bottom: 5),
-                              width: 328,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: SizedBox(
-                                  width: MediaQuery.of(context).size.width - 50,
-                                  child: Image(
-                                      image:
-                                          NetworkImage(widget.konten.konten)),
-                                ),
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  if (snapshot.data!.konten != '')
+                                    Container(
+                                      margin: EdgeInsets.only(bottom: 5),
+                                      width: 328,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width -
+                                              50,
+                                          child: Image(
+                                              image: NetworkImage(
+                                                  snapshot.data!.konten)),
+                                        ),
+                                      ),
+                                    ),
+                                ],
                               ),
                             ),
+                          ),
                         ],
                       ),
                     ),
-                  ),
-                ],
-              ),
+                  );
+                } else {
+                  return const Center(
+                    child: Text('Data Not Found'),
+                  );
+                }
+              },
             ),
           ],
         ),

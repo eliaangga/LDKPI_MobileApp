@@ -1,12 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
+import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/pemberian_hibah_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PH extends StatefulWidget {
-  PemberianHibahModel konten;
-  PH({Key? key, required this.konten}) : super(key: key);
+  PH({Key? key}) : super(key: key);
 
   @override
   State<PH> createState() => _PHState();
@@ -77,12 +79,16 @@ class _PHState extends State<PH> {
                               bottom: 10,
                               right: 20,
                             ),
-                            child: widget.konten.konten == ''
-                                ? const Center(
-                                    child: Text('Data Not Found'),
-                                  )
-                                : Html(
-                                    data: widget.konten.konten,
+                            child: FutureBuilder(
+                              future: koneksi.fetchPemberiHibah(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<PemberianHibahModel> snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return const CupertinoActivityIndicator();
+                                } else if (snapshot.data!.konten != '') {
+                                  return Html(
+                                    data: snapshot.data!.konten,
                                     style: {
                                       'html': Style(
                                         fontFamily: 'Gotham',
@@ -93,7 +99,14 @@ class _PHState extends State<PH> {
                                         color: Color(0xff000000),
                                       ),
                                     },
-                                  ),
+                                  );
+                                } else {
+                                  return const Center(
+                                    child: Text('Data Not Found'),
+                                  );
+                                }
+                              },
+                            ),
                           ),
                         ],
                       ),

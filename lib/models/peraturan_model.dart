@@ -1,4 +1,4 @@
 class PeraturanModel {
-  String? konten;
-  PeraturanModel({this.konten});
+  String konten;
+  PeraturanModel({this.konten = ''});
 }

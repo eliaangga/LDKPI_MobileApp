@@ -1,13 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
+import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/investasi_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Investasi extends StatefulWidget {
-  InvestasiModel invest;
-  Investasi({Key? key, required this.invest}) : super(key: key);
+  Investasi({Key? key}) : super(key: key);
 
   @override
   State<Investasi> createState() => _InvestasiState();
@@ -93,29 +94,40 @@ class _InvestasiState extends State<Investasi> {
                               bottom: 10,
                               right: 20,
                             ),
-                            child: widget.invest.konten == ''
-                                ? Center(
+                            child: FutureBuilder(
+                              future: koneksi.fetchInvest(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<InvestasiModel> snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return const CupertinoActivityIndicator();
+                                } else if (snapshot.data!.konten != '') {
+                                  return Html(
+                                      onLinkTap: (url, context, attributes,
+                                          element) async {
+                                        if (await canLaunchUrl(
+                                            Uri.parse(url!))) {
+                                          await launchUrl(Uri.parse(url));
+                                        }
+                                      },
+                                      data: snapshot.data!.konten,
+                                      style: {
+                                        'html': Style(
+                                          fontFamily: 'Gotham',
+                                          textAlign: TextAlign.justify,
+                                          fontSize: FontSize(16),
+                                          fontWeight: FontWeight.w100,
+                                          lineHeight: LineHeight(1.1111111111),
+                                          color: Color(0xff000000),
+                                        ),
+                                      });
+                                } else {
+                                  return const Center(
                                     child: Text('Data Not Found'),
-                                  )
-                                : Html(
-                                    onLinkTap: (url, context, attributes,
-                                        element) async {
-                                      if (await canLaunchUrl(Uri.parse(url!))) {
-                                        await launchUrl(Uri.parse(url));
-                                      }
-                                    },
-                                    data: widget.invest.konten,
-                                    style: {
-                                      'html': Style(
-                                        fontFamily: 'Gotham',
-                                        textAlign: TextAlign.justify,
-                                        fontSize: FontSize(16),
-                                        fontWeight: FontWeight.w100,
-                                        lineHeight: LineHeight(1.1111111111),
-                                        color: Color(0xff000000),
-                                      ),
-                                    },
-                                  ),
+                                  );
+                                }
+                              },
+                            ),
                           ),
                         ],
                       ),
