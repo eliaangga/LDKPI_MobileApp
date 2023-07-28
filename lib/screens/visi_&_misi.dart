@@ -59,43 +59,46 @@ class _VisiMisiState extends State<VisiMisi> {
                 ],
               ),
             ),
-            Container(
-              width: double.infinity,
-              height: 844,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          if (widget.konten.konten != '')
-                            Container(
-                              margin: EdgeInsets.only(bottom: 5),
-                              width: 328,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: SizedBox(
-                                  width: MediaQuery.of(context).size.width - 50,
-                                  child: Image(
-                                      image:
-                                          NetworkImage(widget.konten.konten)),
+            InteractiveViewer(
+              child: Container(
+                width: double.infinity,
+                height: 844,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            if (widget.konten.konten != '')
+                              Container(
+                                margin: EdgeInsets.only(bottom: 5),
+                                width: 328,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width - 50,
+                                    child: Image(
+                                        image:
+                                            NetworkImage(widget.konten.konten)),
+                                  ),
                                 ),
                               ),
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
