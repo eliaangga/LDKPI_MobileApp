@@ -11,13 +11,9 @@ class CallUs extends StatefulWidget {
 }
 
 class _CallUsState extends State<CallUs> {
-  final TextEditingController _controllerSearch = TextEditingController();
-  late List<String> _listCallUs;
-
   @override
   void initState() {
     super.initState();
-    _listCallUs = [];
   }
 
   @override
@@ -42,11 +38,11 @@ class _CallUsState extends State<CallUs> {
                   const TombolKembali(),
                   Container(
                     alignment: Alignment.center,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 30, 30, 20),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(40, 30, 0, 20),
                       child: Text(
                         'Hubungi Kami',
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 0.5,
@@ -56,7 +52,7 @@ class _CallUsState extends State<CallUs> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 55),
+                  const SizedBox(width: 10),
                 ],
               ),
             ),
@@ -96,94 +92,205 @@ class _CallUsState extends State<CallUs> {
               height: 5,
             ),
             Container(
-              width: double.infinity,
-              height: 200,
+              width: 350,
+              height: 350,
               decoration: BoxDecoration(
-                color: Colors.white,
+                border: Border.all(
+                  color: Colors.black,
+                  width: 2,
+                ),
                 borderRadius: BorderRadius.circular(15),
               ),
               child: DataTable(
-                columns: const [
-                  DataColumn(label: Text('Deskripsi')),
-                  DataColumn(label: Text('Keterangan')),
+                columns: [
+                  DataColumn(
+                    label: Container(
+                      color: Color(0xFF02347C),
+                      child: Text(
+                        'Deskripsi',
+                        style: const TextStyle(
+                          fontFamily: 'Gotham',
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          height: 1,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataColumn(
+                    label: Container(
+                      color: Color(0xFF02347C),
+                      child: Text(
+                        'Keterangan',
+                        style: const TextStyle(
+                          fontFamily: 'Gotham',
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          height: 1,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
                 rows: [
-                  DataRow(
+                  const DataRow(
                     cells: [
-                      DataCell(Container(width: 100, child: Text('Lembaga'))),
-                      DataCell(Container(
-                          width: 300,
-                          child: const Text(
-                              'Lembaga Dana Kerja Sama Pembangunan Internasional'))),
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Container(width: 100, child: Text('Gedung'))),
-                      DataCell(Container(
-                          width: 300,
-                          child: Text('Gedung Sutikno Slamet Lt. 19'))),
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
+                      DataCell(SizedBox(
+                          width: 100,
+                          child: Text(
+                            'Lembaga',
+                            style: TextStyle(
+                              fontFamily: 'Gotham',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              color: Color(0xff000000),
+                            ),
+                          ))),
                       DataCell(
-                        Container(
+                        SizedBox(
+                          width: 200,
+                          child: Text(
+                            'Lembaga Dana Kerja Sama Pembangunan Internasional',
+                            style: TextStyle(
+                              fontFamily: 'Gotham',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              color: Color(0xff000000),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const DataRow(
+                    cells: [
+                      DataCell(SizedBox(
+                          width: 100,
+                          child: Text(
+                            'Gedung',
+                            style: TextStyle(
+                              fontFamily: 'Gotham',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              color: Color(0xff000000),
+                            ),
+                          ))),
+                      DataCell(
+                        SizedBox(
+                          width: 150,
+                          child: Text(
+                            'Gedung Sutikno Slamet Lt. 19',
+                            style: TextStyle(
+                              fontFamily: 'Gotham',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              color: Color(0xff000000),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const DataRow(
+                    cells: [
+                      DataCell(SizedBox(
                           width: 100,
                           child: Text(
                             'Alamat',
-                          ),
-                        ),
-                      ),
+                            style: TextStyle(
+                              fontFamily: 'Gotham',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              color: Color(0xff000000),
+                            ),
+                          ))),
                       DataCell(
-                        Container(
-                          width: 300,
+                        SizedBox(
+                          width: 150,
                           child: Text(
                             'Jl. Dr. Wahidin Raya No.1 Jakarta Pusat, DKI Jakarta 10710',
+                            style: TextStyle(
+                              fontFamily: 'Gotham',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              color: Color(0xff000000),
+                            ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  DataRow(
+                  const DataRow(
                     cells: [
                       DataCell(
-                        Container(
+                        SizedBox(
                           width: 100,
                           child: Text(
                             'Telepon',
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(
+                              fontFamily: 'Gotham',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              color: Color(0xff000000),
+                            ),
                           ),
                         ),
                       ),
-                      const DataCell(
+                      DataCell(
                         SizedBox(
                           width: 300,
                           child: Text(
                             '(021) 3510725',
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(
+                              fontFamily: 'Gotham',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              color: Color(0xff000000),
+                            ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  DataRow(
+                  const DataRow(
                     cells: [
                       DataCell(
-                        Container(
+                        SizedBox(
                           width: 100,
                           child: Text(
                             'E-mail',
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(
+                              fontFamily: 'Gotham',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              color: Color(0xff000000),
+                            ),
                           ),
                         ),
                       ),
                       DataCell(
-                        Container(
+                        SizedBox(
                           width: 300,
                           child: Text(
                             'ldkpi@kemenkeu.go.id',
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(
+                              fontFamily: 'Gotham',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              color: Color(0xff000000),
+                            ),
                           ),
                         ),
                       ),
@@ -191,7 +298,7 @@ class _CallUsState extends State<CallUs> {
                   ),
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),

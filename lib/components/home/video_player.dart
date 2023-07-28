@@ -68,7 +68,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: EdgeInsets.all(30),
+          padding: const EdgeInsets.all(30),
           child: AspectRatio(
             aspectRatio: 16 / 9,
             child: Chewie(controller: _chewieController),

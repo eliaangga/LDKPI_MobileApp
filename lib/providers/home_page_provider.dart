@@ -29,6 +29,8 @@ class HomePageProvider extends ChangeNotifier {
     if (marqueeKonten == '') {
       await koneksi.fetchMarquee().then((response) {
         marqueeKonten = response;
+        marqueeKonten = marqueeKonten.replaceAll(
+            RegExp(r'<a'), '<a style=\'color:black; text-decoration: none\'');
       });
     }
     return marqueeKonten;
