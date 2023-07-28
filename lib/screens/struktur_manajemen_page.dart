@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/components/struktur_manajemen/direksi.dart';
@@ -6,39 +7,17 @@ import 'package:ldkpi_news_app/components/struktur_manajemen/pemeriksa.dart';
 import 'package:ldkpi_news_app/components/struktur_manajemen/pengarah.dart';
 import 'package:ldkpi_news_app/components/struktur_manajemen/pengawas.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
+import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/struktur_manajemen_model.dart';
 
 class StrukturManajemen extends StatefulWidget {
-  StrukturManajemen({super.key, required this.listManajemen});
+  StrukturManajemen({super.key});
 
-  List<StrukturManajemenModel> listManajemen;
   @override
   State<StrukturManajemen> createState() => _StrukturManajemen();
 }
 
-class Item {
-  Item({
-    required this.expandedValue,
-    required this.headerValue,
-    required this.isExpanded,
-  });
-
-  String expandedValue;
-  String headerValue;
-  bool isExpanded;
-}
-
 List<StrukturManajemenModel> listAllManajemen = [];
-
-List<Item> generateItems() {
-  return List<Item>.generate(listAllManajemen.length, (int index) {
-    return Item(
-      headerValue: listAllManajemen[index].tingkat,
-      expandedValue: listAllManajemen[index].listAnggota[0].nama,
-      isExpanded: index == 0 ? true : false,
-    );
-  });
-}
 
 Widget showComponent(int index) {
   if (index == 0) {
@@ -65,14 +44,6 @@ Widget showComponent(int index) {
 
 class _StrukturManajemen extends State<StrukturManajemen> {
   int currentIndex = 0;
-  @override
-  void initState() {
-    super.initState();
-    listAllManajemen = widget.listManajemen;
-    _data = generateItems();
-  }
-
-  List<Item> _data = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,41 +87,56 @@ class _StrukturManajemen extends State<StrukturManajemen> {
                 ],
               ),
             ),
-            ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              key: Key('builder ${currentIndex.toString()}'),
-              itemCount: listAllManajemen.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  color: const Color(0xFF02347C),
-                  child: ExpansionTile(
-                    key: Key(index.toString()),
-                    initiallyExpanded: index == currentIndex,
-                    onExpansionChanged: (bool expanded) {
-                      setState(() {
-                        currentIndex = expanded ? index : -1;
-                      });
+            FutureBuilder(
+              future: koneksi.fetchManagement(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<StrukturManajemenModel>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CupertinoActivityIndicator();
+                } else if (snapshot.data!.isNotEmpty) {
+                  listAllManajemen = snapshot.data!;
+                  return ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    key: Key('builder ${currentIndex.toString()}'),
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
+                        color: const Color(0xFF02347C),
+                        child: ExpansionTile(
+                          key: Key(index.toString()),
+                          initiallyExpanded: index == currentIndex,
+                          onExpansionChanged: (bool expanded) {
+                            setState(() {
+                              currentIndex = expanded ? index : -1;
+                            });
+                          },
+                          iconColor: Colors.white,
+                          collapsedIconColor: Colors.white,
+                          title: Text(
+                            listAllManajemen[index].tingkat,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 15),
+                              width: double.maxFinite,
+                              color: Colors.white,
+                              child: showComponent(index),
+                            )
+                          ],
+                        ),
+                      );
                     },
-                    iconColor: Colors.white,
-                    collapsedIconColor: Colors.white,
-                    title: Text(
-                      listAllManajemen[index].tingkat,
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 15),
-                        width: double.maxFinite,
-                        color: Colors.white,
-                        child: showComponent(index),
-                      )
-                    ],
-                  ),
-                );
+                  );
+                } else {
+                  return const Center(
+                    child: Text('Data Not Found'),
+                  );
+                }
               },
             ),
           ],

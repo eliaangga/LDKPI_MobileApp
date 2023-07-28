@@ -69,15 +69,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   Expanded(
                     child: TextButton(
                       onPressed: () {
-                        koneksi.fetchInvest().then((response) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Investasi(
-                                      invest: response,
-                                    )),
-                          );
-                        });
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Investasi()),
+                        );
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
@@ -134,15 +129,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   Expanded(
                     child: TextButton(
                       onPressed: () {
-                        koneksi.fetchPemberiHibah().then((response) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PH(
-                                      konten: response,
-                                    )),
-                          );
-                        });
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => PH()),
+                        );
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
@@ -415,15 +405,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               },
               child: GestureDetector(
                 onTap: () {
-                  koneksi.fetchInvest().then((response) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Investasi(
-                                invest: response,
-                              )),
-                    );
-                  });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Investasi()),
+                  );
                 },
                 child: Marquee(
                   textDirection: TextDirection.ltr,
@@ -464,7 +449,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ),
-          for (var i = 0; i < 3; i++)
+          for (var i = 0; i < beritaProvider.listBeritaTerbaru.length; i++)
             Consumer<BeritaPageProvider>(builder: (context, value, child) {
               if (value.listBeritaTerbaru.isEmpty) {
                 return const CupertinoActivityIndicator();

@@ -30,37 +30,22 @@ class _SliderScreenState extends State<SliderScreen> {
         onTap: () {
           switch (item['id']) {
             case 0:
-              koneksi.fetchInvest().then((response) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Investasi(
-                            invest: response,
-                          )),
-                );
-              });
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Investasi()),
+              );
               break;
             case 1:
-              koneksi.fetchInvest().then((response) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Investasi(
-                            invest: response,
-                          )),
-                );
-              });
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Investasi()),
+              );
               break;
             case 2:
-              koneksi.fetchInvest().then((response) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Investasi(
-                            invest: response,
-                          )),
-                );
-              });
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Investasi()),
+              );
               break;
             default:
               break;

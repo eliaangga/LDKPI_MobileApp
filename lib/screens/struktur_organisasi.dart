@@ -1,22 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
+import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/struktur_organisasi_model.dart';
 
 class StrukturOrg extends StatefulWidget {
-  StrukturOrganisasiModel konten;
-  StrukturOrg({Key? key, required this.konten}) : super(key: key);
+  StrukturOrg({Key? key}) : super(key: key);
 
   @override
   State<StrukturOrg> createState() => _StrukturOrgState();
 }
 
 class _StrukturOrgState extends State<StrukturOrg> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,23 +85,39 @@ class _StrukturOrgState extends State<StrukturOrg> {
                               ),
                             ),
                           ),
-                          if (widget.konten.konten != '')
-                            Container(
-                              margin: EdgeInsets.only(bottom: 5),
-                              width: 328,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: SizedBox(
-                                  width: MediaQuery.of(context).size.width - 50,
-                                  child: Image(
-                                      image:
-                                          NetworkImage(widget.konten.konten)),
-                                ),
-                              ),
-                            ),
+                          FutureBuilder(
+                            future: koneksi.fetchOrganisasi(),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<StrukturOrganisasiModel>
+                                    snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const CupertinoActivityIndicator();
+                              } else if (snapshot.data!.konten != '') {
+                                return Container(
+                                  margin: EdgeInsets.only(bottom: 5),
+                                  width: 328,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: SizedBox(
+                                      width: MediaQuery.of(context).size.width -
+                                          50,
+                                      child: Image(
+                                          image: NetworkImage(
+                                              snapshot.data!.konten)),
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return const Center(
+                                  child: Text('Data Not Found'),
+                                );
+                              }
+                            },
+                          ),
                         ],
                       ),
                     ),

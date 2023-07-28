@@ -98,15 +98,11 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchInvest().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Investasi(
-                                              invest: response,
-                                            )),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Investasi()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -166,15 +162,10 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchPemberiHibah().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => PH(
-                                              konten: response,
-                                            )),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => PH()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -279,15 +270,11 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchSejarah().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Sejarah(
-                                              konten: response,
-                                            )),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Sejarah()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -353,15 +340,11 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchPenerimaHibah().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => PenerimaH(
-                                              konten: response,
-                                            )),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PenerimaH()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -442,15 +425,11 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchNilaiBudaya().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NilaiBudaya(
-                                              konten: response,
-                                            )),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NilaiBudaya()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -517,15 +496,11 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchOrganisasi().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => StrukturOrg(
-                                              konten: response,
-                                            )),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => StrukturOrg()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -606,15 +581,12 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchManagement().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => StrukturManajemen(
-                                              listManajemen: response,
-                                            )),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          StrukturManajemen()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -681,16 +653,12 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchTugasFungsi().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => TugasFungsi(
-                                        model: response,
-                                      ),
-                                    ),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const TugasFungsi(),
+                                  ),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -802,15 +770,11 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchProcess().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ProsesBisnis(
-                                              model: response,
-                                            )),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProsesBisnis()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -877,15 +841,11 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchVisiMisi().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => VisiMisi(
-                                              konten: response,
-                                            )),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => VisiMisi()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -966,15 +926,11 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchPeraturan().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Peraturan(
-                                              konten: response,
-                                            )),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Peraturan()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -1041,13 +997,11 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchPengadaan().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => InformasiP()),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const InformasiP()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -1128,15 +1082,11 @@ class _KategoriState extends State<Kategori> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                koneksi.fetchSurvei().then((response) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SurveiLayanan(
-                                              konten: response,
-                                            )),
-                                  );
-                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SurveiLayanan()),
+                                );
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
