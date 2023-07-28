@@ -26,51 +26,51 @@ class KontainerBeritaTerbaru extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 14),
+              padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(bottom: 14),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SizedBox(
-                          width: 10,
-                        ),
                         Container(
-                          margin: const EdgeInsets.fromLTRB(1, 1, 10, 25),
-                          width: 98,
-                          height: 69,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(5),
-                            child: Image(
-                                image: NetworkImage(
-                                    provider.listBeritaTerbaru[i].img)),
+                          margin: const EdgeInsets.fromLTRB(1, 1, 10, 10),
+                          width: 130,
+                          height: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  provider.listBeritaTerbaru[i].img),
+                              fit: BoxFit.fitHeight,
+                            ),
                           ),
                         ),
                         Expanded(
                           child: Container(
-                            margin: const EdgeInsets.fromLTRB(10, 10, 15, 13),
+                            margin: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 Container(
-                                  margin: const EdgeInsets.fromLTRB(5, 1, 1, 1),
+                                  margin:
+                                      const EdgeInsets.fromLTRB(5, 15, 1, 1),
                                   child: Text(
                                     provider.listBeritaTerbaru[i].title,
-                                    style: TextStyle(
-                                      fontSize: 13,
+                                    style: const TextStyle(
+                                      fontSize: 15,
                                       fontWeight: FontWeight.w900,
                                       color: Color(0xff000000),
                                     ),
                                   ),
                                 ),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                    margin:
+                                        const EdgeInsets.fromLTRB(0, 0, 5, 0),
                                     constraints: const BoxConstraints(
                                       maxWidth: 330,
                                     ),
@@ -80,11 +80,11 @@ class KontainerBeritaTerbaru extends StatelessWidget {
                                         'html': Style(
                                             fontFamily: 'Gotham',
                                             textAlign: TextAlign.justify,
-                                            fontSize: FontSize(10),
+                                            fontSize: const FontSize(10),
                                             fontWeight: FontWeight.w200,
                                             lineHeight:
-                                                LineHeight(1.1111111111),
-                                            color: Color(0xff000000),
+                                                const LineHeight(1.1111111111),
+                                            color: const Color(0xff000000),
                                             maxLines: 2),
                                       },
                                     )),

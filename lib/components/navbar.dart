@@ -159,7 +159,7 @@ class _Navbar extends State<Navbar> {
                 children: [
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
-                    padding: const EdgeInsets.fromLTRB(0.5, 1, 0, 1),
+                    padding: const EdgeInsets.fromLTRB(2, 2, 2, 2),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(_buttonBorderRadius),
@@ -169,34 +169,34 @@ class _Navbar extends State<Navbar> {
                         Container(
                           decoration: BoxDecoration(
                             color: currentLanguage == 'id'
-                                ? Color(0xff02275c)
+                                ? const Color(0xff02275c)
                                 : Colors.transparent,
                             borderRadius:
                                 BorderRadius.circular(_buttonBorderRadius),
                           ),
                           padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
-                          child: Text(
+                          child: const Text(
                             'ID',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 8.5,
+                              fontSize: 6.5,
                             ),
                           ),
                         ),
                         Container(
                           decoration: BoxDecoration(
                             color: currentLanguage == 'en'
-                                ? Color(0xff02275c)
+                                ? const Color(0xff02275c)
                                 : Colors.transparent,
                             borderRadius:
                                 BorderRadius.circular(_buttonBorderRadius),
                           ),
                           padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
-                          child: Text(
+                          child: const Text(
                             'EN',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 8.5,
+                              fontSize: 6.5,
                             ),
                           ),
                         ),
@@ -206,7 +206,7 @@ class _Navbar extends State<Navbar> {
                   const SizedBox(height: 4),
                   Text(
                     AppLocalizations.of(context)!.bahasa,
-                    style: TextStyle(color: Colors.white, fontSize: 7),
+                    style: const TextStyle(color: Colors.white, fontSize: 7),
                   ),
                 ],
               ),

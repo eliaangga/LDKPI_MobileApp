@@ -18,9 +18,15 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(AppLocalizations.of(context)!.namaAppBarBarisSatu,
-                  style: TextStyle(fontSize: 12)),
+                  style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 0.4)),
               Text(AppLocalizations.of(context)!.namaAppBarBarisDua,
-                  style: TextStyle(fontSize: 12)),
+                  style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 0.4)),
             ],
           ),
         ),
@@ -30,19 +36,12 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
       leading: Row(
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 2.5),
-            width: 40,
+            margin: const EdgeInsets.only(left: 10),
+            width: 130,
             child: Image(
               image: AssetImage(AppLocalizations.of(context)!.gambarAppBar),
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(right: 10, left: 10),
-            child: const Image(
-              image: AssetImage('assets/assets/images/ldkpi.png'),
-              width: 90,
-            ),
-          )
         ],
       ),
     );
