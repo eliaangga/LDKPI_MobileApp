@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/providers/home_page_provider.dart';
+import 'package:ldkpi_news_app/providers/start_app_provider.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
 import 'package:provider/provider.dart';
 

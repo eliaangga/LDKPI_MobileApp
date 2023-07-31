@@ -7,11 +7,12 @@ import 'package:ldkpi_news_app/components/home/slider.dart';
 import 'package:ldkpi_news_app/components/home/slider2.dart';
 import 'package:ldkpi_news_app/components/home/video_player.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
-import 'package:ldkpi_news_app/providers/home_page_provider.dart';
+import 'package:ldkpi_news_app/providers/start_app_provider.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
 import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -210,37 +211,34 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   child: child,
                 );
               },
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Investasi()),
-                  );
-                },
-                child: Marquee(
-                  textDirection: TextDirection.ltr,
-                  child: FutureBuilder(
-                    future: homeProvider.getMarquee(),
-                    builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      if (snapshot.hasData) {
-                        return Html(
-                          data: snapshot.data,
-                          style: {
-                            'html': Style(
-                              fontFamily: 'Gotham',
-                              textAlign: TextAlign.justify,
-                              fontSize: const FontSize(12),
-                              fontWeight: FontWeight.w100,
-                              lineHeight: const LineHeight(1.1111111111),
-                              color: const Color(0xff000000),
-                              maxLines: 1,
-                            ),
-                          },
-                        );
-                      }
-                      return const Text('');
-                    },
-                  ),
+              child: Marquee(
+                textDirection: TextDirection.ltr,
+                child: FutureBuilder(
+                  future: homeProvider.getMarquee(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      return Html(
+                        data: snapshot.data,
+                        onLinkTap: (url, context, attributes, element) async {
+                          if (await canLaunchUrl(Uri.parse(url!))) {
+                            await launchUrl(Uri.parse(url));
+                          }
+                        },
+                        style: {
+                          'html': Style(
+                            fontFamily: 'Gotham',
+                            textAlign: TextAlign.justify,
+                            fontSize: const FontSize(12),
+                            fontWeight: FontWeight.w100,
+                            lineHeight: const LineHeight(1.1111111111),
+                            color: const Color(0xff000000),
+                            maxLines: 1,
+                          ),
+                        },
+                      );
+                    }
+                    return const Text('');
+                  },
                 ),
               ),
             ),

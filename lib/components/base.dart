@@ -6,12 +6,8 @@ import 'package:ldkpi_news_app/screens/home.dart';
 import 'package:ldkpi_news_app/screens/kategori.dart';
 
 class Base extends StatefulWidget {
-  final Function(String) ubahBahasa;
-  final String startLanguage;
   const Base({
     Key? key,
-    required this.ubahBahasa,
-    required this.startLanguage,
   }) : super(key: key);
 
   @override
@@ -40,8 +36,6 @@ class _BaseScreenState extends State<Base> {
       appBar: const Appbar(),
       body: _pilihanMenu[_selectedIndex],
       bottomNavigationBar: Navbar(
-        startLanguage: widget.startLanguage,
-        ubahBahasa: widget.ubahBahasa,
         ubahPage: changePage,
       ),
     );
