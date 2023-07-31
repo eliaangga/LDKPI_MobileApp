@@ -26,13 +26,11 @@ enum DataSourceType {
 class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   late VideoPlayerController _controller;
   late ChewieController _chewieController;
-  late Future<void> _initializeVideoPlayerFuture;
 
   @override
   void initState() {
     super.initState();
     _controller = VideoPlayerController.asset(widget.url);
-    _initializeVideoPlayerFuture = _controller.initialize();
 
     switch (widget.dataSourceType) {
       case DataSourceType.asset:

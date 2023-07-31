@@ -3,18 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
+import 'package:ldkpi_news_app/providers/start_app_provider.dart';
 import 'package:provider/provider.dart';
 
 class Navbar extends StatefulWidget {
-  final Function(String) ubahBahasa;
   final Function(int) ubahPage;
-  String startLanguage;
 
-  Navbar(
-      {super.key,
-      required this.ubahBahasa,
-      required this.startLanguage,
-      required this.ubahPage});
+  const Navbar({
+    super.key,
+    required this.ubahPage,
+  });
   @override
   State<Navbar> createState() => _Navbar();
 }
@@ -37,11 +35,12 @@ class _Navbar extends State<Navbar> {
     setState(() {
       currentLanguage = currentLanguage == 'en' ? 'id' : 'en';
     });
-    widget.ubahBahasa(currentLanguage);
     konfig.setBahasaPref(currentLanguage);
     koneksi.useLanguage = currentLanguage;
     final beritaProvider =
         Provider.of<BeritaPageProvider>(context, listen: false);
+    final startProvider = Provider.of<StartAppProvider>(context, listen: false);
+    startProvider.ubahBahasa(currentLanguage);
     beritaProvider.reset();
     beritaProvider.controllerSearch.text = '';
     beritaProvider.ambilBerita();
@@ -51,7 +50,8 @@ class _Navbar extends State<Navbar> {
   @override
   void initState() {
     super.initState();
-    currentLanguage = widget.startLanguage;
+    final startProvider = Provider.of<StartAppProvider>(context, listen: false);
+    currentLanguage = startProvider.bahasa;
   }
 
   @override

@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/components/appbar.dart';
 import 'package:ldkpi_news_app/components/navbar.dart';
-import 'package:ldkpi_news_app/components/openapp_page.dart';
 import 'package:ldkpi_news_app/screens/berita_page.dart';
 import 'package:ldkpi_news_app/screens/home.dart';
 import 'package:ldkpi_news_app/screens/kategori.dart';
 
 class Base extends StatefulWidget {
-  final Function(String) ubahBahasa;
-  String startLanguage;
-  Base({
+  const Base({
     Key? key,
-    required this.ubahBahasa,
-    required this.startLanguage,
   }) : super(key: key);
 
   @override
@@ -21,10 +16,10 @@ class Base extends StatefulWidget {
 
 class _BaseScreenState extends State<Base> {
   int _selectedIndex = 0;
-  static List<Widget> _pilihanMenu = [
-    Home(),
-    BeritaPage(),
-    Kategori(),
+  final List<Widget> _pilihanMenu = [
+    const Home(),
+    const BeritaPage(),
+    const Kategori(),
   ];
 
   void changePage(int index) {
@@ -41,8 +36,6 @@ class _BaseScreenState extends State<Base> {
       appBar: const Appbar(),
       body: _pilihanMenu[_selectedIndex],
       bottomNavigationBar: Navbar(
-        startLanguage: widget.startLanguage,
-        ubahBahasa: widget.ubahBahasa,
         ubahPage: changePage,
       ),
     );

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:ldkpi_news_app/models/anggota_manajemen.dart';
 import 'package:ldkpi_news_app/models/berita_model.dart';
@@ -54,10 +55,10 @@ class Koneksi {
           konten: jsonData['data']['attributes']['konten'],
         );
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }
@@ -106,10 +107,10 @@ class Koneksi {
           konten: gambar,
         );
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }
@@ -125,10 +126,10 @@ class Koneksi {
           konten: jsonData['data']['attributes']['konten'],
         );
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }
@@ -144,10 +145,10 @@ class Koneksi {
           konten: jsonData['data']['attributes']['konten'],
         );
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }
@@ -170,10 +171,10 @@ class Koneksi {
           img: gambar,
         );
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }
@@ -189,10 +190,10 @@ class Koneksi {
           konten: jsonData['data']['attributes']['konten'],
         );
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }
@@ -214,10 +215,10 @@ class Koneksi {
           konten: gambar,
         );
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }
@@ -255,10 +256,10 @@ class Koneksi {
         );
         hasil.listTahun = listTahun;
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }
@@ -282,10 +283,10 @@ class Koneksi {
           gambar: gambar,
         );
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }
@@ -338,10 +339,10 @@ class Koneksi {
           konten: jsonData['data']['attributes']['konten'],
         );
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }
@@ -371,10 +372,10 @@ class Koneksi {
         }
         listBerita = getList;
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
   }
 
@@ -402,10 +403,10 @@ class Koneksi {
           getList.add(newBlog);
         }
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('ErrorLatestNews: $e');
+      debugPrint('ErrorLatestNews: $e');
     }
     return getList;
   }
@@ -435,10 +436,10 @@ class Koneksi {
         }
         listBerita = getList;
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
   }
 
@@ -471,10 +472,10 @@ class Koneksi {
           hasil.add(manajemen);
         }
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }
@@ -494,10 +495,10 @@ class Koneksi {
                       ['attributes']['url']);
         }
       } else {
-        print('Request failed with status: ${response.statusCode}');
+        debugPrint('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return hasil;
   }

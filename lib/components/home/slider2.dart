@@ -42,9 +42,9 @@ class _SliderScreenState2 extends State<SliderScreen2> {
               Flexible(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(0xffffffff),
+                    color: const Color(0xffffffff),
                     borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Color(0x26000000),
                         offset: Offset(0, 4),
@@ -55,9 +55,7 @@ class _SliderScreenState2 extends State<SliderScreen2> {
                   child: Stack(
                     children: [
                       InkWell(
-                        onTap: () {
-                          print(currentIndex1);
-                        },
+                        onTap: () {},
                         child: CarouselSlider(
                           items: imageList1
                               .map(
@@ -94,9 +92,9 @@ class _SliderScreenState2 extends State<SliderScreen2> {
               Flexible(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(0xffffffff),
+                    color: const Color(0xffffffff),
                     borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Color(0x26000000),
                         offset: Offset(0, 4),
@@ -107,9 +105,7 @@ class _SliderScreenState2 extends State<SliderScreen2> {
                   child: Stack(
                     children: [
                       InkWell(
-                        onTap: () {
-                          print(currentIndex2);
-                        },
+                        onTap: () {},
                         child: CarouselSlider(
                           items: imageList2
                               .map(

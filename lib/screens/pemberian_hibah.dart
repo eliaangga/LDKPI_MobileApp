@@ -5,16 +5,15 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/pemberian_hibah_model.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class PH extends StatefulWidget {
-  PH({Key? key}) : super(key: key);
+class PemberianHibah extends StatefulWidget {
+  const PemberianHibah({Key? key}) : super(key: key);
 
   @override
-  State<PH> createState() => _PHState();
+  State<PemberianHibah> createState() => _PHState();
 }
 
-class _PHState extends State<PH> {
+class _PHState extends State<PemberianHibah> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +32,7 @@ class _PHState extends State<PH> {
               ),
               child: Row(
                 children: [
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   const TombolKembali(),
                   Expanded(
                     child: Container(
@@ -68,12 +67,12 @@ class _PHState extends State<PH> {
                 children: [
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(31, 10, 30, 9.5),
+                      padding: const EdgeInsets.fromLTRB(31, 10, 30, 9.5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(
+                            margin: const EdgeInsets.only(
                               top: 20,
                               left: 20,
                               bottom: 10,
@@ -93,10 +92,11 @@ class _PHState extends State<PH> {
                                       'html': Style(
                                         fontFamily: 'Gotham',
                                         textAlign: TextAlign.justify,
-                                        fontSize: FontSize(15),
+                                        fontSize: const FontSize(15),
                                         fontWeight: FontWeight.w100,
-                                        lineHeight: LineHeight(1.1111111111),
-                                        color: Color(0xff000000),
+                                        lineHeight:
+                                            const LineHeight(1.1111111111),
+                                        color: const Color(0xff000000),
                                       ),
                                     },
                                   );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/models/negara_model.dart';
@@ -15,7 +14,7 @@ class DetailPenerimaHibah extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String detailBaru = negara.detail
-        .replaceAll(RegExp(r'img src=\"'), 'img src=\"${koneksi.apiUrl}');
+        .replaceAll(RegExp(r'img src=\"'), 'img src="${koneksi.apiUrl}');
 
     return Scaffold(
       body: Column(
@@ -26,13 +25,13 @@ class DetailPenerimaHibah extends StatelessWidget {
             color: const Color(0xFF02347C),
             child: Row(
               children: [
-                SizedBox(width: 20),
-                TombolKembali(),
+                const SizedBox(width: 20),
+                const TombolKembali(),
                 Expanded(
                   child: Container(
                     width: double.infinity,
                     alignment: Alignment.center,
-                    child: Text(
+                    child: const Text(
                       '',
                       style: TextStyle(
                         color: Colors.white,
@@ -42,7 +41,7 @@ class DetailPenerimaHibah extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 115),
+                const SizedBox(width: 115),
               ],
             ),
           ),
@@ -83,10 +82,10 @@ class DetailPenerimaHibah extends StatelessWidget {
                       'html': Style(
                         fontFamily: 'Gotham',
                         textAlign: TextAlign.justify,
-                        fontSize: FontSize(16),
+                        fontSize: const FontSize(16),
                         fontWeight: FontWeight.w100,
-                        lineHeight: LineHeight(1.1111111111),
-                        color: Color(0xff000000),
+                        lineHeight: const LineHeight(1.1111111111),
+                        color: const Color(0xff000000),
                       ),
                       'tr': Style(
                         border: const Border(

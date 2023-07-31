@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ldkpi_news_app/main.dart';
-import 'package:ldkpi_news_app/providers/home_page_provider.dart';
+import 'package:ldkpi_news_app/providers/start_app_provider.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +18,7 @@ class _SliderScreenState extends State<SliderScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomePageProvider>(context, listen: false);
+    final homeProvider = Provider.of<StartAppProvider>(context, listen: false);
     List<Map<String, dynamic>> imageList = [
       {"id": 0, "image_path": ''},
       {"id": 1, "image_path": ''},
@@ -63,7 +62,7 @@ class _SliderScreenState extends State<SliderScreen> {
                   width: double.infinity,
                 );
               } else {
-                return Icon(
+                return const Icon(
                   Icons.verified_user_rounded,
                   color: Colors.black,
                 );

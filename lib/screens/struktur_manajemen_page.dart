@@ -11,7 +11,7 @@ import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/struktur_manajemen_model.dart';
 
 class StrukturManajemen extends StatefulWidget {
-  StrukturManajemen({super.key});
+  const StrukturManajemen({super.key});
 
   @override
   State<StrukturManajemen> createState() => _StrukturManajemen();

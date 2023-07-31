@@ -8,7 +8,7 @@ import 'package:ldkpi_news_app/models/survei_layanan_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SurveiLayanan extends StatefulWidget {
-  SurveiLayanan({Key? key}) : super(key: key);
+  const SurveiLayanan({Key? key}) : super(key: key);
 
   @override
   State<SurveiLayanan> createState() => _SurveiLayananState();
@@ -43,7 +43,7 @@ class _SurveiLayananState extends State<SurveiLayanan> {
                         padding: const EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
                           AppLocalizations.of(context)!.judulSurvei,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.5,
@@ -99,11 +99,12 @@ class _SurveiLayananState extends State<SurveiLayanan> {
                                     style: {
                                       'html': Style(
                                         fontFamily: 'Gotham',
-                                        fontSize: FontSize(14),
+                                        fontSize: const FontSize(14),
                                         fontWeight: FontWeight.w400,
                                         textAlign: TextAlign.justify,
-                                        lineHeight: LineHeight(1.1111111111),
-                                        color: Color(0xff000000),
+                                        lineHeight:
+                                            const LineHeight(1.1111111111),
+                                        color: const Color(0xff000000),
                                       ),
                                     },
                                   );

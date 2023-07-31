@@ -6,7 +6,7 @@ import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/visimisi_model.dart';
 
 class VisiMisi extends StatefulWidget {
-  VisiMisi({Key? key}) : super(key: key);
+  const VisiMisi({Key? key}) : super(key: key);
 
   @override
   State<VisiMisi> createState() => _VisiMisiState();
@@ -31,17 +31,17 @@ class _VisiMisiState extends State<VisiMisi> {
               ),
               child: Row(
                 children: [
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   const TombolKembali(),
                   Expanded(
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
+                        padding: const EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
                           AppLocalizations.of(context)!.visi_misi,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.5,
@@ -74,13 +74,14 @@ class _VisiMisiState extends State<VisiMisi> {
                         children: [
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                              padding:
+                                  const EdgeInsets.fromLTRB(31, 15, 30, 9.5),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   if (snapshot.data!.konten != '')
                                     Container(
-                                      margin: EdgeInsets.only(bottom: 5),
+                                      margin: const EdgeInsets.only(bottom: 5),
                                       width: 328,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),

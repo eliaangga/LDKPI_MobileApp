@@ -6,13 +6,13 @@ import 'package:ldkpi_news_app/components/home/kontainer_berita_terbaru.dart';
 import 'package:ldkpi_news_app/components/home/slider.dart';
 import 'package:ldkpi_news_app/components/home/slider2.dart';
 import 'package:ldkpi_news_app/components/home/video_player.dart';
-import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
-import 'package:ldkpi_news_app/providers/home_page_provider.dart';
+import 'package:ldkpi_news_app/providers/start_app_provider.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
 import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -44,7 +44,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     final screenWidth = MediaQuery.of(context).size.width;
     final beritaProvider =
         Provider.of<BeritaPageProvider>(context, listen: false);
-    final homeProvider = Provider.of<HomePageProvider>(context, listen: false);
+    final homeProvider = Provider.of<StartAppProvider>(context, listen: false);
     return Scaffold(
       body: ListView(
         children: [
@@ -59,56 +59,118 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ),
           ),
           Container(
-            child: Container(
-              margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
-              width: double.infinity,
-              height: 76,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Investasi()),
-                        );
-                      },
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
+            margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
+            width: double.infinity,
+            height: 76,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Investasi()),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      padding: const EdgeInsets.fromLTRB(19, 15, 19, 16),
+                      width: 165,
+                      height: double.infinity,
+                      decoration: BoxDecoration(
+                        color: const Color(0xffffffff),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0x19000000),
+                            offset: Offset(0, 4),
+                            blurRadius: 2,
+                          ),
+                        ],
                       ),
-                      child: Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                        padding: const EdgeInsets.fromLTRB(19, 15, 19, 16),
-                        width: 165,
+                      child: SizedBox(
+                        width: double.infinity,
                         height: double.infinity,
-                        decoration: BoxDecoration(
-                          color: const Color(0xffffffff),
-                          borderRadius: BorderRadius.circular(5),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color(0x19000000),
-                              offset: Offset(0, 4),
-                              blurRadius: 2,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              width: 40,
+                              height: 50,
+                              child: Image.asset(
+                                  'assets/assets/images/Investment.jpg'),
+                            ),
+                            Center(
+                              child: Text(
+                                AppLocalizations.of(context)!.investasi,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontFamily: 'Gotham',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  height: 1,
+                                  color: Color(0xff000000),
+                                ),
+                              ),
                             ),
                           ],
                         ),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: double.infinity,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                width: 40,
-                                height: 50,
-                                child: Image.asset(
-                                    'assets/assets/images/Investment.jpg'),
-                              ),
-                              Center(
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PemberianHibah()),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(19, 15, 14, 16),
+                      width: 165,
+                      height: double.infinity,
+                      decoration: BoxDecoration(
+                        color: const Color(0xffffffff),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0x19000000),
+                            offset: Offset(0, 4),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: double.infinity,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: Image.asset(
+                                  'assets/assets/images/Giving.jpg'),
+                            ),
+                            Center(
+                              child: Container(
+                                constraints: const BoxConstraints(maxWidth: 80),
                                 child: Text(
-                                  AppLocalizations.of(context)!.investasi,
+                                  AppLocalizations.of(context)!.pemberian_hibah,
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     fontFamily: 'Gotham',
@@ -119,78 +181,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => PH()),
-                        );
-                      },
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                      ),
-                      child: Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        padding: const EdgeInsets.fromLTRB(19, 15, 14, 16),
-                        width: 165,
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                          color: const Color(0xffffffff),
-                          borderRadius: BorderRadius.circular(5),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color(0x19000000),
-                              offset: Offset(0, 4),
-                              blurRadius: 2,
                             ),
                           ],
                         ),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: double.infinity,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Image.asset(
-                                    'assets/assets/images/Giving.jpg'),
-                              ),
-                              Center(
-                                child: Container(
-                                  constraints:
-                                      const BoxConstraints(maxWidth: 80),
-                                  child: Text(
-                                    AppLocalizations.of(context)!
-                                        .pemberian_hibah,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      fontFamily: 'Gotham',
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w700,
-                                      height: 1,
-                                      color: Color(0xff000000),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           const Expanded(
@@ -200,7 +198,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           ),
           Container(
             width: double.infinity,
-            color: Colors.yellow,
+            color: Color.fromRGBO(255, 235, 59, 1),
             height: 40,
             child: AnimatedBuilder(
               animation: _animationController,
@@ -213,37 +211,36 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   child: child,
                 );
               },
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Investasi()),
-                  );
-                },
-                child: Marquee(
-                  textDirection: TextDirection.ltr,
-                  child: FutureBuilder(
-                    future: homeProvider.getMarquee(),
-                    builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      if (snapshot.hasData) {
-                        return Html(
-                          data: snapshot.data,
-                          style: {
-                            'html': Style(
-                              fontFamily: 'Gotham',
-                              textAlign: TextAlign.justify,
-                              fontSize: const FontSize(12),
-                              fontWeight: FontWeight.w100,
-                              lineHeight: const LineHeight(1.1111111111),
-                              color: const Color(0xff000000),
-                              maxLines: 1,
-                            ),
-                          },
-                        );
-                      }
-                      return const Text('');
-                    },
-                  ),
+              child: Marquee(
+                textDirection: TextDirection.ltr,
+                animationDuration: const Duration(minutes: 1),
+                child: FutureBuilder(
+                  future: homeProvider.getMarquee(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      return Html(
+                        data: snapshot.data,
+                        onLinkTap: (url, context, attributes, element) async {
+                          if (await canLaunchUrl(Uri.parse(url!))) {
+                            await launchUrl(Uri.parse(url));
+                          }
+                        },
+                        shrinkWrap: true,
+                        style: {
+                          'html': Style(
+                            fontFamily: 'Gotham',
+                            textAlign: TextAlign.justify,
+                            fontSize: const FontSize(12),
+                            fontWeight: FontWeight.w100,
+                            lineHeight: const LineHeight(1.1111111111),
+                            color: const Color(0xff000000),
+                            maxLines: 1,
+                          ),
+                        },
+                      );
+                    }
+                    return const Text('');
+                  },
                 ),
               ),
             ),
@@ -268,6 +265,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 return KontainerBeritaTerbaru(provider: beritaProvider, i: i);
               }
             }),
+          Text(homeProvider.marqueeKonten),
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
             child: SizedBox(

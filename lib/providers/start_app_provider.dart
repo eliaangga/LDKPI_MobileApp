@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/main.dart';
 
-class HomePageProvider extends ChangeNotifier {
+class StartAppProvider extends ChangeNotifier {
   List<String> listCarousel = [];
   List<String> listSebaranHibah = [];
   String marqueeKonten = '';
   String linkVideo = '';
+  String bahasa = '';
+
+  void ubahBahasa(String newBahasa) {
+    bahasa = newBahasa;
+    notifyListeners();
+  }
 
   Future<List<String>> getListCarousel() async {
     if (listCarousel.isEmpty) {
@@ -31,6 +37,9 @@ class HomePageProvider extends ChangeNotifier {
         marqueeKonten = response;
         marqueeKonten = marqueeKonten.replaceAll(
             RegExp(r'<a'), '<a style=\'color:black; text-decoration: none\'');
+        marqueeKonten = marqueeKonten.replaceAll(
+            RegExp(r'</p><p>'), '&emsp;&emsp;&emsp;&emsp;');
+        print(marqueeKonten);
       });
     }
     return marqueeKonten;
