@@ -60,7 +60,7 @@ class _PeraturanState extends State<Peraturan> {
             InteractiveViewer(
               child: Container(
                 width: double.infinity,
-                height: 935,
+                height: 975,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),

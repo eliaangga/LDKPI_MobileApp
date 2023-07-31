@@ -265,7 +265,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 return KontainerBeritaTerbaru(provider: beritaProvider, i: i);
               }
             }),
-          Text(homeProvider.marqueeKonten),
+          // Text(homeProvider.marqueeKonten),
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
             child: SizedBox(
