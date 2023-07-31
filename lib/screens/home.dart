@@ -198,7 +198,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           ),
           Container(
             width: double.infinity,
-            color: Colors.yellow,
+            color: Color.fromRGBO(255, 235, 59, 1),
             height: 40,
             child: AnimatedBuilder(
               animation: _animationController,
@@ -213,6 +213,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               },
               child: Marquee(
                 textDirection: TextDirection.ltr,
+                animationDuration: const Duration(minutes: 1),
                 child: FutureBuilder(
                   future: homeProvider.getMarquee(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -224,6 +225,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                             await launchUrl(Uri.parse(url));
                           }
                         },
+                        shrinkWrap: true,
                         style: {
                           'html': Style(
                             fontFamily: 'Gotham',
@@ -263,6 +265,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 return KontainerBeritaTerbaru(provider: beritaProvider, i: i);
               }
             }),
+          Text(homeProvider.marqueeKonten),
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
             child: SizedBox(
