@@ -36,12 +36,12 @@ class _KategoriState extends State<Kategori> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 140,
+                  height: 80,
                   decoration: const BoxDecoration(
                     color: Color(0xFF02347C),
                     image: DecorationImage(
                       image: AssetImage('assets/assets/images/doodle.png'),
-                      fit: BoxFit.fill,
+                      fit: BoxFit.fitWidth,
                     ),
                   ),
                   child: Center(

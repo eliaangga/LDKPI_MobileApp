@@ -60,7 +60,7 @@ class _PeraturanState extends State<Peraturan> {
             InteractiveViewer(
               child: Container(
                 width: double.infinity,
-                height: 844,
+                height: 935,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
@@ -77,8 +77,7 @@ class _PeraturanState extends State<Peraturan> {
                             return const CupertinoActivityIndicator();
                           } else if (snapshot.data!.konten != '') {
                             return Container(
-                              padding:
-                                  const EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                              padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -94,16 +93,20 @@ class _PeraturanState extends State<Peraturan> {
                                               textAlign: TextAlign.justify,
                                               fontSize: const FontSize(9),
                                               fontWeight: FontWeight.w400,
-                                              lineHeight: const LineHeight(
-                                                  1.1111111111),
+                                              lineHeight: const LineHeight(2),
                                               color: const Color(0xff000000),
                                             ),
                                           },
                                           onLinkTap: (url, context, attributes,
                                               element) async {
-                                            if (await canLaunchUrl(
-                                                Uri.parse(url!))) {
-                                              await launchUrl(Uri.parse(url));
+                                            try {
+                                              if (await canLaunch(url!)) {
+                                                await launch(url);
+                                              } else {
+                                                throw 'Could not launch $url';
+                                              }
+                                            } catch (e) {
+                                              print('Error: $e');
                                             }
                                           },
                                         ),

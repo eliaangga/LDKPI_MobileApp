@@ -77,7 +77,7 @@ class _StrukturManajemen extends State<StrukturManajemen> {
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.5,
-                            fontSize: 24,
+                            fontSize: 22,
                           ),
                         ),
                       ),
