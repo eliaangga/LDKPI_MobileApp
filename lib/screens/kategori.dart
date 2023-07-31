@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/screens/faq.dart';
 import 'package:ldkpi_news_app/screens/nilai_&_budaya.dart';
 import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
@@ -37,12 +36,12 @@ class _KategoriState extends State<Kategori> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 140,
+                  height: 80,
                   decoration: const BoxDecoration(
                     color: Color(0xFF02347C),
                     image: DecorationImage(
                       image: AssetImage('assets/assets/images/doodle.png'),
-                      fit: BoxFit.fill,
+                      fit: BoxFit.fitWidth,
                     ),
                   ),
                   child: Center(
@@ -69,12 +68,12 @@ class _KategoriState extends State<Kategori> {
                 children: [
                   Center(
                     child: Container(
-                      margin: EdgeInsets.fromLTRB(35, 20, 0, 19.5),
+                      margin: const EdgeInsets.fromLTRB(35, 20, 0, 19.5),
                       width: double.infinity,
                       child: Text(
                         AppLocalizations.of(context)!.layanan,
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'Gotham',
                           fontSize: 28,
                           fontWeight: FontWeight.w700,
@@ -241,12 +240,12 @@ class _KategoriState extends State<Kategori> {
                 children: [
                   Center(
                     child: Container(
-                      margin: EdgeInsets.fromLTRB(35, 20, 0, 19.5),
+                      margin: const EdgeInsets.fromLTRB(35, 20, 0, 19.5),
                       width: double.infinity,
                       child: Text(
                         AppLocalizations.of(context)!.profil,
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'Gotham',
                           fontSize: 28,
                           fontWeight: FontWeight.w700,
@@ -741,12 +740,12 @@ class _KategoriState extends State<Kategori> {
                 children: [
                   Center(
                     child: Container(
-                      margin: EdgeInsets.fromLTRB(35, 10, 0, 19.5),
+                      margin: const EdgeInsets.fromLTRB(35, 10, 0, 19.5),
                       width: double.infinity,
                       child: Text(
                         AppLocalizations.of(context)!.informasi,
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'Gotham',
                           fontSize: 28,
                           fontWeight: FontWeight.w700,

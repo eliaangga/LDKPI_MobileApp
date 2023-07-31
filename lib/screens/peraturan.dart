@@ -33,17 +33,17 @@ class _PeraturanState extends State<Peraturan> {
               ),
               child: Row(
                 children: [
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   const TombolKembali(),
                   Expanded(
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
+                        padding: const EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
                           AppLocalizations.of(context)!.peraturan,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.5,
@@ -60,7 +60,7 @@ class _PeraturanState extends State<Peraturan> {
             InteractiveViewer(
               child: Container(
                 width: double.infinity,
-                height: 844,
+                height: 935,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
@@ -91,18 +91,22 @@ class _PeraturanState extends State<Peraturan> {
                                             'html': Style(
                                               fontFamily: 'Gotham',
                                               textAlign: TextAlign.justify,
-                                              fontSize: FontSize(9),
+                                              fontSize: const FontSize(9),
                                               fontWeight: FontWeight.w400,
-                                              lineHeight:
-                                                  LineHeight(1.1111111111),
-                                              color: Color(0xff000000),
+                                              lineHeight: const LineHeight(2),
+                                              color: const Color(0xff000000),
                                             ),
                                           },
                                           onLinkTap: (url, context, attributes,
                                               element) async {
-                                            if (await canLaunchUrl(
-                                                Uri.parse(url!))) {
-                                              await launchUrl(Uri.parse(url));
+                                            try {
+                                              if (await canLaunch(url!)) {
+                                                await launch(url);
+                                              } else {
+                                                throw 'Could not launch $url';
+                                              }
+                                            } catch (e) {
+                                              print('Error: $e');
                                             }
                                           },
                                         ),
