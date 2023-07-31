@@ -44,10 +44,10 @@ class _CallUsState extends State<CallUs> {
                           width: double.infinity,
                           alignment: Alignment.center,
                           child: Padding(
-                            padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
+                            padding: const EdgeInsets.fromLTRB(5, 25, 15, 10),
                             child: Text(
                               AppLocalizations.of(context)!.hubungi,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 0.5,
