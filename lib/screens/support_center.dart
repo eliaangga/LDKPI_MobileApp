@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ldkpi_news_app/components/tombol_kembali.dart';
@@ -273,39 +271,39 @@ class _CallUsState extends State<CallUs> {
               ],
             ),
           ),
-          Positioned(
-            left: MediaQuery.of(context).size.width * 0.32,
-            top: 110,
-            child: ClipRRect(
-              borderRadius: commonBorderRadius,
-              child: BackdropFilter(
-                filter: ImageFilter.blur(
-                  sigmaX: 50,
-                  sigmaY: 50,
-                ),
-                child: Container(
-                  width: 150,
-                  height: 50,
-                  decoration: const BoxDecoration(
-                    color: Color(0x33ffffff),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Ayok Hubungi Kami',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Gotham',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        height: 0.957,
-                        color: Color(0xffffffff),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // Positioned(
+          //   left: MediaQuery.of(context).size.width * 0.32,
+          //   top: 110,
+          //   child: ClipRRect(
+          //     borderRadius: commonBorderRadius,
+          //     child: BackdropFilter(
+          //       filter: ImageFilter.blur(
+          //         sigmaX: 1,
+          //         sigmaY: 1,
+          //       ),
+          //       child: Container(
+          //         width: 150,
+          //         height: 50,
+          //         decoration: const BoxDecoration(
+          //           color: Colors.white,
+          //         ),
+          //         child: const Center(
+          //           child: Text(
+          //             'Ayo Hubungi Kami',
+          //             textAlign: TextAlign.center,
+          //             style: TextStyle(
+          //               fontFamily: 'Gotham',
+          //               fontSize: 14,
+          //               fontWeight: FontWeight.w500,
+          //               height: 0.957,
+          //               color: Color(0xFF02347C),
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
