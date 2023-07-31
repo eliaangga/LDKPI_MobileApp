@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:ldkpi_news_app/main.dart';
 
-class HomePageProvider extends ChangeNotifier {
+class StartAppProvider extends ChangeNotifier {
   List<String> listCarousel = [];
   List<String> listSebaranHibah = [];
   String marqueeKonten = '';
   String linkVideo = '';
+  String bahasa = '';
+
+  void ubahBahasa(String newBahasa) {
+    bahasa = newBahasa;
+    notifyListeners();
+  }
 
   Future<List<String>> getListCarousel() async {
     if (listCarousel.isEmpty) {

@@ -7,7 +7,7 @@ class CallUs extends StatefulWidget {
   const CallUs({Key? key}) : super(key: key);
 
   @override
-  _CallUsState createState() => _CallUsState();
+  State<CallUs> createState() => _CallUsState();
 }
 
 class _CallUsState extends State<CallUs> {
@@ -105,7 +105,7 @@ class _CallUsState extends State<CallUs> {
                 columns: [
                   DataColumn(
                     label: Container(
-                      color: Color(0xFF02347C),
+                      color: const Color(0xFF02347C),
                       child: Text(
                         'Deskripsi',
                         style: const TextStyle(

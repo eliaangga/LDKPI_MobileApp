@@ -20,24 +20,24 @@ Future<void> main() async {
         create: (context) => BeritaPageProvider(),
       ),
       ChangeNotifierProvider(
-        create: (context) => HomePageProvider(),
+        create: (context) => StartAppProvider(),
       ),
     ],
-    child: const App(),
+    child: const LdkpiMobile(),
   ));
 }
 
 Koneksi koneksi = Koneksi();
 ConfigLanguage konfig = ConfigLanguage();
 
-class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+class LdkpiMobile extends StatefulWidget {
+  const LdkpiMobile({Key? key}) : super(key: key);
 
   @override
-  State<App> createState() => _AppState();
+  State<LdkpiMobile> createState() => _LdkpiMobileState();
 }
 
-class _AppState extends State<App> {
+class _LdkpiMobileState extends State<LdkpiMobile> {
   String bahasa = '';
 
   void ubahBahasa(String newBahasa) {

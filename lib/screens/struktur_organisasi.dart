@@ -5,14 +5,14 @@ import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/struktur_organisasi_model.dart';
 
-class StrukturOrg extends StatefulWidget {
-  StrukturOrg({Key? key}) : super(key: key);
+class StrukturOrganisasi extends StatefulWidget {
+  const StrukturOrganisasi({Key? key}) : super(key: key);
 
   @override
-  State<StrukturOrg> createState() => _StrukturOrgState();
+  State<StrukturOrganisasi> createState() => _StrukturOrganisasiState();
 }
 
-class _StrukturOrgState extends State<StrukturOrg> {
+class _StrukturOrganisasiState extends State<StrukturOrganisasi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,14 +31,14 @@ class _StrukturOrgState extends State<StrukturOrg> {
               ),
               child: Row(
                 children: [
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   const TombolKembali(),
                   Expanded(
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(5, 25, 10, 10),
+                        padding: const EdgeInsets.fromLTRB(5, 25, 10, 10),
                         child: Text(
                           AppLocalizations.of(context)!.struktur_organisasi,
                           style: const TextStyle(
@@ -66,7 +66,7 @@ class _StrukturOrgState extends State<StrukturOrg> {
                 children: [
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                      padding: const EdgeInsets.fromLTRB(31, 15, 30, 9.5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -76,7 +76,7 @@ class _StrukturOrgState extends State<StrukturOrg> {
                             child: Text(
                               AppLocalizations.of(context)!.struktur_organisasi,
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontFamily: 'Inter',
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700,
@@ -95,7 +95,7 @@ class _StrukturOrgState extends State<StrukturOrg> {
                                 return const CupertinoActivityIndicator();
                               } else if (snapshot.data!.konten != '') {
                                 return Container(
-                                  margin: EdgeInsets.only(bottom: 5),
+                                  margin: const EdgeInsets.only(bottom: 5),
                                   width: 328,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),

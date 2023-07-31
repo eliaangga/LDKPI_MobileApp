@@ -7,19 +7,10 @@ class FAQ extends StatefulWidget {
   const FAQ({Key? key}) : super(key: key);
 
   @override
-  _FAQState createState() => _FAQState();
+  State<FAQ> createState() => _FAQState();
 }
 
 class _FAQState extends State<FAQ> {
-  final TextEditingController _controllerSearch = TextEditingController();
-  late List<String> _listFAQ;
-
-  @override
-  void initState() {
-    super.initState();
-    _listFAQ = [];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +20,8 @@ class _FAQState extends State<FAQ> {
             Container(
               width: double.infinity,
               height: 135,
-              decoration: BoxDecoration(
-                color: const Color(0xFF02347C),
+              decoration: const BoxDecoration(
+                color: Color(0xFF02347C),
                 image: DecorationImage(
                   image: AssetImage('assets/assets/images/kemenkeu.png'),
                   fit: BoxFit.cover,
@@ -38,7 +29,7 @@ class _FAQState extends State<FAQ> {
               ),
               child: Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   const TombolKembali(),
@@ -46,7 +37,7 @@ class _FAQState extends State<FAQ> {
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
-                      child: Padding(
+                      child: const Padding(
                         padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
                           'FAQ',
@@ -66,7 +57,7 @@ class _FAQState extends State<FAQ> {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
               child: ClipRect(
                 child: BackdropFilter(
                   filter: ImageFilter.blur(
@@ -108,7 +99,7 @@ class _FAQState extends State<FAQ> {
                 children: [
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                      padding: const EdgeInsets.fromLTRB(31, 15, 30, 9.5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [

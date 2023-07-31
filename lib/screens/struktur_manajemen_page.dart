@@ -11,7 +11,7 @@ import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/struktur_manajemen_model.dart';
 
 class StrukturManajemen extends StatefulWidget {
-  StrukturManajemen({super.key});
+  const StrukturManajemen({super.key});
 
   @override
   State<StrukturManajemen> createState() => _StrukturManajemen();
@@ -39,7 +39,7 @@ Widget showComponent(int index) {
       model: listAllManajemen[index].listAnggota,
     );
   }
-  return Text('Data not found');
+  return const Text('Data not found');
 }
 
 class _StrukturManajemen extends State<StrukturManajemen> {
@@ -63,17 +63,17 @@ class _StrukturManajemen extends State<StrukturManajemen> {
               ),
               child: Row(
                 children: [
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   const TombolKembali(),
                   Expanded(
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(5, 25, 15, 10),
+                        padding: const EdgeInsets.fromLTRB(5, 25, 15, 10),
                         child: Text(
                           AppLocalizations.of(context)!.struktur_manajemen,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.5,

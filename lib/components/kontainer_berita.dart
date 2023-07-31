@@ -3,9 +3,9 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/models/berita_model.dart';
 
 class KontainerBerita extends StatelessWidget {
-  BeritaModel model;
+  final BeritaModel model;
 
-  KontainerBerita({super.key, required this.model});
+  const KontainerBerita({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {

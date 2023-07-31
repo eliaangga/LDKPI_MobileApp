@@ -7,7 +7,7 @@ import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/proses_bisnis_model.dart';
 
 class ProsesBisnis extends StatefulWidget {
-  ProsesBisnis({super.key});
+  const ProsesBisnis({super.key});
 
   @override
   State<ProsesBisnis> createState() => _ProsesBisnis();
@@ -101,10 +101,10 @@ class _ProsesBisnis extends State<ProsesBisnis> {
                               'html': Style(
                                 fontFamily: 'Gotham',
                                 textAlign: TextAlign.justify,
-                                fontSize: FontSize(16),
+                                fontSize: const FontSize(16),
                                 fontWeight: FontWeight.w100,
-                                lineHeight: LineHeight(1.1111111111),
-                                color: Color(0xff000000),
+                                lineHeight: const LineHeight(1.1111111111),
+                                color: const Color(0xff000000),
                               ),
                               'tr': Style(
                                 border: const Border(

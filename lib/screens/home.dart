@@ -6,7 +6,6 @@ import 'package:ldkpi_news_app/components/home/kontainer_berita_terbaru.dart';
 import 'package:ldkpi_news_app/components/home/slider.dart';
 import 'package:ldkpi_news_app/components/home/slider2.dart';
 import 'package:ldkpi_news_app/components/home/video_player.dart';
-import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/providers/home_page_provider.dart';
 import 'package:ldkpi_news_app/screens/investasi.dart';
@@ -44,7 +43,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     final screenWidth = MediaQuery.of(context).size.width;
     final beritaProvider =
         Provider.of<BeritaPageProvider>(context, listen: false);
-    final homeProvider = Provider.of<HomePageProvider>(context, listen: false);
+    final homeProvider = Provider.of<StartAppProvider>(context, listen: false);
     return Scaffold(
       body: ListView(
         children: [
@@ -59,56 +58,118 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ),
           ),
           Container(
-            child: Container(
-              margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
-              width: double.infinity,
-              height: 76,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Investasi()),
-                        );
-                      },
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
+            margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
+            width: double.infinity,
+            height: 76,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Investasi()),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      padding: const EdgeInsets.fromLTRB(19, 15, 19, 16),
+                      width: 165,
+                      height: double.infinity,
+                      decoration: BoxDecoration(
+                        color: const Color(0xffffffff),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0x19000000),
+                            offset: Offset(0, 4),
+                            blurRadius: 2,
+                          ),
+                        ],
                       ),
-                      child: Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                        padding: const EdgeInsets.fromLTRB(19, 15, 19, 16),
-                        width: 165,
+                      child: SizedBox(
+                        width: double.infinity,
                         height: double.infinity,
-                        decoration: BoxDecoration(
-                          color: const Color(0xffffffff),
-                          borderRadius: BorderRadius.circular(5),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color(0x19000000),
-                              offset: Offset(0, 4),
-                              blurRadius: 2,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              width: 40,
+                              height: 50,
+                              child: Image.asset(
+                                  'assets/assets/images/Investment.jpg'),
+                            ),
+                            Center(
+                              child: Text(
+                                AppLocalizations.of(context)!.investasi,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontFamily: 'Gotham',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  height: 1,
+                                  color: Color(0xff000000),
+                                ),
+                              ),
                             ),
                           ],
                         ),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: double.infinity,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                width: 40,
-                                height: 50,
-                                child: Image.asset(
-                                    'assets/assets/images/Investment.jpg'),
-                              ),
-                              Center(
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PemberianHibah()),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(19, 15, 14, 16),
+                      width: 165,
+                      height: double.infinity,
+                      decoration: BoxDecoration(
+                        color: const Color(0xffffffff),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0x19000000),
+                            offset: Offset(0, 4),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: double.infinity,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: Image.asset(
+                                  'assets/assets/images/Giving.jpg'),
+                            ),
+                            Center(
+                              child: Container(
+                                constraints: const BoxConstraints(maxWidth: 80),
                                 child: Text(
-                                  AppLocalizations.of(context)!.investasi,
+                                  AppLocalizations.of(context)!.pemberian_hibah,
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     fontFamily: 'Gotham',
@@ -119,78 +180,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => PH()),
-                        );
-                      },
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                      ),
-                      child: Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        padding: const EdgeInsets.fromLTRB(19, 15, 14, 16),
-                        width: 165,
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                          color: const Color(0xffffffff),
-                          borderRadius: BorderRadius.circular(5),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color(0x19000000),
-                              offset: Offset(0, 4),
-                              blurRadius: 2,
                             ),
                           ],
                         ),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: double.infinity,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Image.asset(
-                                    'assets/assets/images/Giving.jpg'),
-                              ),
-                              Center(
-                                child: Container(
-                                  constraints:
-                                      const BoxConstraints(maxWidth: 80),
-                                  child: Text(
-                                    AppLocalizations.of(context)!
-                                        .pemberian_hibah,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      fontFamily: 'Gotham',
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w700,
-                                      height: 1,
-                                      color: Color(0xff000000),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           const Expanded(
@@ -217,7 +214,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Investasi()),
+                    MaterialPageRoute(builder: (context) => const Investasi()),
                   );
                 },
                 child: Marquee(

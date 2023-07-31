@@ -57,7 +57,7 @@ class BeritaKonten extends StatelessWidget {
                           width: 61,
                           height: 18,
                           decoration: BoxDecoration(
-                            color: Color(0xff02275c),
+                            color: const Color(0xff02275c),
                             borderRadius: BorderRadius.circular(3),
                           ),
                           child: const Center(

@@ -6,14 +6,14 @@ import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/penerima_hibah_model.dart';
 
-class PenerimaH extends StatefulWidget {
-  PenerimaH({Key? key}) : super(key: key);
+class PenerimaHibah extends StatefulWidget {
+  const PenerimaHibah({Key? key}) : super(key: key);
 
   @override
-  State<PenerimaH> createState() => _PenerimaHState();
+  State<PenerimaHibah> createState() => _PenerimaHibahState();
 }
 
-class _PenerimaHState extends State<PenerimaH> {
+class _PenerimaHibahState extends State<PenerimaHibah> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +84,6 @@ class _PenerimaHState extends State<PenerimaH> {
                   return const CupertinoActivityIndicator();
                 } else if (snapshot.hasData) {
                   List<Widget> getListTahun = [];
-                  int i = 0;
                   for (var tahun in snapshot.data!.listTahun) {
                     getListTahun.add(Column(
                       children: [

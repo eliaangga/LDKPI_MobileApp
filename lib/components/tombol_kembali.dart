@@ -9,7 +9,7 @@ class TombolKembali extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+      margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
       child: TextButton(
         onPressed: () {
           Navigator.pop(context);
@@ -21,13 +21,13 @@ class TombolKembali extends StatelessWidget {
           width: 61,
           height: 18,
           decoration: BoxDecoration(
-            color: Color(0xff02275c),
+            color: const Color(0xff02275c),
             borderRadius: BorderRadius.circular(3),
           ),
           child: Center(
             child: Text(
               '< ${AppLocalizations.of(context)!.kembali}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Gotham',
                 fontSize: 8,
                 fontWeight: FontWeight.w700,

@@ -8,7 +8,7 @@ import 'package:ldkpi_news_app/models/investasi_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Investasi extends StatefulWidget {
-  Investasi({Key? key}) : super(key: key);
+  const Investasi({Key? key}) : super(key: key);
 
   @override
   State<Investasi> createState() => _InvestasiState();
@@ -40,10 +40,10 @@ class _InvestasiState extends State<Investasi> {
                       width: double.infinity,
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(40, 25, 10, 10),
+                        padding: const EdgeInsets.fromLTRB(40, 25, 10, 10),
                         child: Text(
                           AppLocalizations.of(context)!.investasi,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.5,
@@ -68,12 +68,12 @@ class _InvestasiState extends State<Investasi> {
                 children: [
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
+                      padding: const EdgeInsets.fromLTRB(31, 15, 30, 9.5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(bottom: 5),
+                            margin: const EdgeInsets.only(bottom: 5),
                             width: 328,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
@@ -88,7 +88,7 @@ class _InvestasiState extends State<Investasi> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(
+                            margin: const EdgeInsets.only(
                               top: 20,
                               left: 20,
                               bottom: 10,
@@ -115,10 +115,11 @@ class _InvestasiState extends State<Investasi> {
                                         'html': Style(
                                           fontFamily: 'Gotham',
                                           textAlign: TextAlign.justify,
-                                          fontSize: FontSize(16),
+                                          fontSize: const FontSize(16),
                                           fontWeight: FontWeight.w100,
-                                          lineHeight: LineHeight(1.1111111111),
-                                          color: Color(0xff000000),
+                                          lineHeight:
+                                              const LineHeight(1.1111111111),
+                                          color: const Color(0xff000000),
                                         ),
                                       });
                                 } else {
