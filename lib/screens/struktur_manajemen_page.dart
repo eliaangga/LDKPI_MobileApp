@@ -44,6 +44,20 @@ Widget showComponent(int index) {
 
 class _StrukturManajemen extends State<StrukturManajemen> {
   int currentIndex = 0;
+  List<StrukturManajemenModel> manajemen = [];
+  late Future<List<StrukturManajemenModel>> futureManajemen = Future.delayed(
+    const Duration(milliseconds: 1000),
+    () => manajemen,
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    koneksi.fetchManagement().then((response) {
+      manajemen = response;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +102,7 @@ class _StrukturManajemen extends State<StrukturManajemen> {
               ),
             ),
             FutureBuilder(
-              future: koneksi.fetchManagement(),
+              future: futureManajemen,
               builder: (BuildContext context,
                   AsyncSnapshot<List<StrukturManajemenModel>> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
