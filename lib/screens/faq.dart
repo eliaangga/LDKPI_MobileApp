@@ -6,19 +6,10 @@ class FAQ extends StatefulWidget {
   const FAQ({Key? key}) : super(key: key);
 
   @override
-  _FAQState createState() => _FAQState();
+  State<FAQ> createState() => _FAQState();
 }
 
 class _FAQState extends State<FAQ> {
-  final TextEditingController _controllerSearch = TextEditingController();
-  late List<String> _listFAQ;
-
-  @override
-  void initState() {
-    super.initState();
-    _listFAQ = [];
-  }
-
   @override
   Widget build(BuildContext context) {
     final commonBorderRadius = BorderRadius.circular(100);

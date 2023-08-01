@@ -6,14 +6,14 @@ import 'package:ldkpi_news_app/components/tombol_kembali.dart';
 import 'package:ldkpi_news_app/main.dart';
 import 'package:ldkpi_news_app/models/informasi_pengadaan_model.dart';
 
-class InformasiP extends StatefulWidget {
-  const InformasiP({Key? key}) : super(key: key);
+class InformasiPengadaan extends StatefulWidget {
+  const InformasiPengadaan({Key? key}) : super(key: key);
 
   @override
-  State<InformasiP> createState() => _InformasiPState();
+  State<InformasiPengadaan> createState() => _InformasiPengadaanState();
 }
 
-class _InformasiPState extends State<InformasiP> {
+class _InformasiPengadaanState extends State<InformasiPengadaan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
