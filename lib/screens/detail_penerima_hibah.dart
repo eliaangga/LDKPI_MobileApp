@@ -46,70 +46,72 @@ class DetailPenerimaHibah extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(
-                      top: 1, left: 25, bottom: 10, right: 25),
-                  child: Text(
-                    negara.nama,
-                    style: const TextStyle(
-                        fontSize: 23, fontWeight: FontWeight.w900),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width - 50,
-                      child: Image.network(
-                        negara.gambar,
-                        fit: BoxFit.fitWidth,
-                      ),
+            child: InteractiveViewer(
+              child: ListView(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(
+                        top: 1, left: 25, bottom: 10, right: 25),
+                    child: Text(
+                      negara.nama,
+                      style: const TextStyle(
+                          fontSize: 23, fontWeight: FontWeight.w900),
                     ),
-                  ],
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 20,
-                    left: 20,
-                    bottom: 10,
-                    right: 20,
                   ),
-                  child: Html(
-                    data: detailBaru,
-                    style: {
-                      'html': Style(
-                        fontFamily: 'Gotham',
-                        textAlign: TextAlign.justify,
-                        fontSize: const FontSize(16),
-                        fontWeight: FontWeight.w100,
-                        lineHeight: const LineHeight(1.1111111111),
-                        color: const Color(0xff000000),
-                      ),
-                      'tr': Style(
-                        border: const Border(
-                          bottom: BorderSide(color: Colors.grey),
-                          top: BorderSide(color: Colors.grey),
-                          left: BorderSide(color: Colors.grey),
-                          right: BorderSide(color: Colors.grey),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 50,
+                        child: Image.network(
+                          negara.gambar,
+                          fit: BoxFit.fitWidth,
                         ),
                       ),
-                      'table': Style(
-                        alignment: Alignment.topCenter,
-                      ),
-                    },
+                    ],
                   ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 50,
-                    left: 25,
-                    right: 25,
-                    bottom: 20,
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: 20,
+                      left: 20,
+                      bottom: 10,
+                      right: 20,
+                    ),
+                    child: Html(
+                      data: detailBaru,
+                      style: {
+                        'html': Style(
+                          fontFamily: 'Gotham',
+                          textAlign: TextAlign.justify,
+                          fontSize: const FontSize(16),
+                          fontWeight: FontWeight.w100,
+                          lineHeight: const LineHeight(1.1111111111),
+                          color: const Color(0xff000000),
+                        ),
+                        'tr': Style(
+                          border: const Border(
+                            bottom: BorderSide(color: Colors.grey),
+                            top: BorderSide(color: Colors.grey),
+                            left: BorderSide(color: Colors.grey),
+                            right: BorderSide(color: Colors.grey),
+                          ),
+                        ),
+                        'table': Style(
+                          alignment: Alignment.topCenter,
+                        ),
+                      },
+                    ),
                   ),
-                )
-              ],
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: 50,
+                      left: 25,
+                      right: 25,
+                      bottom: 20,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],

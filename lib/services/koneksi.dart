@@ -448,7 +448,7 @@ class Koneksi {
 
     try {
       final response = await http.get(Uri.parse(
-          '$apiUrl/api/struktur-manajemens?locale=$useLanguage&populate[0]=detailAnggota&populate[1]=detailAnggota.fotoAnggota'));
+          '$apiUrl/api/struktur-manajemens?locale=$useLanguage&sort[0]=createdAt&populate[0]=detailAnggota&populate[1]=detailAnggota.fotoAnggota'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         for (var tingkat in jsonData['data']) {

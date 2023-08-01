@@ -39,7 +39,6 @@ class StartAppProvider extends ChangeNotifier {
             RegExp(r'<a'), '<a style=\'color:black; text-decoration: none\'');
         marqueeKonten = marqueeKonten.replaceAll(
             RegExp(r'</p><p>'), '&emsp;&emsp;&emsp;&emsp;');
-        print(marqueeKonten);
       });
     }
     return marqueeKonten;
