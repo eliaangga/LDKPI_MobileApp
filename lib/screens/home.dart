@@ -42,9 +42,32 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+
+    double tittle_text_Size = 10;
+    double mewsize = 10;
+    double textsize = 10;
+    if (screenWidth < 350) {
+      tittle_text_Size = 10;
+      mewsize = 50;
+      textsize = 8;
+    } else if (screenWidth < 700) {
+      tittle_text_Size = 20;
+      mewsize = 80;
+      textsize = 12;
+    } else if (screenWidth < 1100) {
+      tittle_text_Size = 30;
+      mewsize = 140;
+      textsize = 16;
+    } else if (screenWidth < 1400) {
+      tittle_text_Size = 35;
+      mewsize = 160;
+      textsize = 18;
+    }
+
     final beritaProvider =
         Provider.of<BeritaPageProvider>(context, listen: false);
     final homeProvider = Provider.of<StartAppProvider>(context, listen: false);
+
     return Scaffold(
       body: ListView(
         children: [
@@ -55,13 +78,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             padding: const EdgeInsets.fromLTRB(30, 10, 0, 10),
             child: Text(
               AppLocalizations.of(context)!.layanan,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: tittle_text_Size),
             ),
           ),
           Container(
             margin: const EdgeInsets.fromLTRB(30, 0, 11, 20),
-            width: double.infinity,
-            height: 76,
+            height: mewsize,
+            width: 1250,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -79,8 +103,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                     ),
                     child: Container(
                       margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                      padding: const EdgeInsets.fromLTRB(19, 15, 19, 16),
-                      width: 165,
+                      padding: const EdgeInsets.fromLTRB(18, 15, 18, 16),
+                      width: 170,
                       height: double.infinity,
                       decoration: BoxDecoration(
                         color: const Color(0xffffffff),
@@ -110,12 +134,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                               child: Text(
                                 AppLocalizations.of(context)!.investasi,
                                 textAlign: TextAlign.center,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontFamily: 'Gotham',
-                                  fontSize: 12,
+                                  fontSize: textsize,
                                   fontWeight: FontWeight.w700,
                                   height: 1,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ),
@@ -140,8 +164,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                     ),
                     child: Container(
                       margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      padding: const EdgeInsets.fromLTRB(19, 15, 14, 16),
-                      width: 165,
+                      padding: const EdgeInsets.fromLTRB(18, 15, 5, 16),
+                      width: 170,
                       height: double.infinity,
                       decoration: BoxDecoration(
                         color: const Color(0xffffffff),
@@ -172,12 +196,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                 child: Text(
                                   AppLocalizations.of(context)!.pemberian_hibah,
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontFamily: 'Gotham',
-                                    fontSize: 12,
+                                    fontSize: textsize,
                                     fontWeight: FontWeight.w700,
                                     height: 1,
-                                    color: Color(0xff000000),
+                                    color: const Color(0xff000000),
                                   ),
                                 ),
                               ),
@@ -198,7 +222,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           ),
           Container(
             width: double.infinity,
-            color: Color.fromRGBO(255, 235, 59, 1),
+            color: const Color.fromRGBO(255, 235, 59, 1),
             height: 40,
             child: AnimatedBuilder(
               animation: _animationController,
@@ -230,7 +254,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           'html': Style(
                             fontFamily: 'Gotham',
                             textAlign: TextAlign.justify,
-                            fontSize: const FontSize(12),
+                            fontSize: FontSize(textsize),
                             fontWeight: FontWeight.w100,
                             lineHeight: const LineHeight(1.1111111111),
                             color: const Color(0xff000000),
@@ -254,7 +278,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             padding: const EdgeInsets.fromLTRB(20, 10, 0, 10),
             child: Text(
               AppLocalizations.of(context)!.berita_terbaru,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: tittle_text_Size),
             ),
           ),
           for (var i = 0; i < beritaProvider.listBeritaTerbaru.length; i++)
@@ -265,7 +290,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 return KontainerBeritaTerbaru(provider: beritaProvider, i: i);
               }
             }),
-          // Text(homeProvider.marqueeKonten),
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
             child: SizedBox(
@@ -283,6 +307,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   children: [
                     TextSpan(
                       text: AppLocalizations.of(context)!.profil_aid,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: tittle_text_Size),
                     ),
                   ],
                 ),
@@ -304,7 +331,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             padding: const EdgeInsets.fromLTRB(30, 10, 0, 10),
             child: Text(
               AppLocalizations.of(context)!.sebaran_realisasi,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: tittle_text_Size),
             ),
           ),
           FutureBuilder(

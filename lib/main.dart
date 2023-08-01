@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:ldkpi_news_app/components/base.dart';
 import 'package:ldkpi_news_app/language/config.dart';
 import 'package:ldkpi_news_app/language/l10n.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/providers/start_app_provider.dart';
 import 'package:ldkpi_news_app/services/koneksi.dart';
 import 'package:provider/provider.dart';
-import 'package:ldkpi_news_app/components/base.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: "lib/.env");
@@ -87,7 +87,7 @@ class _LdkpiMobileState extends State<LdkpiMobile> {
               ),
             ),
             home: AnimatedSplashScreen(
-              duration: 5000,
+              duration: 1000,
               splash: 'assets/assets/images/ldkpi.png',
               backgroundColor: const Color(0xFF02347C),
               splashTransition: SplashTransition.slideTransition,
