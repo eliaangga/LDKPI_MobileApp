@@ -44,6 +44,17 @@ class StartAppProvider extends ChangeNotifier {
     return marqueeKonten;
   }
 
+  void getConsumeMarquee() {
+    koneksi.fetchMarquee().then((response) {
+      marqueeKonten = response;
+      marqueeKonten = marqueeKonten.replaceAll(
+          RegExp(r'<a'), '<a style=\'color:black; text-decoration: none\'');
+      marqueeKonten = marqueeKonten.replaceAll(
+          RegExp(r'</p><p>'), '&emsp;&emsp;&emsp;&emsp;');
+      notifyListeners();
+    });
+  }
+
   Future<String> getLinkVideo() async {
     if (linkVideo == '') {
       await koneksi.fetchVideoProfile().then((response) {

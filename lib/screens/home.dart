@@ -238,12 +238,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               child: Marquee(
                 textDirection: TextDirection.ltr,
                 animationDuration: const Duration(minutes: 1),
-                child: FutureBuilder(
-                  future: homeProvider.getMarquee(),
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (snapshot.hasData) {
+                child: Consumer<StartAppProvider>(
+                  builder: (context, value, child) {
+                    if (value.marqueeKonten != '') {
                       return Html(
-                        data: snapshot.data,
+                        data: value.marqueeKonten,
                         onLinkTap: (url, context, attributes, element) async {
                           if (await canLaunchUrl(Uri.parse(url!))) {
                             await launchUrl(Uri.parse(url));
@@ -262,8 +261,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           ),
                         },
                       );
+                    } else {
+                      return const SizedBox(
+                        height: 10,
+                      );
                     }
-                    return const Text('');
                   },
                 ),
               ),
