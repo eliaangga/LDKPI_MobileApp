@@ -3,6 +3,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/screens/berita_konten.dart';
 
+// cek sonar
 class KontainerBeritaTerbaru extends StatelessWidget {
   BeritaPageProvider provider;
   int i;
