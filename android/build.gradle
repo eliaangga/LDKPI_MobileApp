@@ -35,8 +35,7 @@ plugins {
 
 sonar {
   properties {
-    property "sonar.projectKey", "LDKPI-Magang_LDKPI_MobileApp"
-    property "sonar.organization", "ldkpi-magang"
-    property "sonar.host.url", "https://sonarcloud.io"
+    property "sonar.projectKey", "LDKPI_mobileApp"
+    property "sonar.projectName", "LDKPI_mobileApp"
   }
 }
