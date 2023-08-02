@@ -87,7 +87,7 @@ class _LdkpiMobileState extends State<LdkpiMobile> {
               ),
             ),
             home: AnimatedSplashScreen(
-              duration: 1000,
+              duration: 100,
               splash: 'assets/assets/images/ldkpi.png',
               backgroundColor: const Color(0xFF02347C),
               splashTransition: SplashTransition.slideTransition,

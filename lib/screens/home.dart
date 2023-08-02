@@ -8,8 +8,8 @@ import 'package:ldkpi_news_app/components/home/slider2.dart';
 import 'package:ldkpi_news_app/components/home/video_player.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/providers/start_app_provider.dart';
-import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
 import 'package:ldkpi_news_app/screens/penerima_hibah.dart';
+import 'package:ldkpi_news_app/screens/proses_bisnis_page.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -43,25 +43,25 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    double tittle_text_Size = 10;
+    double tittletextSize = 10;
     double mewsize = 10;
     double textsize = 10;
-    if (screenWidth < 350) {
-      tittle_text_Size = 10;
+    if (screenWidth < 365) {
+      tittletextSize = 10;
       mewsize = 50;
       textsize = 8;
     } else if (screenWidth < 700) {
-      tittle_text_Size = 20;
+      tittletextSize = 20;
       mewsize = 80;
       textsize = 12;
     } else if (screenWidth < 1100) {
-      tittle_text_Size = 30;
+      tittletextSize = 30;
       mewsize = 140;
-      textsize = 16;
-    } else if (screenWidth < 1400) {
-      tittle_text_Size = 35;
-      mewsize = 160;
       textsize = 18;
+    } else if (screenWidth < 1400) {
+      tittletextSize = 35;
+      mewsize = 160;
+      textsize = 20;
     }
 
     final beritaProvider =
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             child: Text(
               AppLocalizations.of(context)!.pemberian_hibah,
               style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: tittle_text_Size),
+                  fontWeight: FontWeight.bold, fontSize: tittletextSize),
             ),
           ),
           Container(
@@ -102,9 +102,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       padding: EdgeInsets.zero,
                     ),
                     child: Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                      padding: const EdgeInsets.fromLTRB(18, 15, 18, 16),
-                      width: 170,
+                      width: MediaQuery.of(context).size.width * 0.5,
                       height: double.infinity,
                       decoration: BoxDecoration(
                         color: const Color(0xffffffff),
@@ -117,33 +115,32 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           ),
                         ],
                       ),
-                      child: SizedBox(
+                      child: Container(
                         width: double.infinity,
                         height: double.infinity,
+                        alignment: Alignment.center,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
-                              margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            Image.asset(
+                              'assets/assets/images/Investment.jpg',
+                              fit: BoxFit.fitHeight,
                               width: 45,
                               height: 45,
-                              child: Image.asset(
-                                'assets/assets/images/penerima_hibah.png',
-                                fit: BoxFit.fitWidth,
-                              ),
                             ),
-                            Center(
-                              child: Text(
-                                AppLocalizations.of(context)!.penerima_hibah,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: 'Gotham',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1,
-                                  color: const Color(0xff000000),
-                                ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              AppLocalizations.of(context)!.penerima_hibah,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'Gotham',
+                                fontSize: textsize,
+                                fontWeight: FontWeight.w700,
+                                height: 1,
+                                color: const Color(0xff000000),
                               ),
                             ),
                           ],
@@ -159,16 +156,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const PemberianHibah()),
+                            builder: (context) => const ProsesBisnis()),
                       );
                     },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
                     ),
                     child: Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      padding: const EdgeInsets.fromLTRB(18, 15, 5, 16),
-                      width: 170,
+                      width: MediaQuery.of(context).size.width * 0.5,
                       height: double.infinity,
                       decoration: BoxDecoration(
                         color: const Color(0xffffffff),
@@ -181,29 +176,32 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           ),
                         ],
                       ),
-                      child: SizedBox(
+                      child: Container(
                         width: double.infinity,
                         height: double.infinity,
+                        alignment: Alignment.center,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SizedBox(
+                            Image.asset(
+                              'assets/assets/images/Giving.jpg',
+                              fit: BoxFit.fitHeight,
                               width: 45,
                               height: 45,
-                              child: Image.asset(
-                                  'assets/assets/images/Giving.jpg'),
                             ),
-                            Center(
-                              child: Text(
-                                AppLocalizations.of(context)!.proses_bisnis,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: 'Gotham',
-                                  fontSize: textsize,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1,
-                                  color: const Color(0xff000000),
-                                ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              AppLocalizations.of(context)!.proses_bisnis,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'Gotham',
+                                fontSize: textsize,
+                                fontWeight: FontWeight.w700,
+                                height: 1,
+                                color: const Color(0xff000000),
                               ),
                             ),
                           ],
@@ -229,7 +227,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               builder: (context, child) {
                 return Transform.translate(
                   offset: Offset(
-                    (0.35 - _animationController.value) * screenWidth,
+                    (0.35 - _animationController.value) *
+                        MediaQuery.of(context).size.width,
                     1,
                   ),
                   child: child,
@@ -241,26 +240,35 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 child: FutureBuilder(
                   future: homeProvider.getMarquee(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator();
+                    }
+                    if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    }
                     if (snapshot.hasData) {
-                      return Html(
-                        data: snapshot.data,
-                        onLinkTap: (url, context, attributes, element) async {
-                          if (await canLaunchUrl(Uri.parse(url!))) {
-                            await launchUrl(Uri.parse(url));
-                          }
-                        },
-                        shrinkWrap: true,
-                        style: {
-                          'html': Style(
-                            fontFamily: 'Gotham',
-                            textAlign: TextAlign.justify,
-                            fontSize: FontSize(textsize),
-                            fontWeight: FontWeight.w100,
-                            lineHeight: const LineHeight(1.1111111111),
-                            color: const Color(0xff000000),
-                            maxLines: 1,
-                          ),
-                        },
+                      return SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: Html(
+                          data: snapshot.data,
+                          onLinkTap: (url, context, attributes, element) async {
+                            if (await canLaunchUrl(Uri.parse(url!))) {
+                              await launchUrl(Uri.parse(url));
+                            }
+                          },
+                          shrinkWrap: true,
+                          style: {
+                            'html': Style(
+                              fontFamily: 'Gotham',
+                              textAlign: TextAlign.justify,
+                              fontSize: FontSize(textsize),
+                              fontWeight: FontWeight.w100,
+                              lineHeight: const LineHeight(1.1111111111),
+                              color: const Color(0xff000000),
+                              maxLines: 1,
+                            ),
+                          },
+                        ),
                       );
                     }
                     return const Text('');
@@ -279,7 +287,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             child: Text(
               AppLocalizations.of(context)!.berita_terbaru,
               style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: tittle_text_Size),
+                  fontWeight: FontWeight.bold, fontSize: tittletextSize),
             ),
           ),
           for (var i = 0; i < beritaProvider.listBeritaTerbaru.length; i++)
@@ -309,7 +317,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       text: AppLocalizations.of(context)!.profil_aid,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: tittle_text_Size),
+                          fontSize: tittletextSize),
                     ),
                   ],
                 ),
@@ -332,23 +340,26 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             child: Text(
               AppLocalizations.of(context)!.sebaran_realisasi,
               style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: tittle_text_Size),
+                  fontWeight: FontWeight.bold, fontSize: tittletextSize),
             ),
           ),
           FutureBuilder(
             future: homeProvider.getListSebaranHibah(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                double width = MediaQuery.of(context).size.width * 0.8;
+                double height = width * 0.352;
                 return InteractiveViewer(
                   child: Center(
                     child: SizedBox(
-                      width: 500,
-                      height: 176,
+                      width: width,
+                      height: height,
                       child: ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: snapshot.data![0] == 'not'
-                              ? const CupertinoActivityIndicator()
-                              : Image(image: NetworkImage(snapshot.data![0]))),
+                        borderRadius: BorderRadius.circular(5),
+                        child: snapshot.data![0] == 'not'
+                            ? const CupertinoActivityIndicator()
+                            : Image(image: NetworkImage(snapshot.data![0])),
+                      ),
                     ),
                   ),
                 );
@@ -356,21 +367,23 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               return const CupertinoActivityIndicator();
             },
           ),
-          const SizedBox(height: 12),
           FutureBuilder(
             future: homeProvider.getListSebaranHibah(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                double width = MediaQuery.of(context).size.width * 0.6;
+                double height = width * (176 / 340);
                 return InteractiveViewer(
                   child: Center(
                     child: SizedBox(
-                      width: 340,
-                      height: 176,
+                      width: width,
+                      height: height,
                       child: ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: snapshot.data![1] == 'not'
-                              ? const CupertinoActivityIndicator()
-                              : Image(image: NetworkImage(snapshot.data![1]))),
+                        borderRadius: BorderRadius.circular(5),
+                        child: snapshot.data![1] == 'not'
+                            ? const CupertinoActivityIndicator()
+                            : Image(image: NetworkImage(snapshot.data![1])),
+                      ),
                     ),
                   ),
                 );
