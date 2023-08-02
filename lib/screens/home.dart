@@ -8,8 +8,8 @@ import 'package:ldkpi_news_app/components/home/slider2.dart';
 import 'package:ldkpi_news_app/components/home/video_player.dart';
 import 'package:ldkpi_news_app/providers/berita_page_provider.dart';
 import 'package:ldkpi_news_app/providers/start_app_provider.dart';
-import 'package:ldkpi_news_app/screens/investasi.dart';
 import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
+import 'package:ldkpi_news_app/screens/penerima_hibah.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -77,7 +77,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 10, 0, 10),
             child: Text(
-              AppLocalizations.of(context)!.layanan,
+              AppLocalizations.of(context)!.pemberian_hibah,
               style: TextStyle(
                   fontWeight: FontWeight.bold, fontSize: tittle_text_Size),
             ),
@@ -95,7 +95,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Investasi()),
+                            builder: (context) => const PenerimaHibah()),
                       );
                     },
                     style: TextButton.styleFrom(
@@ -125,18 +125,21 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           children: [
                             Container(
                               margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                              width: 40,
-                              height: 50,
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              width: 45,
+                              height: 45,
                               child: Image.asset(
-                                  'assets/assets/images/Investment.jpg'),
+                                'assets/assets/images/penerima_hibah.png',
+                                fit: BoxFit.fitWidth,
+                              ),
                             ),
                             Center(
                               child: Text(
-                                AppLocalizations.of(context)!.investasi,
+                                AppLocalizations.of(context)!.penerima_hibah,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontFamily: 'Gotham',
-                                  fontSize: textsize,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.w700,
                                   height: 1,
                                   color: const Color(0xff000000),
@@ -185,24 +188,21 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: 50,
-                              height: 50,
+                              width: 45,
+                              height: 45,
                               child: Image.asset(
                                   'assets/assets/images/Giving.jpg'),
                             ),
                             Center(
-                              child: Container(
-                                constraints: const BoxConstraints(maxWidth: 80),
-                                child: Text(
-                                  AppLocalizations.of(context)!.pemberian_hibah,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontFamily: 'Gotham',
-                                    fontSize: textsize,
-                                    fontWeight: FontWeight.w700,
-                                    height: 1,
-                                    color: const Color(0xff000000),
-                                  ),
+                              child: Text(
+                                AppLocalizations.of(context)!.proses_bisnis,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: 'Gotham',
+                                  fontSize: textsize,
+                                  fontWeight: FontWeight.w700,
+                                  height: 1,
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ),

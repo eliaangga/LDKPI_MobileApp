@@ -13,20 +13,9 @@ import 'package:ldkpi_news_app/components/kategori/tombol_struktur_organisasi.da
 import 'package:ldkpi_news_app/components/kategori/tombol_survei.dart';
 import 'package:ldkpi_news_app/components/kategori/tombol_tugas_fungsi.dart';
 import 'package:ldkpi_news_app/components/kategori/tombol_visi_misi.dart';
-import 'package:ldkpi_news_app/screens/faq.dart';
-import 'package:ldkpi_news_app/screens/nilai_budaya.dart';
 import 'package:ldkpi_news_app/screens/pemberian_hibah.dart';
-import 'package:ldkpi_news_app/screens/struktur_organisasi.dart';
 
-import 'informasi_pengadaan.dart';
 import 'investasi.dart';
-import 'peraturan.dart';
-import 'proses_bisnis_page.dart';
-import 'struktur_manajemen_page.dart';
-import 'support_center.dart';
-import 'survei_layanan.dart';
-import 'tugas_fungsi.dart';
-import 'visi_misi.dart';
 
 class Kategori extends StatefulWidget {
   const Kategori({super.key});
@@ -82,7 +71,7 @@ class _KategoriState extends State<Kategori> {
                       margin: const EdgeInsets.fromLTRB(35, 20, 0, 19.5),
                       width: double.infinity,
                       child: Text(
-                        AppLocalizations.of(context)!.layanan,
+                        AppLocalizations.of(context)!.pemberian_hibah,
                         textAlign: TextAlign.left,
                         style: const TextStyle(
                           fontFamily: 'Gotham',
