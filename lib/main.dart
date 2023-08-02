@@ -55,8 +55,9 @@ class _LdkpiMobileState extends State<LdkpiMobile> {
   Widget build(BuildContext context) {
     final beritaProvider =
         Provider.of<BeritaPageProvider>(context, listen: false);
-    beritaProvider.latestNews();
     final startProvider = Provider.of<StartAppProvider>(context, listen: false);
+    beritaProvider.latestNews();
+    startProvider.getConsumeMarquee();
     return Consumer<StartAppProvider>(
       builder: (context, value, child) {
         return MaterialApp(
@@ -87,7 +88,7 @@ class _LdkpiMobileState extends State<LdkpiMobile> {
               ),
             ),
             home: AnimatedSplashScreen(
-              duration: 100,
+              duration: 5000,
               splash: 'assets/assets/images/ldkpi.png',
               backgroundColor: const Color(0xFF02347C),
               splashTransition: SplashTransition.slideTransition,

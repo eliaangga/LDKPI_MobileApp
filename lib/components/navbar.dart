@@ -41,6 +41,7 @@ class _Navbar extends State<Navbar> {
         Provider.of<BeritaPageProvider>(context, listen: false);
     final startProvider = Provider.of<StartAppProvider>(context, listen: false);
     startProvider.ubahBahasa(currentLanguage);
+    startProvider.getConsumeMarquee();
     beritaProvider.reset();
     beritaProvider.controllerSearch.text = '';
     beritaProvider.ambilBerita();

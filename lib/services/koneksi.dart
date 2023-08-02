@@ -294,15 +294,18 @@ class Koneksi {
   Future<String> fetchMarquee() async {
     String hasil = '';
     try {
-      final response = await http.get(Uri.parse('$apiUrl/api/marquee-content'));
+      final response = await http.get(Uri.parse(
+          '$apiUrl/api/marquee-content?locale=$useLanguage&populate=*'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = jsonData['data']['attributes']['MarqueeLink'];
       } else {
         hasil = 'Data not found';
+        return hasil;
       }
     } catch (e) {
       hasil = 'Data not found';
+      return hasil;
     }
     return hasil;
   }
