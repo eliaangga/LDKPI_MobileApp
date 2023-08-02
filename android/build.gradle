@@ -29,3 +29,14 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+plugins {
+  id "org.sonarqube" version "4.2.1.3168"
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", "LDKPI-Magang_LDKPI_MobileApp"
+    property "sonar.organization", "ldkpi-magang"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
+}
