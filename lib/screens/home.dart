@@ -124,7 +124,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Image.asset(
-                              'assets/assets/images/Investment.jpg',
+                              'assets/assets/images/penerima_hibah.png',
                               fit: BoxFit.fitHeight,
                               width: 45,
                               height: 45,
