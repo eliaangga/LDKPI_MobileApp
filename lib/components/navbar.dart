@@ -154,63 +154,61 @@ class _Navbar extends State<Navbar> {
         BottomNavyBarItem(
           icon: GestureDetector(
             onTap: switchLanguage,
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    padding: const EdgeInsets.fromLTRB(2, 2, 2, 2),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(_buttonBorderRadius),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: currentLanguage == 'id'
-                                ? const Color(0xff02275c)
-                                : Colors.transparent,
-                            borderRadius:
-                                BorderRadius.circular(_buttonBorderRadius),
-                          ),
-                          padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
-                          child: const Text(
-                            'ID',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 6.5,
-                            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  padding: const EdgeInsets.fromLTRB(2, 2, 2, 2),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(_buttonBorderRadius),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: currentLanguage == 'id'
+                              ? const Color(0xff02275c)
+                              : Colors.transparent,
+                          borderRadius:
+                              BorderRadius.circular(_buttonBorderRadius),
+                        ),
+                        padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
+                        child: const Text(
+                          'ID',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 6.5,
                           ),
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: currentLanguage == 'en'
-                                ? const Color(0xff02275c)
-                                : Colors.transparent,
-                            borderRadius:
-                                BorderRadius.circular(_buttonBorderRadius),
-                          ),
-                          padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
-                          child: const Text(
-                            'EN',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 6.5,
-                            ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: currentLanguage == 'en'
+                              ? const Color(0xff02275c)
+                              : Colors.transparent,
+                          borderRadius:
+                              BorderRadius.circular(_buttonBorderRadius),
+                        ),
+                        padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
+                        child: const Text(
+                          'EN',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 6.5,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    AppLocalizations.of(context)!.bahasa,
-                    style: const TextStyle(color: Colors.white, fontSize: 7),
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  AppLocalizations.of(context)!.bahasa,
+                  style: const TextStyle(color: Colors.white, fontSize: 7),
+                ),
+              ],
             ),
           ),
           title: Text(

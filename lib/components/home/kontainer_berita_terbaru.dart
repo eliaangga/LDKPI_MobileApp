@@ -5,9 +5,10 @@ import 'package:ldkpi_news_app/screens/berita_konten.dart';
 
 // cek sonar
 class KontainerBeritaTerbaru extends StatelessWidget {
-  BeritaPageProvider provider;
-  int i;
-  KontainerBeritaTerbaru({super.key, required this.provider, required this.i});
+  final BeritaPageProvider provider;
+  final int i;
+  const KontainerBeritaTerbaru(
+      {super.key, required this.provider, required this.i});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

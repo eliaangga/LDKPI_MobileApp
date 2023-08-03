@@ -15,26 +15,24 @@ class BeritaKonten extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            child: Row(
-              children: [
-                const SizedBox(width: 20),
-                Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    child: const Text(
-                      '',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
+          Row(
+            children: [
+              const SizedBox(width: 20),
+              Expanded(
+                child: Container(
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  child: const Text(
+                    '',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           Expanded(
             child: ListView(

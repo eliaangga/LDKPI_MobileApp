@@ -23,7 +23,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class Koneksi {
   String apiUrl = dotenv.env['FLUTTER_APP_API_URL']!;
   List<BeritaModel> listBerita = [];
-  String useLanguage = '';
+  String useLanguage = 'id';
 
   Future<InvestasiModel> fetchInvest() async {
     InvestasiModel hasil = InvestasiModel();

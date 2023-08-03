@@ -227,7 +227,7 @@ class _KategoriState extends State<Kategori> {
           Positioned(
             left: 24,
             top: 128.5,
-            child: Container(
+            child: SizedBox(
               width: 334,
               height: 625,
               child: Column(
@@ -300,7 +300,7 @@ class _KategoriState extends State<Kategori> {
           Positioned(
             left: 24,
             top: 128.5,
-            child: Container(
+            child: SizedBox(
               width: 334,
               height: 805,
               child: Column(

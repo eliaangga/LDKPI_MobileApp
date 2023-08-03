@@ -58,71 +58,47 @@ class _PeraturanState extends State<Peraturan> {
               ),
             ),
             InteractiveViewer(
-              child: Container(
-                width: double.infinity,
-                height: 975,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: FutureBuilder(
-                        future: koneksi.fetchPeraturan(),
-                        builder: (BuildContext context,
-                            AsyncSnapshot<PeraturanModel> snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const CupertinoActivityIndicator();
-                          } else if (snapshot.data!.konten != '') {
-                            return Container(
-                              padding: EdgeInsets.fromLTRB(31, 15, 30, 9.5),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  snapshot.data!.konten == ''
-                                      ? const Center(
-                                          child: Text('Data Not Found'),
-                                        )
-                                      : Html(
-                                          data: snapshot.data!.konten,
-                                          style: {
-                                            'html': Style(
-                                              fontFamily: 'Gotham',
-                                              textAlign: TextAlign.justify,
-                                              fontSize: const FontSize(9),
-                                              fontWeight: FontWeight.w400,
-                                              lineHeight: const LineHeight(2),
-                                              color: const Color(0xff000000),
-                                            ),
-                                          },
-                                          onLinkTap: (url, context, attributes,
-                                              element) async {
-                                            try {
-                                              if (await canLaunch(url!)) {
-                                                await launch(url);
-                                              } else {
-                                                throw 'Could not launch $url';
-                                              }
-                                            } catch (e) {
-                                              print('Error: $e');
-                                            }
-                                          },
-                                        ),
-                                ],
-                              ),
-                            );
-                          } else {
-                            return const Center(
-                              child: Text('Data Not Found'),
-                            );
-                          }
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  FutureBuilder(
+                    future: koneksi.fetchPeraturan(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<PeraturanModel> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const CupertinoActivityIndicator();
+                      } else if (snapshot.data!.konten != '') {
+                        return snapshot.data!.konten == ''
+                            ? const Center(
+                                child: Text('Data Not Found'),
+                              )
+                            : Html(
+                                data: snapshot.data!.konten,
+                                style: {
+                                  'html': Style(
+                                    fontFamily: 'Gotham',
+                                    textAlign: TextAlign.justify,
+                                    fontSize: const FontSize(16),
+                                    fontWeight: FontWeight.w400,
+                                    lineHeight: const LineHeight(2),
+                                    color: const Color(0xff000000),
+                                  ),
+                                },
+                                onLinkTap:
+                                    (url, context, attributes, element) async {
+                                  if (await canLaunchUrl(Uri.parse(url!))) {
+                                    await launchUrl(Uri.parse(url));
+                                  }
+                                },
+                              );
+                      } else {
+                        return const Center(
+                          child: Text('Data Not Found'),
+                        );
+                      }
+                    },
+                  ),
+                ],
               ),
             ),
           ],
