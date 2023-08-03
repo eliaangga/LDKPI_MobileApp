@@ -64,7 +64,7 @@ flutter:
   generate: true
 
   assets:
-    - lib/.env
+    - .env
     - assets/
     - assets/assets/images/
     - assets/assets/images/ldkpi.png

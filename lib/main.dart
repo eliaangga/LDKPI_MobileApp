@@ -12,7 +12,7 @@ import 'package:ldkpi_news_app/services/koneksi.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: "lib/.env");
+  await dotenv.load(fileName: ".env");
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
