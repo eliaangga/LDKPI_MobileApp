@@ -45,8 +45,8 @@ class _LdkpiMobileState extends State<LdkpiMobile> {
       if (response != '') {
         setState(() {
           koneksi.useLanguage = response;
+          startProvider.bahasa = response;
         });
-        startProvider.bahasa = response;
       }
     });
   }

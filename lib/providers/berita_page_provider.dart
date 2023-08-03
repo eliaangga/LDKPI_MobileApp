@@ -40,6 +40,11 @@ class BeritaPageProvider extends ChangeNotifier {
     jumlahTampil = 0;
   }
 
+  void resetSearchText() {
+    controllerSearch.text = '';
+    notifyListeners();
+  }
+
   void ambilBerita() {
     koneksi.fetchNews().then(
       (response) {

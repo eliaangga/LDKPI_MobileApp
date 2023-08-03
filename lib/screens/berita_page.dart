@@ -22,7 +22,8 @@ class _BeritaPageState extends State<BeritaPage> {
     super.initState();
     final beritaProvider =
         Provider.of<BeritaPageProvider>(context, listen: false);
-
+    beritaProvider.reset();
+    beritaProvider.resetSearchText();
     beritaProvider.ambilBerita();
 
     _controller.addListener(() {
@@ -69,17 +70,21 @@ class _BeritaPageState extends State<BeritaPage> {
                   children: [
                     SizedBox(
                       width: 250,
-                      child: TextField(
-                        controller: beritaProvider.controllerSearch,
-                        decoration: InputDecoration(
-                          prefixIcon: IconButton(
-                            icon: const Icon(
-                              Icons.search,
+                      child: Consumer<BeritaPageProvider>(
+                        builder: (context, value, child) {
+                          return TextField(
+                            controller: beritaProvider.controllerSearch,
+                            decoration: InputDecoration(
+                              prefixIcon: IconButton(
+                                icon: const Icon(
+                                  Icons.search,
+                                ),
+                                onPressed: () => beritaProvider.searchNews(),
+                              ),
+                              hintText: AppLocalizations.of(context)!.keyword,
                             ),
-                            onPressed: () => beritaProvider.searchNews(),
-                          ),
-                          hintText: AppLocalizations.of(context)!.keyword,
-                        ),
+                          );
+                        },
                       ),
                     ),
                     const SizedBox(
@@ -130,6 +135,7 @@ class _BeritaPageState extends State<BeritaPage> {
                       return RefreshIndicator(
                         onRefresh: () async {
                           beritaProvider.reset();
+                          beritaProvider.resetSearchText();
                           beritaProvider.ambilBerita();
                         },
                         child: ListView.builder(

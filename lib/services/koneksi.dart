@@ -294,8 +294,8 @@ class Koneksi {
   Future<String> fetchMarquee() async {
     String hasil = '';
     try {
-      final response = await http.get(Uri.parse(
-          '$apiUrl/api/marquee-content?locale=$useLanguage&populate=*'));
+      final response = await http
+          .get(Uri.parse('$apiUrl/api/marquee-content?locale=$useLanguage'));
       if (response.statusCode == 200) {
         dynamic jsonData = json.decode(response.body);
         hasil = jsonData['data']['attributes']['MarqueeLink'];

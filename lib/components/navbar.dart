@@ -43,7 +43,7 @@ class _Navbar extends State<Navbar> {
     startProvider.ubahBahasa(currentLanguage);
     startProvider.getConsumeMarquee();
     beritaProvider.reset();
-    beritaProvider.controllerSearch.text = '';
+    beritaProvider.resetSearchText();
     beritaProvider.ambilBerita();
     beritaProvider.latestNews();
   }
